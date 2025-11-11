@@ -1,0 +1,100 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - GeoMath</title>
+    <link rel="stylesheet" href="{% static 'main/register.css' %}">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f8fafc;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+        h2 {
+            font-size: 24px;
+            font-weight: 700;
+            color: #111827;
+            margin-bottom: 20px;
+        }
+        .form-container {
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            width: 360px;
+            text-align: center;
+        }
+        label {
+            display: block;
+            text-align: left;
+            font-weight: 600;
+            color: #111827;
+            margin-bottom: 6px;
+        }
+        input {
+            width: 100%;
+            padding: 10px 12px;
+            margin-bottom: 18px;
+            border: 1px solid #d1d5db;
+            border-radius: 8px;
+            font-size: 14px;
+            outline: none;
+        }
+        input:focus {
+            border-color: #2563eb;
+            box-shadow: 0 0 0 3px rgba(37,99,235,0.2);
+        }
+        .button-group {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+        }
+        .btn {
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+        }
+        .btn-back {
+            background: white;
+            border: 1px solid #111827;
+        }
+        .btn-back:hover {
+            background: #f3f4f6;
+        }
+        .btn-login {
+            background: #16a34a;
+            color: white;
+        }
+        .btn-login:hover {
+            background: #15803d;
+        }
+    </style>
+</head>
+<body>
+	
+    <h2>Silakan Login</h2>
+    <div class="form-container">
+        <form action="" method="post">
+            {% csrf_token %}
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" placeholder="Masukkan Username" required>
+
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" placeholder="Masukkan Password" required>
+
+            <div class="button-group">
+                <a href="{% url 'home' %}" class="btn btn-back">Kembali</a>
+                <button type="submit" class="btn btn-login">Masuk</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

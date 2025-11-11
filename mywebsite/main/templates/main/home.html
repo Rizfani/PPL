@@ -1,0 +1,35 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GeoMath</title>
+    <link rel="stylesheet" href="{% static 'main/home.css' %}">
+    
+</head>
+
+<body>
+    <div class="navbar">
+        <div class="profile">
+            <div class="avatar"></div>
+            <div class="user-info">
+                <p class="username">Username</p>
+                <p class="kelas">Kelas</p>
+            </div>
+        </div>
+        <h1 class="title">GeoMath</h1>
+        <form action="{% url 'login' %}">
+            <button class="login-btn">Login</button>
+        </form>
+    </div>
+
+    <div class="content">
+        <h2>Selamat Datang</h2>
+        <p>Belajar Matematika jadi lebih mudah dan interaktif dengan GeoGebra.</p>
+        <form action="{% url 'register' %}">
+            <button class="daftar-btn" type="submit">Daftar</button>
+        </form>
+    </div>
+</body>
+</html>
