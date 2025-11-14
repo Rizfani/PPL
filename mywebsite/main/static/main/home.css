@@ -19,7 +19,7 @@ body {
     align-items: center;
     background-color: #9be3ea;
     padding: 8px 15px;
-    border-radius: 12px;
+    border-radius: 16px; 
     color: black;
     box-shadow: 0 2px 4px rgba(0,0,0,0.2);
 }
@@ -69,7 +69,6 @@ body {
 }
 
 .content {
-
     padding: 30px;
 }
 
@@ -87,7 +86,8 @@ body {
     background-color: #9be3ea;
     border: none;
     padding: 20px 80px;
-    border-radius: 16px;
+    /* Tambahan radius untuk tombol Daftar */
+    border-radius: 16px; 
     font-size: 28px;
     font-weight: bold;
     cursor: pointer;

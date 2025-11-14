@@ -1,76 +1,81 @@
-from django.shortcuts import render, redirect
-from django.contrib.auth import authenticate, login as auth_login, logout
-from django.contrib.auth.models import User  
-from django.contrib import messages
-from .models import Profile  
+# main/views.py
+
+from django.shortcuts import render, redirect 
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth import logout, authenticate, login as auth_login
+# --- IMPOR WAJIB UNTUK PROFIL DAN FOTO ---
+from .forms import ProfileUpdateForm 
+from .models import Profile 
+# ------------------------------------------
+
+# --- Bagian Login dan Register ---
 
 def home(request):
-    return render(request, "main/home.html")
-
+    """View untuk halaman utama."""
+    return render(request, 'main/home.html', {})
 
 def register(request):
-    if request.method == "POST":
-        username = request.POST.get('username')
-        email = request.POST.get('email')
-        password = request.POST.get('password')
-        kelas = request.POST.get('kelas')
-
-        # Cek apakah username sudah ada
-        if User.objects.filter(username=username).exists():
-            messages.error(request, "Username sudah digunakan.")
-            return redirect('register')
-
-        # Buat user baru pakai Django User (password otomatis di-hash)
-        user = User.objects.create_user(username=username, email=email, password=password)
-        user.save()
-
-        # Simpan kelas ke model Profile (relasi one-to-one dengan User)
-        Profile.objects.create(user=user, kelas=kelas)
-
-        messages.success(request, "Pendaftaran berhasil! Silakan login.")
-        return redirect('login')
-
-    return render(request, "main/register.html")
-
+    """View placeholder untuk halaman registrasi."""
+    return render(request, 'main/register.html', {})
 
 def login(request):
-    if request.method == "POST":
+    """View yang menangani proses login dan autentikasi."""
+    if request.method == 'POST':
         username = request.POST.get('username')
         password = request.POST.get('password')
-
-        # Autentikasi bawaan Django (password otomatis diverifikasi hash-nya)
+        
         user = authenticate(request, username=username, password=password)
-
+        
         if user is not None:
             auth_login(request, user)
-            messages.success(request, "Login berhasil!")
             return redirect('dashboard')
         else:
-            messages.error(request, "Username atau password salah.")
-            return redirect('login')
+            pass 
+            
+    return render(request, 'main/login.html', {})
 
-    return render(request, "main/login.html")
+# --- Bagian Setelah Login (Memerlukan autentikasi) ---
 
-
+@login_required 
 def dashboard(request):
-    if not request.user.is_authenticated:
-        return redirect('login')
-
-    # Ambil data kelas dari model Profile
-    try:
-        profile = Profile.objects.get(user=request.user)
-        kelas = profile.kelas
-    except Profile.DoesNotExist:
-        kelas = "-"
+    """View untuk halaman dashboard. Mengambil data foto dan kelas."""
+    # Ambil atau buat objek Profile. Ini memastikan setiap user memiliki profile.
+    profile, created = Profile.objects.get_or_create(user=request.user)
 
     context = {
         'username': request.user.username,
-        'kelas': kelas
+        'kelas': profile.kelas,     # Mengambil kelas dari Model Profile
+        'profile': profile          # Mengirim objek profile untuk mengakses foto
     }
-    return render(request, "main/dashboard.html", context)
+    return render(request, 'main/dashboard.html', context)
+
+@login_required 
+def edit_profile_view(request):
+    """View untuk memproses form update foto dan kelas."""
+    # Ambil atau buat objek Profile.
+    profile, created = Profile.objects.get_or_create(user=request.user)
+    
+    if request.method == 'POST':
+        # request.FILES WAJIB disertakan untuk form file upload (foto)
+        p_form = ProfileUpdateForm(request.POST, 
+                                   request.FILES,
+                                   instance=profile)
+        if p_form.is_valid():
+            p_form.save()
+            return redirect('dashboard') # Redirect ke dashboard setelah simpan
+    else:
+        # Inisialisasi form dengan data yang sudah ada
+        p_form = ProfileUpdateForm(instance=profile) 
+
+    context = {
+        'p_form': p_form,
+        'user_display_name': request.user.username,
+        'profile': profile # Mengirim objek profile untuk menampilkan foto saat ini
+    }
+    return render(request, 'main/edit_profile.html', context)
 
 
 def logout_view(request):
+    """Fungsi untuk log out pengguna."""
     logout(request)
-    messages.success(request, "Anda telah logout.")
     return redirect('home')

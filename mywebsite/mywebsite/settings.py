@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
 from pathlib import Path
+import os # <-- PENTING: Tambahkan import ini untuk MEDIA_ROOT
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -122,3 +123,14 @@ STATICFILES_DIRS = [BASE_DIR / 'main/static']
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+# --- PENGATURAN CUSTOM (PROFILE DAN LOGIN) ---
+
+# URL yang dituju setelah login berhasil
+LOGIN_REDIRECT_URL = 'dashboard' 
+
+# Media files (Untuk foto profil yang diupload)
+MEDIA_URL = '/media/'
+# Menggunakan os.path.join karena Anda menggunakan os.path.join di kode awal Anda
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
