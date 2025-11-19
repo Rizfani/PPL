@@ -41,30 +41,50 @@ def register(request):
         
         # 5. LANGSUNG KE DASHBOARD
         return redirect('dashboard') 
+# main/views.py
 
-    return render(request, "main/register.html")
+from django.shortcuts import render, redirect 
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth import logout, authenticate, login as auth_login
+# --- IMPOR WAJIB UNTUK PROFIL DAN FOTO ---
+from .forms import ProfileUpdateForm 
+from .models import Profile 
+# ------------------------------------------
 
+# --- Bagian Login dan Register ---
+
+def home(request):
+    """View untuk halaman utama."""
+    return render(request, 'main/home.html', {})
+
+def register(request):
+    """View placeholder untuk halaman registrasi."""
+    return render(request, 'main/register.html', {})
 
 def login(request):
-    if request.method == "POST":
+    """View yang menangani proses login dan autentikasi."""
+    if request.method == 'POST':
         username = request.POST.get('username')
         password = request.POST.get('password')
 
-        # Autentikasi bawaan Django
-        user = authenticate(request, username=username, password=password)
+        
 
+        user = authenticate(request, username=username, password=password)
+        
         if user is not None:
             auth_login(request, user)
+
             
             request.session['is_new_user'] = True
             
             messages.success(request, "Login berhasil!")
+
             return redirect('dashboard')
         else:
-            messages.error(request, "Username atau password salah.")
-            return redirect('login')
+            pass 
+            
+    return render(request, 'main/login.html', {})
 
-    return render(request, "main/login.html")
 
 # --- UPDATE FUNGSI DASHBOARD ---
 @login_required # Gunakan decorator ini agar lebih aman
@@ -78,6 +98,15 @@ def dashboard(request):
         profile = None
         kelas = "-"
 
+# --- Bagian Setelah Login (Memerlukan autentikasi) ---
+
+@login_required 
+def dashboard(request):
+    """View untuk halaman dashboard. Mengambil data foto dan kelas."""
+    # Ambil atau buat objek Profile. Ini memastikan setiap user memiliki profile.
+    profile, created = Profile.objects.get_or_create(user=request.user)
+
+
     # LOGIKA ONBOARDING POP-UP
     show_onboarding = False
     if request.session.get('is_new_user'):
@@ -87,15 +116,46 @@ def dashboard(request):
 
     context = {
         'username': request.user.username,
+
         'kelas': kelas,
         'profile' : profile,
-        'show_onboarding': show_onboarding # Kirim ke HTML
+        'show_onboarding': show_onboarding, # Kirim ke HTML
+        'kelas': profile.kelas,     # Mengambil kelas dari Model Profile
+        'profile': profile          # Mengirim objek profile untuk mengakses foto
     }
-    return render(request, "main/dashboard.html", context)
+    return render(request, 'main/dashboard.html', context)
+
+@login_required 
+def edit_profile_view(request):
+    """View untuk memproses form update foto dan kelas."""
+    # Ambil atau buat objek Profile.
+    profile, created = Profile.objects.get_or_create(user=request.user)
+    
+    if request.method == 'POST':
+        # request.FILES WAJIB disertakan untuk form file upload (foto)
+        p_form = ProfileUpdateForm(request.POST, 
+                                   request.FILES,
+                                   instance=profile)
+        if p_form.is_valid():
+            p_form.save()
+            return redirect('dashboard') # Redirect ke dashboard setelah simpan
+    else:
+        # Inisialisasi form dengan data yang sudah ada
+        p_form = ProfileUpdateForm(instance=profile) 
+
+    context = {
+        'p_form': p_form,
+        'user_display_name': request.user.username,
+        'profile': profile # Mengirim objek profile untuk menampilkan foto saat ini
+
+    }
+    return render(request, 'main/edit_profile.html', context)
 
 
 def logout_view(request):
+    """Fungsi untuk log out pengguna."""
     logout(request)
+
     messages.success(request, "Anda telah logout.")
     return redirect('home')
 
@@ -174,3 +234,6 @@ def tentang(request):
         'profile': profile,
     }
     return render(request, 'main/tentang.html', context)
+
+    return redirect('home')
+

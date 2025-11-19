@@ -1,0 +1,11 @@
+# .gitignore
+
+# 1. File Database dan Media
+db.sqlite3          # Database SQLite lokal Anda
+/media/             # Folder tempat foto profil dan upload user disimpan
+
+# 2. File dan Folder Python/Git
+venv/               # Virtual Environment
+__pycache__/        # Cache file Python
+*.pyc               # Compiled Python files
+.vscode/            # (Opsional) Jika Anda menggunakan VS Code

@@ -70,11 +70,73 @@ body {
     position: sticky;
     top: 0;
     z-index: 100;
+    display: flex;
+    align-items: center;
+    background-color: #9be3ea;
+    padding: 8px 15px;
+    border-radius: 16px; 
+    color: black;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
 }
+
+/* --- GAYA PROFIL AGAR SAMA DENGAN HOME.CSS --- */
+.profile {
+    display: flex;
+    align-items: center;
+    background-color: #9be3ea; /* Warna latar belakang kotak profil */
+    padding: 8px 15px;
+    border-radius: 16px;
+    color: black;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2); /* Shadow pada kotak profil */
+}
+
+.avatar {
+    width: 35px;
+    height: 35px;
+    background-color: white; /* Latar belakang putih */
+    border-radius: 50%; /* Membuat lingkaran sempurna */
+    margin-right: 10px;
+    /* --- PENTING: Untuk memposisikan ikon di tengah lingkaran --- */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* --- Shadow pada lingkaran putih (seperti di gambar) --- */
+    box-shadow: 0 2px 4px rgba(10, 10, 10, 0.3); /* Shadow yang lebih jelas */
+}
+
+
+.avatar i {
+    color: #6c757d;
+    font-size: 20px;
+}
+
+/* --- STYLE PENTING UNTUK GAMBAR PROFIL YANG DIUPLOAD DI NAVBAR --- */
+.profile-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Memastikan gambar mengisi lingkaran tanpa distorsi */
+    border-radius: 50%; /* Membuat gambar itu sendiri bulat */
+}
+
+.user-info {
+    text-align: left;
+}
+
+.username {
+    font-weight: bold;
+    margin: 0;
+}
+
+.kelas {
+    font-size: 0.8em;
+    margin: 0;
+}
+/* ----------------------------------------------- */
 
 .profile-box {
     background-color: #f1f3f6;
 }
+
 
 .hero h6 {
     letter-spacing: 0.5px;
@@ -109,6 +171,7 @@ body {
     font-weight: 600;
 }
 
+<<<<<<< HEAD
 /* Style untuk Modal Onboarding Keren */
 .modal-content {
     border-radius: 25px; /* Sudut sangat bulat */
@@ -288,4 +351,7 @@ body {
     justify-content: center;
     margin-bottom: 1.5rem;
     font-size: 1.8rem;
+}
+.navbar .nav a:hover {
+    color: #0d6efd;
 }

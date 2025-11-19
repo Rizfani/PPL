@@ -12,10 +12,21 @@ body {
     box-shadow: 0 4px 12px rgba(0,0,0,0.05);
 }
 
+
 .navbar-brand {
     font-weight: 700;
     font-size: 1.75rem;
     color: #0d6efd; /* Biru Primer */
+}
+.profile {
+    display: flex;
+    align-items: center;
+    background-color: #9be3ea;
+    padding: 8px 15px;
+    border-radius: 16px; 
+    color: black;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+
 }
 
 .navbar-brand i {
@@ -68,6 +79,7 @@ body {
     transition: all 0.3s ease;
 }
 
+
 .hero-buttons .btn-primary:hover {
     transform: translateY(-3px);
     box-shadow: 0 6px 15px rgba(13, 110, 253, 0.3);
@@ -76,6 +88,10 @@ body {
 .hero-buttons .btn-outline-secondary:hover {
     background-color: #6c757d;
     color: white;
+
+.content {
+    padding: 30px;
+
 }
 
 /* Features Section (Mengapa GeoMath?) */
@@ -96,6 +112,7 @@ body {
     border-radius: 15px;
     text-align: center;
     border: none;
+
     box-shadow: 0 6px 20px rgba(0,0,0,0.08);
     transition: all 0.3s ease;
     height: 100%;
@@ -118,4 +135,17 @@ footer {
     background-color: #e9ecef;
     color: #6c757d;
     margin-top: 4rem;
+
+    padding: 20px 80px;
+    /* Tambahan radius untuk tombol Daftar */
+    border-radius: 16px; 
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 30px;
+}
+
+.daftar-btn:hover {
+    background-color: #7ed5df;
+
 }
