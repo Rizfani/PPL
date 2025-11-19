@@ -1,0 +1,118 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% block title %}Tentang Kami - GeoMath{% endblock %}
+
+{% block content %}
+
+<link rel="stylesheet" href="{% static 'main/tentang.css' %}">
+
+<section class="hero-tentang">
+    <div class="container text-center">
+        <h6 class="fw-semibold" style="color: var(--primary);">Tentang Platform Ini</h6>
+        <h1 class="hero-title fw-bold fade-in-up">
+            <i class="fa-solid fa-rocket me-3" style="color: var(--warning);"></i>MISI KAMI: MATEMATIKA ITU SERU!
+        </h1>
+        <p class="hero-desc fade-in-up delay-1">
+            Pahami lebih lanjut tentang mengapa GeoMath dibuat dan siapa orang-orang di baliknya.
+        </p>
+    </div>
+
+    <i class="fa-solid fa-calculator floating-icon icon-1"></i>
+    <i class="fa-solid fa-lightbulb floating-icon icon-2"></i>
+    <i class="fa-solid fa-ruler floating-icon icon-3"></i>
+    <i class="fa-solid fa-chart-line floating-icon icon-4"></i>
+</section>
+
+<div class="container" style="margin-top: 3rem;">
+
+    <div class="content-card fade-in-up">
+        <div class="card-header-flex">
+            <i class="fa-solid fa-circle-question fa-2x me-3" style="color: var(--primary); margin-right: 15px;"></i>
+            <h2 class="card-title fw-bold">Apa itu GeoMath?</h2>
+        </div>
+        <p class="card-text">
+            [cite_start]<strong>GeoMath</strong> adalah platform pembelajaran interaktif yang dirancang khusus untuk siswa SMP Kelas 7. Misi kami adalah mengubah cara siswa memandang matematika—dari sesuatu yang abstrak dan sulit menjadi sesuatu yang relevan, visual, dan menyenangkan[cite: 35, 41].
+        </p>
+        <p class="card-text">
+            [cite_start]Kami fokus pada materi inti seperti <strong>Bilangan Bulat dan Desimal</strong>, menyajikannya dengan cara yang mudah dipahami dan interaktif[cite: 7, 8].
+        </p>
+    </div>
+
+    <div class="content-card fade-in-up delay-1">
+        <div class="card-header-flex">
+            <i class="fa-solid fa-bullseye fa-2x me-3" style="color: var(--success); margin-right: 15px;"></i>
+            <h2 class="card-title fw-bold">Tujuan & Metode Kami</h2>
+        </div>
+        
+        <div class="grid-2-col">
+            <div class="flex-start">
+                <i class="fa-solid fa-lightbulb fa-3x" style="color: var(--warning);"></i>
+                <div>
+                    <h4 class="fw-bold" style="margin-top: 0;">Tujuan Utama</h4>
+                <p class="card-text" style="font-size: 1rem;">1. Siswa mampu memahami konsep bilangan bulat dan bilangan desimal.
+                    <br>2. Siswa dapat melakukan operasi penjumlahan, pengurangan, perkalian, dan pembagian bilangan bulat maupun desimal. 
+                    <br>3. Siswa dapat menggunakan aplikasi GeoGebra untuk memvisualisasikan operasi bilangan.
+                    <br>4. Siswa menunjukkan sikap aktif, termotivasi, dan lebih antusias dalam mengikuti pembelajaran matematika.
+
+                </p>
+                </div>
+            </div>
+            <div class="flex-start">
+                <i class="fa-solid fa-cogs fa-3x" style="color: var(--info);"></i>
+                <div>
+                    <h4 class="fw-bold" style="margin-top: 0;">Metode Pembelajaran</h4>
+                    [cite_start]<p class="card-text" style="font-size: 1rem;">Mengintegrasikan visualisasi GeoGebra, latihan soal interaktif, dan materi terstruktur yang mudah dicerna[cite: 38, 50].</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="content-card fade-in-up delay-2">
+        <div class="card-header-flex">
+            <i class="fa-solid fa-users-gear fa-2x me-3" style="color: var(--danger); margin-right: 15px;"></i>
+            <h2 class="card-title fw-bold">Tim di Balik GeoMath</h2>
+        </div>
+        <p class="card-text">
+            GeoMath dikembangkan dengan semangat dan dedikasi oleh tim kecil yang peduli terhadap pendidikan matematika yang lebih baik. Kami percaya bahwa setiap siswa berhak mendapatkan pengalaman belajar yang menyenangkan dan efektif.
+        </p>
+    </div>
+
+    <div class="content-card fade-in-up delay-2">
+        <div class="card-header-flex">
+            <i class="fa-solid fa-envelope fa-2x me-3" style="color: var(--secondary); margin-right: 15px;"></i>
+            <h2 class="card-title fw-bold">Hubungi Kami</h2>
+        </div>
+        <p class="card-text">
+            Punya pertanyaan atau masukan? Jangan ragu hubungi kami di <a href="mailto:info@geomath.com" style="color: var(--primary); text-decoration: none; font-weight: bold;">info@geomath.com</a> atau melalui media sosial kami.
+        </p>
+        <div class="btn-group">
+            <a href="#" class="btn-custom btn-outline-primary"><i class="fab fa-facebook-f"></i>Facebook</a>
+            <a href="#" class="btn-custom btn-outline-info"><i class="fab fa-twitter"></i>Twitter</a>
+            <a href="#" class="btn-custom btn-outline-danger"><i class="fab fa-instagram"></i>Instagram</a>
+        </div>
+    </div>
+
+    <div class="text-center section-divider fade-in-up delay-2">
+        <h3 class="fw-bold mb-4" style="color: var(--dark);">Tim Pengembang</h3>
+        <p class="card-text mb-4">Proyek ini dikembangkan oleh:</p>
+        
+        <div class="team-wrapper">
+            <div class="team-card">
+                <h5 class="fw-bold team-name">Muhammad Rizfani</h5>
+                <p class="team-id">2310131110006</p>
+            </div>
+            <div class="team-card">
+                <h5 class="fw-bold team-name">Muhammad Arya Wardana</h5>
+                <p class="team-id">2310131110006</p>
+            </div>
+        </div>
+
+        <p class="card-text mt-4" style="font-size: 0.9rem;">
+            [cite_start]Jurusan Pendidikan Komputer [cite: 1]<br>
+            [cite_start]Fakultas Keguruan dan Ilmu Pendidikan, Universitas Lambung Mangkurat [cite: 5]
+        </p>
+    </div>
+
+    <br><br> </div>
+
+{% endblock %}

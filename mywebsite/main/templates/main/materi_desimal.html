@@ -1,0 +1,141 @@
+{% extends "main/base.html" %}
+{% block title %}Bilangan Desimal - GeoMath{% endblock %}
+
+{% block content %}
+
+<!-- Hero -->
+<section class="py-5 text-center bg-primary text-white">
+    <h1 class="fw-bold">Materi: Bilangan Desimal</h1>
+    <p class="fs-5 mt-2">Memahami desimal dengan cara yang mudah dan menyenangkan!</p>
+</section>
+
+<!-- Container -->
+<div class="container my-5">
+
+    <!-- Pengertian -->
+    <div class="card shadow-sm p-4 mb-4 border-0">
+        <h3 class="fw-bold text-primary">1. Pengertian Bilangan Desimal</h3>
+        <p class="mt-2 text-secondary fs-5">
+            <strong>Bilangan desimal</strong> adalah bilangan yang memiliki tanda koma (,)
+            untuk memisahkan bagian bulat dan bagian pecahan.
+        </p>
+
+        <div class="alert alert-primary fs-5 mt-3">
+            Contoh: <strong>3,5</strong> → (3 adalah bagian bulat, 5 adalah bagian desimal)
+        </div>
+    </div>
+
+    <!-- Bentuk Pecahan dan Desimal -->
+    <div class="card shadow-sm p-4 mb-4 border-0">
+        <h3 class="fw-bold text-primary">2. Konversi: Pecahan ↔ Desimal</h3>
+
+        <p class="fs-5 text-secondary">a. Pecahan ke Desimal</p>
+        <p class="fs-5">→ Caranya: pembilang ÷ penyebut</p>
+        <div class="alert alert-success fs-5">Contoh: 1/4 = 0,25</div>
+
+        <p class="fs-5 mt-3 text-secondary">b. Desimal ke Pecahan</p>
+        <p class="fs-5">→ Lihat jumlah angka di belakang koma</p>
+        <div class="alert alert-success fs-5">Contoh: 0,6 = 6/10 = 3/5</div>
+    </div>
+
+    <!-- Perbandingan Desimal -->
+    <div class="card shadow-sm p-4 mb-4 border-0">
+        <h3 class="fw-bold text-primary">3. Membandingkan Bilangan Desimal</h3>
+
+        <p class="fs-5">Langkah membandingkan:</p>
+        <ol class="fs-5">
+            <li>Samakan jumlah angka di belakang koma</li>
+            <li>Bandingkan seperti bilangan bulat</li>
+        </ol>
+
+        <div class="alert alert-primary fs-5 mt-3">
+            Contoh:  
+            2,45 < 2,5 karena 2,45 = 2,450 dan 2,5 = 2,500
+        </div>
+    </div>
+
+    <!-- Penjumlahan -->
+    <div class="card shadow-sm p-4 mb-4 border-0">
+        <h3 class="fw-bold text-primary">4. Penjumlahan Bilangan Desimal</h3>
+
+        <p class="fs-5">Kunci penting:</p>
+        <div class="alert alert-warning fs-5">
+            Tulis angka sejajar (koma harus sejajar)
+        </div>
+
+        <div class="alert alert-success fs-5">
+            Contoh:  
+            3,4 + 1,25 = 4,65
+        </div>
+    </div>
+
+    <!-- Pengurangan -->
+    <div class="card shadow-sm p-4 mb-4 border-0">
+        <h3 class="fw-bold text-primary">5. Pengurangan Bilangan Desimal</h3>
+
+        <p class="fs-5">Kunci penting:</p>
+        <div class="alert alert-warning fs-5">Sejajarkan koma lalu kurangi</div>
+
+        <div class="alert alert-success fs-5">
+            Contoh:  
+            5,80 − 2,6 = 3,20
+        </div>
+    </div>
+
+    <!-- Perkalian -->
+    <div class="card shadow-sm p-4 mb-4 border-0">
+        <h3 class="fw-bold text-primary">6. Perkalian Bilangan Desimal</h3>
+
+        <p class="fs-5">Langkah:</p>
+        <ol class="fs-5">
+            <li>Kalikan seperti bilangan bulat</li>
+            <li>Hitung total angka di belakang koma</li>
+            <li>Letakkan koma pada hasil akhir</li>
+        </ol>
+
+        <div class="alert alert-success fs-5">
+            Contoh:  
+            1,2 × 0,5  
+            = 12 × 5 = 60  
+            = 0,60
+        </div>
+    </div>
+
+    <!-- Pembagian -->
+    <div class="card shadow-sm p-4 mb-4 border-0">
+        <h3 class="fw-bold text-primary">7. Pembagian Bilangan Desimal</h3>
+
+        <p class="fs-5">Kunci penting:</p>
+        <ul class="fs-5">
+            <li>Ubah penyebut menjadi bilangan bulat</li>
+            <li>Koma pembilang ikut bergeser</li>
+        </ul>
+
+        <div class="alert alert-success fs-5">
+            Contoh:  
+            4,5 ÷ 0,5  
+            = geser koma: 45 ÷ 5  
+            = <strong>9</strong>
+        </div>
+    </div>
+
+    <!-- Latihan Soal -->
+    <div class="card shadow-sm p-4 mb-5 border-0">
+        <h3 class="fw-bold text-primary">8. Latihan Soal</h3>
+
+        <ol class="fs-5">
+            <li>Ubah 3/5 menjadi desimal.</li>
+            <li>Bandingkan: 2,45 … 2,5</li>
+            <li>Hitung: 6,4 + 2,35</li>
+            <li>Hitung: 9,2 − 3,75</li>
+            <li>Hitung: 0,6 × 0,3</li>
+        </ol>
+
+        <div class="mt-4 text-center">
+            <a href="#" class="btn btn-primary px-4 py-2 fw-bold">Cek Jawaban</a>
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}

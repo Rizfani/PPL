@@ -1,86 +1,167 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GeoMath</title>
-    <link rel="stylesheet" href="{% static 'main/dashboard.css' %}">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-</head>
-<body>
-    <!-- 🔹 Navbar -->
-    <nav class="navbar navbar-expand-lg bg-white shadow-sm py-3 px-5">
-        <div class="container-fluid">
-            <!-- Kiri: Logo -->
-            <div class="d-flex align-items-center">
-                <div class="avatar me-2 text-primary">
-                    <i class="fa-solid fa-user-circle fa-2x"></i>
-                </div>
-                <div>
-                    <p class="mb-0 fw-bold">{{ username }}</p>
-                    <small class="text-secondary">{{ kelas }}</small>
-                </div>
-            </div>
+{% extends 'main/base.html' %}
+{% block title %}Dashboard - GeoMath{% endblock %}
 
-            <!-- Tengah: Nama aplikasi -->
-            <h2 class="fw-bold text-primary mb-0 d-none d-lg-block">
-                <i class="fa-solid fa-book me-2"></i>GeoMath
-            </h2>
+{% block content %}
 
-            <!-- Kanan: Menu + Logout -->
-            <div class="d-flex align-items-center">
-                <ul class="nav gap-4 fw-semibold me-3">
-                    <li><a href="#" class="text-primary text-decoration-none"><i class="fa-solid fa-house me-1"></i>HOME</a></li>
-                    <li><a href="#" class="text-dark text-decoration-none"><i class="fa-solid fa-book-open me-1"></i>MATERI</a></li>
-                    <li><a href="#" class="text-dark text-decoration-none"><i class="fa-solid fa-pen-nib me-1"></i>LATIHAN</a></li>
-                    <li><a href="#" class="text-dark text-decoration-none"><i class="fa-solid fa-circle-info me-1"></i>TENTANG</a></li>
-                </ul>
-                <a href="{% url 'logout' %}" class="btn btn-danger fw-semibold px-3 py-1">
-                    <i class="fa-solid fa-right-from-bracket me-1"></i>Logout
-                </a>
-            </div>
-        </div>
-    </nav>
+<section class="hero text-center py-5">
+    
+    <i class="fa-solid fa-shapes hero-decoration deco-1"></i>
+    <i class="fa-solid fa-calculator hero-decoration deco-2"></i>
+    <i class="fa-solid fa-percent hero-decoration deco-3"></i>
 
-    <!-- 🔹 Hero Section -->
-    <section class="hero text-center py-5 bg-light">
-        <h6 class="text-primary fw-semibold">Platform Belajar Matematika Terbaik</h6>
-        <h1 class="fw-bold text-primary display-6">BELAJAR MATEMATIKA JADI MENYENANGKAN!</h1>
-        <p class="text-secondary fs-5 w-75 mx-auto mt-3">
+    <div class="container">
+        <h6 class="text-primary fw-bold text-uppercase letter-spacing-2 mb-3">Platform Belajar Matematika Terbaik</h6>
+        <h1 class="fw-bold text-dark display-5 mb-3">
+            BELAJAR MATEMATIKA JADI <span class="text-primary">MENYENANGKAN!</span>
+        </h1>
+        <p class="text-secondary fs-5 w-75 mx-auto mb-4">
             Platform pembelajaran interaktif khusus untuk siswa SMP kelas 7. Pelajari bilangan bulat, desimal, dan berbagai topik matematika dengan cara yang menarik!
         </p>
-        <div class="mt-4 d-flex justify-content-center gap-3">
-            <a href="#" class="btn btn-primary btn-lg fw-bold px-4"><i class="fa-solid fa-book me-2"></i>Mulai Belajar</a>
-            <a href="#" class="btn btn-outline-dark btn-lg fw-bold px-4"><i class="fa-solid fa-trophy me-2"></i>Latihan Soal</a>
-        </div>
-    </section>
 
-    <!-- 🔹 Why GeoMath Section -->
-    <section class="why py-5">
-        <div class="text-center mb-4">
-            <h3 class="fw-bold text-dark">Mengapa GeoMath?</h3>
+        <div class="d-flex justify-content-center gap-3">
+            <a href="{% url 'materi' %}" class="btn btn-primary btn-lg fw-bold px-4 shadow-sm rounded-pill">
+                <i class="fa-solid fa-rocket me-2"></i>Mulai Belajar
+            </a>
+            <a href="#" class="btn btn-outline-dark btn-lg fw-bold px-4 rounded-pill">
+                <i class="fa-solid fa-gamepad me-2"></i>Lihat Latihan
+            </a>
         </div>
-        <div class="container d-flex justify-content-center gap-4 flex-wrap">
-            <div class="card shadow-sm p-4" style="width: 300px;">
-                <div class="icon mb-3 text-primary fs-2"><i class="fa-solid fa-book"></i></div>
-                <h5 class="fw-bold">Materi Lengkap</h5>
-                <p class="text-muted">Materi pembelajaran yang terstruktur dengan penjelasan yang mudah dipahami</p>
+    </div>
+</section>
+
+<section class="why py-5">
+    <div class="text-center mb-5">
+        <h3 class="fw-bold text-dark">Mengapa GeoMath?</h3>
+        <p class="text-muted">Fitur unggulan yang membuat belajarmu makin seru</p>
+    </div>
+
+    <div class="container d-flex justify-content-center gap-4 flex-wrap">
+
+        <div class="card shadow-sm p-4" style="width: 320px;">
+            <i class="fa-solid fa-book card-bg-icon text-primary"></i>
+            
+            <div class="icon text-primary">
+                <i class="fa-solid fa-book-open"></i>
+            </div>
+            <h5 class="fw-bold">Materi Lengkap</h5>
+            <p class="text-muted mb-0">Materi pembelajaran yang terstruktur dengan penjelasan yang mudah dipahami dan visual menarik.</p>
+        </div>
+
+        <div class="card shadow-sm p-4" style="width: 320px;">
+            <i class="fa-solid fa-calculator card-bg-icon text-success"></i>
+
+            <div class="icon text-success bg-success-subtle">
+                <i class="fa-solid fa-wand-magic-sparkles"></i>
+            </div>
+            <h5 class="fw-bold">Simulasi Interaktif</h5>
+            <p class="text-muted mb-0">Jangan cuma dibaca! Visualisasikan matematika dengan GeoGebra untuk pemahaman lebih baik.</p>
+        </div>
+
+        <div class="card shadow-sm p-4" style="width: 320px;">
+            <i class="fa-solid fa-trophy card-bg-icon text-warning"></i>
+
+            <div class="icon text-warning bg-warning-subtle">
+                <i class="fa-solid fa-medal"></i>
+            </div>
+            <h5 class="fw-bold">Latihan Soal</h5>
+            <p class="text-muted mb-0">Latihan soal interaktif dengan pembahasan lengkap untuk mengasah kemampuanmu jadi juara.</p>
+        </div>
+
+    </div>
+</section>
+
+{% if show_onboarding %}
+<div class="modal fade" id="onboardingModal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            
+            <button type="button" class="btn-close position-absolute top-0 end-0 m-3" data-bs-dismiss="modal" aria-label="Close" style="z-index: 10;"></button>
+
+            <div class="onboarding-slide" id="slide1">
+                <div class="onboarding-header">
+                    <div class="icon-circle">
+                        <i class="fa-solid fa-hand-spock"></i>
+                    </div>
+                </div>
+                <div class="modal-body text-center pt-4 pb-4">
+                    <h3>Halo, Selamat Datang! 👋</h3>
+                    <p class="mt-3">
+                        Wah, senangnya kamu bergabung di <strong>GeoMath</strong>! Siap mengubah cara kamu belajar matematika jadi lebih seru?
+                    </p>
+                    
+                    <div class="step-indicators mt-4">
+                        <div class="dot active"></div><div class="dot"></div><div class="dot"></div>
+                    </div>
+
+                    <div class="mt-3">
+                        <button class="btn btn-onboarding w-100" onclick="nextSlide(2)">Yuk, Mulai!</button>
+                    </div>
+                </div>
             </div>
 
-            <div class="card shadow-sm p-4" style="width: 300px;">
-                <div class="icon mb-3 text-primary fs-2"><i class="fa-solid fa-calculator"></i></div>
-                <h5 class="fw-bold">Simulasi Interaktif</h5>
-                <p class="text-muted">Visualisasi matematika dengan GeoGebra untuk pemahaman yang lebih baik</p>
+            <div class="onboarding-slide d-none" id="slide2">
+                <div class="onboarding-header">
+                    <div class="icon-circle">
+                        <i class="fa-solid fa-wand-magic-sparkles"></i>
+                    </div>
+                </div>
+                <div class="modal-body text-center pt-4 pb-4">
+                    <h3>Visualisasi Ajaib ✨</h3>
+                    <p class="mt-3">
+                        Lupakan rumus yang membosankan! Di sini kita pakai <strong>GeoGebra</strong> untuk melihat matematika bergerak langsung di layarmu.
+                    </p>
+                    
+                    <div class="step-indicators mt-4">
+                        <div class="dot"></div><div class="dot active"></div><div class="dot"></div>
+                    </div>
+
+                    <div class="d-flex justify-content-between align-items-center mt-3 px-2">
+                        <button class="btn-skip" onclick="nextSlide(1)">Kembali</button>
+                        <button class="btn btn-onboarding" onclick="nextSlide(3)">Lanjut <i class="fa-solid fa-arrow-right ms-2"></i></button>
+                    </div>
+                </div>
             </div>
 
-            <div class="card shadow-sm p-4" style="width: 300px;">
-                <div class="icon mb-3 text-primary fs-2"><i class="fa-solid fa-trophy"></i></div>
-                <h5 class="fw-bold">Latihan Soal</h5>
-                <p class="text-muted">Latihan soal interaktif dengan pembahasan lengkap untuk mengasah kemampuan</p>
+            <div class="onboarding-slide d-none" id="slide3">
+                <div class="onboarding-header">
+                    <div class="icon-circle">
+                        <i class="fa-solid fa-trophy"></i>
+                    </div>
+                </div>
+                <div class="modal-body text-center pt-4 pb-4">
+                    <h3>Jadilah Juara Kelas! 🏆</h3>
+                    <p class="mt-3">
+                        Akses materi lengkap dan latihan soal kapan saja. Uji kemampuanmu dan jadilah master matematika sekarang juga.
+                    </p>
+                    
+                    <div class="step-indicators mt-4">
+                        <div class="dot"></div><div class="dot"></div><div class="dot active"></div>
+                    </div>
+
+                    <div class="d-flex justify-content-between align-items-center mt-3 px-2">
+                        <button class="btn-skip" onclick="nextSlide(2)">Kembali</button>
+                        <button class="btn btn-onboarding" data-bs-dismiss="modal">Gass Belajar! 🚀</button>
+                    </div>
+                </div>
             </div>
+
         </div>
-    </section>
-</body>
-</html>
+    </div>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function(){
+        var myModal = new bootstrap.Modal(document.getElementById('onboardingModal'));
+        myModal.show();
+    });
+
+    function nextSlide(slideNumber) {
+        // Sembunyikan semua slide
+        document.querySelectorAll('.onboarding-slide').forEach(el => el.classList.add('d-none'));
+        // Tampilkan slide yang diminta dengan efek fade in (opsional, bisa ditambah class CSS)
+        document.getElementById('slide' + slideNumber).classList.remove('d-none');
+    }
+</script>
+{% endif %}
+
+{% endblock %}

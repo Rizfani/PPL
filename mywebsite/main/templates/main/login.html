@@ -5,96 +5,72 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - GeoMath</title>
-    <link rel="stylesheet" href="{% static 'main/register.css' %}">
-    <style>
-        body {
-            font-family: 'Poppins', sans-serif;
-            background-color: #f8fafc;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-        }
-        h2 {
-            font-size: 24px;
-            font-weight: 700;
-            color: #111827;
-            margin-bottom: 20px;
-        }
-        .form-container {
-            background: white;
-            padding: 40px;
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            width: 360px;
-            text-align: center;
-        }
-        label {
-            display: block;
-            text-align: left;
-            font-weight: 600;
-            color: #111827;
-            margin-bottom: 6px;
-        }
-        input {
-            width: 100%;
-            padding: 10px 12px;
-            margin-bottom: 18px;
-            border: 1px solid #d1d5db;
-            border-radius: 8px;
-            font-size: 14px;
-            outline: none;
-        }
-        input:focus {
-            border-color: #2563eb;
-            box-shadow: 0 0 0 3px rgba(37,99,235,0.2);
-        }
-        .button-group {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 10px;
-        }
-        .btn {
-            padding: 10px 20px;
-            border-radius: 8px;
-            font-weight: 600;
-            cursor: pointer;
-            border: none;
-        }
-        .btn-back {
-            background: white;
-            border: 1px solid #111827;
-        }
-        .btn-back:hover {
-            background: #f3f4f6;
-        }
-        .btn-login {
-            background: #16a34a;
-            color: white;
-        }
-        .btn-login:hover {
-            background: #15803d;
-        }
-    </style>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="{% static 'main/login.css' %}">
 </head>
 <body>
-	
-    <h2>Silakan Login</h2>
-    <div class="form-container">
-        <form action="" method="post">
-            {% csrf_token %}
-            <label for="username">Username</label>
-            <input type="text" id="username" name="username" placeholder="Masukkan Username" required>
+    
+    <div class="container">
+        
+        <div class="login-box">
+            <h1 class="tittle">Silakan Login</h1>
+            
+            <form method="POST">
+                {% csrf_token %}
+                
+                <div class="mb-3">
+                    <label for="username" class="form-label">Username</label>
+                    <input type="text" class="form-control" id="username" placeholder="Masukkan Username" name="username" required>
+                </div>
 
-            <label for="password">Password</label>
-            <input type="password" id="password" name="password" placeholder="Masukkan Password" required>
+                <div class="mb-3">
+                    <label for="password" class="form-label">Password</label>
+                    <div class="input-group">
+                        <input type="password" class="form-control" id="password" placeholder="Masukkan Password" name="password" required>
+                        <button class="btn btn-outline-secondary" type="button" id="togglePassword">
+                            <i class="fa-solid fa-eye"></i> </button>
+                    </div>
+                </div>
 
-            <div class="button-group">
-                <a href="{% url 'home' %}" class="btn btn-back">Kembali</a>
-                <button type="submit" class="btn btn-login">Masuk</button>
-            </div>
-        </form>
-    </div>
+                <div class="d-grid gap-2 mt-4">
+                    <button type="submit" class="btn btn-primary btn-login">Login</button>
+                    <a href="{% url 'home' %}" class="btn btn-outline-secondary btn-kembali">Kembali ke Home</a>
+                </div>
+
+                <div class="register-link">
+                    <p class="mb-0 text-muted">
+                        Belum punya akun? 
+                        <a href="{% url 'register' %}" class="fw-bold text-decoration-none">Daftar di sini</a>
+                    </p>
+                </div>
+            </form>
+        </div>
+    </div> <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      const togglePassword = document.getElementById("togglePassword");
+      const passwordInput = document.getElementById("password");
+      const eyeIcon = togglePassword.querySelector('i'); // Mengambil ikon <i> di dalam tombol
+
+      togglePassword.addEventListener("click", function() {
+        const isHidden = passwordInput.type === "password";
+        passwordInput.type = isHidden ? "text" : "password";
+
+        // Mengganti kelas ikon dengan benar
+        if (isHidden) {
+            eyeIcon.classList.remove("fa-eye");
+            eyeIcon.classList.add("fa-eye-slash");
+        } else {
+            eyeIcon.classList.remove("fa-eye-slash");
+            eyeIcon.classList.add("fa-eye");
+        }
+      });
+    </script>
 </body>
 </html>

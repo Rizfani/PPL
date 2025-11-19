@@ -1,9 +1,71 @@
+/* main/static/main/dashboard.css */
+
 body {
     background-color: #f7faff;
     font-family: "Poppins", sans-serif;
     margin: 0;
 }
 
+/* =========================================
+   STYLE UNTUK PROFIL NAVBAR
+   ========================================= */
+
+/* 1. INI AKAN MEMBUAT AVATAR DAN BLOK TEKS (USER-INFO) MENYAMPING */
+.profile {
+    display: flex;
+    align-items: center;
+    gap: 12px; /* Jarak antara avatar dan info */
+}
+
+.avatar {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background-color: #e9ecef; /* Warna background abu-abu */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; /* Agar gambar terpotong bulat */
+    border: 2px solid #0d6efd; /* Border biru */
+    flex-shrink: 0; 
+}
+
+.avatar i {
+    color: #6c757d;
+}
+
+.profile-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+}
+
+/* 2. INI MEMASTIKAN USERNAME & KELAS TERSUSUN KE BAWAH */
+.user-info {
+    line-height: 1.2;
+}
+
+.user-info .username {
+    font-weight: bold;
+    margin-bottom: 0;
+    color: #212529;
+    font-size: 1rem;
+}
+
+.user-info .kelas {
+    font-size: 0.85rem;
+    color: #6c757d; 
+    margin-bottom: 0;
+}
+
+.navbar .nav a:hover,
+.navbar .nav-link:hover {
+    color: #0d6efd !important;
+}
+
+/* =========================================
+   CSS KONTEN ANDA
+   ========================================= */
 .navbar {
     position: sticky;
     top: 0;
@@ -12,10 +74,6 @@ body {
 
 .profile-box {
     background-color: #f1f3f6;
-}
-
-.avatar i {
-    color: #6c757d;
 }
 
 .hero h6 {
@@ -51,7 +109,183 @@ body {
     font-weight: 600;
 }
 
-.navbar .nav a:hover {
-    color: #0d6efd;
+/* Style untuk Modal Onboarding Keren */
+.modal-content {
+    border-radius: 25px; /* Sudut sangat bulat */
+    border: none;
+    box-shadow: 0 15px 50px rgba(0,0,0,0.2); /* Bayangan 3D yang dalam */
+    overflow: hidden;
 }
 
+/* Area Gambar/Ikon di Atas */
+.onboarding-header {
+    height: 200px;
+    background: linear-gradient(135deg, #e0f7fa 0%, #b2ebf2 100%); /* Gradasi biru muda segar */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+/* Lingkaran Ikon */
+.icon-circle {
+    width: 100px;
+    height: 100px;
+    background-color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    animation: float 3s ease-in-out infinite; /* Animasi melayang */
+}
+
+.icon-circle i {
+    font-size: 3rem;
+    color: #00acc1; /* Warna Teal GeoMath */
+}
+
+/* Animasi Melayang */
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+}
+
+/* Teks */
+.modal-body h3 {
+    color: #2c3e50;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+}
+
+.modal-body p {
+    color: #7f8c8d;
+    font-size: 1rem;
+    line-height: 1.6;
+    padding: 0 15px;
+}
+
+/* Indikator Titik (Dots) */
+.step-indicators {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+    gap: 8px;
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    background-color: #e0e0e0;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.dot.active {
+    background-color: #00acc1;
+    width: 25px; /* Dot aktif lebih panjang */
+    border-radius: 10px;
+}
+
+/* Tombol Keren */
+.btn-onboarding {
+    background-color: #00acc1;
+    color: white;
+    border-radius: 50px;
+    padding: 10px 40px;
+    font-weight: bold;
+    box-shadow: 0 4px 15px rgba(0, 172, 193, 0.4);
+    transition: all 0.3s ease;
+    border: none;
+}
+
+.btn-onboarding:hover {
+    background-color: #00838f;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 172, 193, 0.6);
+}
+
+.btn-skip {
+    color: #95a5a6;
+    font-weight: 600;
+    background: none;
+    border: none;
+}
+.btn-skip:hover {
+    color: #34495e;
+}
+
+/* ... (Kode CSS lama Anda tetap ada) ... */
+
+/* --- Tambahan Style untuk Dashboard Lebih Hidup --- */
+
+/* 1. Hero Section dengan Dekorasi */
+.hero {
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%); /* Sedikit gradasi */
+}
+
+/* Elemen Dekoratif Melayang di Hero */
+.hero-decoration {
+    position: absolute;
+    opacity: 0.1; /* Transparan */
+    z-index: 0;
+    animation: float 6s ease-in-out infinite;
+}
+.deco-1 { top: 10%; left: 5%; font-size: 4rem; color: var(--bs-primary); }
+.deco-2 { bottom: 15%; right: 10%; font-size: 5rem; color: var(--bs-warning); animation-delay: 1s; }
+.deco-3 { top: 20%; right: 20%; font-size: 3rem; color: var(--bs-success); animation-delay: 2s; }
+
+/* Agar konten hero tetap di atas dekorasi */
+.hero .container, .hero h1, .hero p, .hero .btn {
+    position: relative;
+    z-index: 1;
+}
+
+/* 2. Card yang Lebih Keren */
+.card {
+    border: none;
+    border-radius: 20px; /* Lebih bulat */
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Efek membal saat hover */
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+    background: white;
+}
+
+.card:hover {
+    transform: translateY(-10px); /* Naik lebih tinggi */
+    box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+}
+
+/* Ikon Background Besar di dalam Card */
+.card-bg-icon {
+    position: absolute;
+    bottom: -20px;
+    right: -20px;
+    font-size: 8rem;
+    opacity: 0.05; /* Sangat transparan */
+    color: currentColor;
+    z-index: 0;
+    transition: all 0.4s ease;
+}
+
+.card:hover .card-bg-icon {
+    transform: scale(1.2) rotate(-10deg); /* Efek zoom saat hover */
+    opacity: 0.1;
+}
+
+/* Ikon Utama Card */
+.card .icon {
+    width: 60px;
+    height: 60px;
+    background-color: rgba(13, 110, 253, 0.1); /* Biru transparan */
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+    font-size: 1.8rem;
+}

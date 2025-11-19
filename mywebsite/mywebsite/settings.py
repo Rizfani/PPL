@@ -62,6 +62,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'main.context_processors.user_session',
             ],
         },
     },
@@ -122,3 +123,8 @@ STATICFILES_DIRS = [BASE_DIR / 'main/static']
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+# Konfigurasi untuk file yang di-upload pengguna (Media)
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'

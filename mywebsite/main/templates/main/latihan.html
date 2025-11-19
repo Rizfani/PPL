@@ -1,0 +1,234 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% block title %}Latihan Soal - GeoMath{% endblock %}
+
+{% block content %}
+
+<section class="hero text-center py-5 position-relative overflow-hidden" style="background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%);">
+    
+    <i class="fa-solid fa-puzzle-piece position-absolute text-warning opacity-25" style="top: 10%; left: 5%; font-size: 4rem; animation: float 6s infinite;"></i>
+    <i class="fa-solid fa-brain position-absolute text-danger opacity-25" style="bottom: 15%; right: 10%; font-size: 5rem; animation: float 7s infinite reverse;"></i>
+
+    <div class="container position-relative z-1">
+        <span class="badge bg-warning text-dark px-3 py-2 rounded-pill mb-3 shadow-sm fw-bold text-uppercase ls-1">
+            <i class="fa-solid fa-star me-2"></i>Problem-Based Learning
+        </span>
+        <h1 class="fw-bold text-dark display-5 mb-3">
+            TANTANGAN: BENDAHARA <span class="text-primary">GEO-CAFE</span>
+        </h1>
+        <p class="text-secondary fs-5 w-75 mx-auto mt-3">
+            Terapkan ilmumu untuk memecahkan masalah nyata! Kelas 7A membuka kafe, dan kamu adalah bendaharanya.
+        </p>
+    </div>
+</section>
+
+<section class="container py-5" style="margin-top: -40px;">
+    
+    <div class="card shadow border-0 rounded-4 overflow-hidden mb-5">
+        <div class="row g-0">
+            <div class="col-md-4 bg-primary text-white d-flex align-items-center justify-content-center p-5">
+                <div class="text-center">
+                    <i class="fa-solid fa-store fa-6x mb-3"></i>
+                    <h4 class="fw-bold">Geo-Cafe ☕</h4>
+                </div>
+            </div>
+            <div class="col-md-8 p-5 bg-white">
+                <h3 class="fw-bold text-dark mb-3">Misi Kamu: Kelola Keuangan Kafe!</h3>
+                <p class="text-muted fs-5 mb-4">
+                    Selamat, kamu terpilih jadi bendahara. Kamu harus melacak semua pemasukan, pengeluaran, dan stok bahan. Laporanmu akan menentukan apakah kafe ini untung atau rugi.
+                </p>
+                <div class="alert alert-light border-start border-primary border-4 bg-light">
+                    <i class="fa-solid fa-circle-info me-2 text-primary"></i>
+                    Gunakan pengetahuanmu dari modul untuk menyelesaikan setiap misi. [cite_start]Jangan takut salah, ini adalah bagian dari belajar! [cite: 44]
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row g-4">
+
+        <div class="col-lg-6">
+            <div class="card shadow-sm h-100 p-4 rounded-4 border-0 position-relative overflow-hidden">
+                <i class="fa-solid fa-bottle-droplet position-absolute bottom-0 end-0 text-warning opacity-10" style="font-size: 8rem; transform: rotate(-20deg);"></i>
+                
+                <div class="d-flex align-items-center mb-4">
+                    <div class="icon-box bg-warning bg-opacity-10 text-warning p-3 rounded-circle me-3">
+                        <i class="fa-solid fa-bottle-droplet fs-3"></i>
+                    </div>
+                    <h4 class="fw-bold mb-0 text-dark">Misi 1: Stok Sirup</h4>
+                </div>
+                
+                <p class="text-muted mb-4">
+                    Stok sirup coklat pagi ini adalah <strong>2,5 liter</strong>. [cite_start]Tadi ada kiriman baru datang sebanyak <strong>1,2 liter</strong>[cite: 27].
+                </p>
+                
+                <div class="card bg-light border-0 p-3 rounded-3 mb-3">
+                    <p class="fw-bold text-dark mb-0">
+                        <i class="fa-solid fa-circle-question me-2 text-warning"></i>
+                        Berapa total sirup coklat sekarang?
+                    </p>
+                </div>
+
+                <button class="btn btn-warning w-100 fw-bold text-dark" data-bs-toggle="modal" data-bs-target="#hintModal1">
+                    <i class="fa-regular fa-lightbulb me-2"></i>Lihat Petunjuk
+                </button>
+            </div>
+        </div>
+
+        <div class="col-lg-6">
+            <div class="card shadow-sm h-100 p-4 rounded-4 border-0 position-relative overflow-hidden">
+                <i class="fa-solid fa-temperature-low position-absolute bottom-0 end-0 text-info opacity-10" style="font-size: 8rem; transform: rotate(-20deg);"></i>
+                
+                <div class="d-flex align-items-center mb-4">
+                    <div class="icon-box bg-info bg-opacity-10 text-info p-3 rounded-circle me-3">
+                        <i class="fa-solid fa-temperature-low fs-3"></i>
+                    </div>
+                    <h4 class="fw-bold mb-0 text-dark">Misi 2: Suhu Freezer</h4>
+                </div>
+                
+                <p class="text-muted mb-4">
+                    Suhu awal <strong>-4°C</strong>. Listrik padam, suhu naik <strong>7°C</strong>. [cite_start]Apakah es akan meleleh? [cite: 100, 101, 102]
+                </p>
+                
+                <div class="card bg-light border-0 p-3 rounded-3 mb-3">
+                    <p class="fw-bold text-dark mb-0">
+                        <i class="fa-solid fa-circle-question me-2 text-info"></i>
+                        Berapa suhu freezer sekarang?
+                    </p>
+                </div>
+
+                <button class="btn btn-info w-100 fw-bold text-white" data-bs-toggle="modal" data-bs-target="#hintModal2">
+                    <i class="fa-regular fa-lightbulb me-2"></i>Lihat Petunjuk
+                </button>
+            </div>
+        </div>
+
+        <div class="col-lg-6">
+            <div class="card shadow-sm h-100 p-4 rounded-4 border-0 position-relative overflow-hidden">
+                <i class="fa-solid fa-file-invoice-dollar position-absolute bottom-0 end-0 text-danger opacity-10" style="font-size: 8rem; transform: rotate(-20deg);"></i>
+                
+                <div class="d-flex align-items-center mb-4">
+                    <div class="icon-box bg-danger bg-opacity-10 text-danger p-3 rounded-circle me-3">
+                        <i class="fa-solid fa-file-invoice-dollar fs-3"></i>
+                    </div>
+                    <h4 class="fw-bold mb-0 text-dark">Misi 3: Catatan Utang</h4>
+                </div>
+                
+                <p class="text-muted mb-4">
+                    Utang awal <strong>Rp7.000 (-7.000)</strong>. [cite_start]Dibayar <strong>Rp3.000</strong> dari hasil jualan[cite: 91, 94].
+                </p>
+                
+                <div class="card bg-light border-0 p-3 rounded-3 mb-3">
+                    <p class="fw-bold text-dark mb-0">
+                        <i class="fa-solid fa-circle-question me-2 text-danger"></i>
+                        Berapa sisa utang Geo-Cafe?
+                    </p>
+                </div>
+
+                <button class="btn btn-danger w-100 fw-bold" data-bs-toggle="modal" data-bs-target="#hintModal3">
+                    <i class="fa-regular fa-lightbulb me-2"></i>Lihat Petunjuk
+                </button>
+            </div>
+        </div>
+
+        <div class="col-lg-6">
+            <div class="card shadow-sm h-100 p-4 rounded-4 border-0 position-relative overflow-hidden">
+                <i class="fa-solid fa-bread-slice position-absolute bottom-0 end-0 text-success opacity-10" style="font-size: 8rem; transform: rotate(-20deg);"></i>
+                
+                <div class="d-flex align-items-center mb-4">
+                    <div class="icon-box bg-success bg-opacity-10 text-success p-3 rounded-circle me-3">
+                        <i class="fa-solid fa-bread-slice fs-3"></i>
+                    </div>
+                    <h4 class="fw-bold mb-0 text-dark">Misi 4: Bagi Roti</h4>
+                </div>
+                
+                <p class="text-muted mb-4">
+                    [cite_start]Roti sepanjang <strong>7,5 meter</strong> dipotong menjadi bagian masing-masing <strong>2,5 meter</strong>[cite: 27].
+                </p>
+                
+                <div class="card bg-light border-0 p-3 rounded-3 mb-3">
+                    <p class="fw-bold text-dark mb-0">
+                        <i class="fa-solid fa-circle-question me-2 text-success"></i>
+                        Berapa potong roti yang didapat?
+                    </p>
+                </div>
+
+                <button class="btn btn-success w-100 fw-bold" data-bs-toggle="modal" data-bs-target="#hintModal4">
+                    <i class="fa-regular fa-lightbulb me-2"></i>Lihat Petunjuk
+                </button>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="text-center mt-5 py-4 bg-white rounded-4 shadow-sm">
+        <h4 class="fw-bold">Merasa Kesulitan?</h4>
+        <p class="text-muted">Tidak masalah! Kamu bisa kembali mempelajari materinya kapan saja.</p>
+        <a href="{% url 'materi' %}" class="btn btn-outline-primary fw-bold px-4 rounded-pill">
+            <i class="fa-solid fa-book-open me-2"></i>Buka Modul Materi
+        </a>
+    </div>
+
+</section>
+
+<div class="modal fade" id="hintModal1" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header bg-warning bg-opacity-10">
+        <h5 class="modal-title fw-bold text-dark">Petunjuk Misi 1</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Kamu perlu melakukan <strong>operasi penjumlahan bilangan desimal</strong>.</p>
+        [cite_start]<p class="mb-0 text-muted small">Tips: Sejajarkan tanda koma saat menjumlahkan[cite: 144].</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="hintModal2" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header bg-info bg-opacity-10">
+        <h5 class="modal-title fw-bold text-dark">Petunjuk Misi 2</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Gunakan aturan <strong>penjumlahan bilangan bulat dengan tanda berbeda</strong>.</p>
+        [cite_start]<p class="mb-0 text-muted small">Tips: Jika tanda berbeda, kurangi angka besar dengan kecil, hasilnya ikuti tanda angka besar[cite: 89].</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="hintModal3" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header bg-danger bg-opacity-10">
+        <h5 class="modal-title fw-bold text-dark">Petunjuk Misi 3</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Ingat konsep utang!</p>
+        <p class="mb-0 text-muted small">Utang berkurang berarti angkanya "ditambah" ke arah positif (mendekati nol).</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="hintModal4" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header bg-success bg-opacity-10">
+        <h5 class="modal-title fw-bold text-dark">Petunjuk Misi 4</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Ini adalah operasi <strong>pembagian bilangan desimal</strong>.</p>
+        <p class="mb-0 text-muted small">Tips: Kamu bisa mengubahnya menjadi pecahan atau menghilangkan koma dengan mengalikannya dengan 10 dulu.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

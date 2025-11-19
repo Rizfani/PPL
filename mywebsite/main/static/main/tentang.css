@@ -1,0 +1,214 @@
+/* main/static/main/tentang.css */
+
+:root {
+    /* Warna Bootstrap Default */
+    --primary: #0d6efd;
+    --secondary: #6c757d;
+    --success: #198754;
+    --info: #0dcaf0;
+    --warning: #ffc107;
+    --danger: #dc3545;
+    --light: #f8f9fa;
+    --dark: #212529;
+    --white: #ffffff;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #fcfcfc;
+    margin: 0;
+    color: var(--dark);
+}
+
+/* --- Layout Dasar --- */
+.container {
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+.text-center { text-align: center; }
+.fw-bold { font-weight: 700; }
+.fw-semibold { font-weight: 600; }
+.mb-0 { margin-bottom: 0; }
+
+/* --- Hero Section --- */
+.hero-tentang {
+    background: linear-gradient(to right, #e0f7fa, #bbdefb);
+    padding: 5rem 0;
+    position: relative;
+    overflow: hidden;
+    min-height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-title {
+    font-size: 2.5rem; /* Setara display-5 */
+    color: var(--primary);
+    margin-bottom: 1.5rem;
+}
+
+.hero-desc {
+    color: var(--secondary);
+    font-size: 1.25rem; /* Setara fs-5 */
+    width: 75%;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+/* Floating Icons Animation */
+.floating-icon {
+    position: absolute;
+    opacity: 0.5;
+    animation: move-icon 8s infinite alternate ease-in-out;
+}
+
+/* Posisi spesifik ikon (menggantikan style inline) */
+.icon-1 { 
+	top: 10%; 
+	left: 10%; 
+	font-size: 3rem; 
+	color: var(--info); }
+.icon-2 { 
+	bottom: 15%; 
+	right: 15%; 
+	font-size: 3rem; 
+	color: var(--warning); 
+	animation-duration: 6s; 
+	animation-direction: alternate-reverse; }
+.icon-3 { 
+	top: 20%; 
+	right: 5%; 
+	font-size: 2rem; 
+	color: var(--primary); 
+	animation-duration: 7s; }
+.icon-4 { bottom: 10%; left: 20%; font-size: 2rem; color: var(--success); animation-duration: 5s; animation-direction: alternate-reverse; }
+
+@keyframes move-icon {
+    0% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(20px, 15px) scale(1.1); }
+    100% { transform: translate(0, 0) scale(1); }
+}
+
+/* --- Cards --- */
+.content-card {
+    background-color: var(--white);
+    padding: 2rem;
+    border-radius: 0.5rem; /* Setara rounded */
+    box-shadow: 0 .125rem .25rem rgba(0,0,0,.075); /* Setara shadow-sm */
+    margin-bottom: 3rem;
+    transition: transform 0.3s ease;
+}
+
+.card-header-flex {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.card-title {
+    font-size: 1.75rem;
+    margin: 0;
+    color: var(--dark);
+}
+
+.card-text {
+    color: var(--secondary);
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+/* --- Grid System untuk "Tujuan & Metode" --- */
+.grid-2-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-top: 1.5rem;
+}
+
+/* Responsif: Jadi 1 kolom di layar kecil */
+@media (max-width: 768px) {
+    .grid-2-col {
+        grid-template-columns: 1fr;
+    }
+    .hero-desc {
+        width: 100%;
+    }
+}
+
+.flex-start {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+}
+
+/* --- Team Section --- */
+.team-wrapper {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+}
+
+.team-card {
+    background: var(--white);
+    padding: 1.5rem;
+    width: 250px;
+    box-shadow: 0 .125rem .25rem rgba(0,0,0,.075);
+    border-radius: 0.5rem;
+    text-align: left;
+}
+
+.team-name { color: var(--primary); margin-bottom: 0.25rem; }
+.team-id { color: var(--secondary); font-size: 0.9rem; }
+
+.section-divider {
+    border-top: 1px solid #dee2e6;
+    padding-top: 3rem;
+    margin-top: 3rem;
+}
+
+/* --- Buttons --- */
+.btn-group {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.btn-custom {
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border: 1px solid transparent;
+    border-radius: 0.25rem;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.3s;
+}
+
+/* Button Variants */
+.btn-outline-primary { color: var(--primary); border-color: var(--primary); }
+.btn-outline-primary:hover { background-color: var(--primary); color: var(--white); }
+
+.btn-outline-info { color: var(--info); border-color: var(--info); }
+.btn-outline-info:hover { background-color: var(--info); color: var(--white); }
+
+.btn-outline-danger { color: var(--danger); border-color: var(--danger); }
+.btn-outline-danger:hover { background-color: var(--danger); color: var(--white); }
+
+/* Animation Fade In Simple */
+.fade-in-up {
+    animation: fadeInUp 1s ease-out forwards;
+    opacity: 0;
+}
+.delay-1 { animation-delay: 0.3s; }
+.delay-2 { animation-delay: 0.6s; }
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}

@@ -1,0 +1,114 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% block title %}Pilih Materi - GeoMath{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'main/materi.css' %}">
+
+<section class="hero-materi text-center py-5">
+    <div class="position-absolute top-0 start-0 p-5 opacity-25">
+        <i class="fa-solid fa-square-root-variable fa-4x text-white animate-float"></i>
+    </div>
+    <div class="position-absolute bottom-0 end-0 p-5 opacity-25">
+        <i class="fa-solid fa-percent fa-5x text-white animate-float" style="animation-delay: 1s;"></i>
+    </div>
+
+    <div class="container py-4">
+        <span class="badge bg-white text-primary px-3 py-2 rounded-pill mb-3 shadow-sm fw-bold">
+            <i class="fa-solid fa-layer-group me-2"></i>KURIKULUM MERDEKA
+        </span>
+        <h1 class="display-4 fw-bold text-white mb-3">Eksplorasi Topik Matematika</h1>
+        <p class="text-white fs-5 opacity-75 w-75 mx-auto">
+            Pilih topik yang ingin kamu pelajari hari ini. Setiap topik dilengkapi dengan simulasi visual agar kamu lebih cepat paham!
+        </p>
+    </div>
+</section>
+
+<div class="container py-5" style="margin-top: -30px;"> <div class="row g-4 justify-content-center">
+
+        <div class="col-md-5">
+            <div class="card topic-card theme-blue shadow h-100 p-4">
+                <i class="fa-solid fa-hashtag card-bg-icon position-absolute bottom-0 end-0 p-3" style="font-size: 8rem; opacity: 0.05;"></i>
+                
+                <div class="d-flex align-items-start">
+                    <div class="icon-box shadow-sm me-4 flex-shrink-0">
+                        <i class="fa-solid fa-plus-minus"></i>
+                    </div>
+                    <div>
+                        <h3 class="fw-bold text-dark mb-2">Bilangan Bulat</h3>
+                        <span class="badge bg-primary bg-opacity-10 text-primary mb-3">Bab 1</span>
+                        <p class="text-muted">
+                            Pelajari operasi hitung positif dan negatif, garis bilangan, dan penerapannya sehari-hari.
+                        </p>
+                        
+                        <div class="d-flex gap-2 mt-4">
+                            <a href="{% url 'materi_bulat' %}" class="btn btn-action btn-lg text-white px-4 rounded-pill shadow-sm fw-bold w-100">
+                                <i class="fa-solid fa-play me-2"></i>Mulai Belajar
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-5">
+            <div class="card topic-card theme-teal shadow h-100 p-4">
+                <i class="fa-solid fa-divide card-bg-icon position-absolute bottom-0 end-0 p-3" style="font-size: 8rem; opacity: 0.05;"></i>
+                
+                <div class="d-flex align-items-start">
+                    <div class="icon-box shadow-sm me-4 flex-shrink-0">
+                        <i class="fa-solid fa-percent"></i>
+                    </div>
+                    <div>
+                        <h3 class="fw-bold text-dark mb-2">Bilangan Desimal</h3>
+                        <span class="badge bg-success bg-opacity-10 text-success mb-3">Bab 2</span>
+                        <p class="text-muted">
+                            Pahami konsep pecahan, desimal, persen, dan cara mengonversinya dengan mudah.
+                        </p>
+                        
+                        <div class="d-flex gap-2 mt-4">
+                            <a href="{% url 'materi_desimal' %}" class="btn btn-action btn-lg text-white px-4 rounded-pill shadow-sm fw-bold w-100">
+                                <i class="fa-solid fa-play me-2"></i>Mulai Belajar
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<section class="py-5 bg-white">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h4 class="fw-bold text-secondary text-uppercase ls-2">Cara Belajar Efektif</h4>
+            <h2 class="fw-bold text-dark">Langkah Mudah Menguasai Materi</h2>
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col-md-3 step-item">
+                <div class="step-number">1</div>
+                <div class="mb-3 text-primary fs-1"><i class="fa-brands fa-youtube"></i></div>
+                <h5 class="fw-bold">Baca & Simak</h5>
+                <p class="text-muted small">Pelajari rangkuman materi dan video penjelasan singkat.</p>
+            </div>
+            
+            <div class="col-md-3 step-item">
+                <div class="step-number">2</div>
+                <div class="mb-3 text-warning fs-1"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+                <h5 class="fw-bold">Coba Simulasi</h5>
+                <p class="text-muted small">Mainkan simulasi GeoGebra untuk melihat konsepnya secara visual.</p>
+            </div>
+
+            <div class="col-md-3 step-item">
+                <div class="step-number">3</div>
+                <div class="mb-3 text-success fs-1"><i class="fa-solid fa-pencil"></i></div>
+                <h5 class="fw-bold">Kerjakan Kuis</h5>
+                <p class="text-muted small">Uji pemahamanmu dengan latihan soal interaktif.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

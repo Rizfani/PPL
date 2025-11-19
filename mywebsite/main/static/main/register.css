@@ -1,90 +1,83 @@
+/* main/static/main/register.css */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
 body {
-  	margin: 0;
-    font-family: Arial, sans-serif;
-    background-color: #f8f9fa;
-    text-align: center;
-}
-
-/* Navbar tetap seperti sebelumnya */
-.navbar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background-color: #5b99a6;
-  padding: 10px 30px;
-  color: white;
-}
-
-.profile {
-  display: flex;
-  align-items: center;
-  background-color: #9be3ea;
-  padding: 8px 15px;
-  border-radius: 12px;
-  color: black;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-}
-
-.avatar {
-  width: 35px;
-  height: 35px;
-  background-color: white;
-  border-radius: 50%;
-  margin-right: 10px;
+    margin: 0;
+    font-family: 'Poppins', sans-serif; /* Menggunakan font Poppins */
+    background-color: #f7faff; /* Latar belakang soft biru (sama seperti profil) */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 2rem 0;
 }
 
 .tittle {
-  font-size: 28px;
-  font-weight: bold;
-  padding: 20px;
-
-}
-.username {
-    font-weight: bold;
-    margin: 0;
-}
-
-.kelas {
-    font-size: 0.8em;
-    margin: 0;
-}
-
-.login-btn {
-  background-color: #8ae5eb;
-  color: #000;
-  font-weight: bold;
-  border: none;
-  border-radius: 10px;
-  padding: 10px 25px;
-  font-size: 1.2em;
-  cursor: pointer;
-}
-.login-btn:hover {
-  background-color: #7ed5df;
+    font-size: 2.5rem; /* 40px */
+    font-weight: 700;
+    color: #2b4cb4; /* Biru gelap (dari home.css) */
+    text-align: center;
+    margin-bottom: 2rem;
 }
 
 /* Form box */
-.content {
-  text-align: center;
-  margin-top: 50px;
-}
-
 .register-box {
-  display: inline-block;
-  text-align: left;
-  background: white;
-  padding: 40px;
-  border-radius: 15px;
-  box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    width: 100%;
+    max-width: 500px; /* Lebar maksimum form */
+    text-align: left;
+    margin: auto;
+    background: white;
+    padding: 2.5rem; /* 40px */
+    border-radius: 20px; /* Sudut lebih bulat */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.07); /* Bayangan modern */
+    border: 1px solid #e9ecef;
 }
 
-/* Ubah ukuran semua input agar konsisten */
-.register-box .form-control {
-  width: 350px;
-  border-radius: 10px;
-  font-size: 1em;
+/* Input form (sama seperti profil.css) */
+.form-label {
+    font-weight: 600; /* Ditebalkan */
+    color: #333;
 }
 
-.register-box .btn-outline-secondary {
-  border-radius: 0 10px 10px 0;
+.form-control {
+    border-radius: 10px; /* Sudut lebih bulat */
+    padding: 12px;
+    background-color: #f8f9fa; /* Latar input sedikit abu-abu */
+    border: 1px solid #ced4da;
+    transition: all 0.3s ease;
+}
+
+.form-control:focus {
+    background-color: #fff;
+    border-color: #0d6efd;
+    box-shadow: 0 0 0 3px rgba(13, 110, 253, 0.15); /* Efek 'glow' biru */
+}
+
+/* Tombol mata */
+.btn-outline-secondary {
+    border-radius: 0 10px 10px 0;
+    padding: 0 12px;
+}
+
+/* Tombol Daftar & Kembali */
+.btn-daftar {
+    background-color: #0d6efd; /* Biru primer */
+    border-color: #0d6efd;
+    font-weight: 600;
+    padding: 12px;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+.btn-daftar:hover {
+    background-color: #0b5ed7;
+    border-color: #0a58ca;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(13, 110, 253, 0.3);
+}
+
+.btn-kembali {
+    font-weight: 600;
+    padding: 12px;
+    border-radius: 10px;
 }

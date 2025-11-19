@@ -1,99 +1,121 @@
+/* main/static/main/home.css */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
 body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background-color: #f8f9fa;
-    text-align: center;
+    font-family: 'Poppins', sans-serif;
+    background-color: #f8f9fa; /* Latar belakang abu-abu sangat muda */
 }
 
+/* Navbar */
 .navbar {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background-color: #5b99a6;
-    padding: 10px 30px;
-    color: white;
+    background-color: #ffffff;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
 }
 
-.profile {
-    display: flex;
-    align-items: center;
-    background-color: #9be3ea;
-    padding: 8px 15px;
-    border-radius: 12px;
-    color: black;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+.navbar-brand {
+    font-weight: 700;
+    font-size: 1.75rem;
+    color: #0d6efd; /* Biru Primer */
 }
 
-.avatar {
-    width: 35px;
-    height: 35px;
-    background-color: white;
-    border-radius: 50%;
+.navbar-brand i {
+    margin-right: 8px;
+}
+
+/* Tombol di Navbar */
+.btn-nav-login {
+    font-weight: 600;
     margin-right: 10px;
 }
 
-.user-info {
-    text-align: left;
+.btn-nav-daftar {
+    font-weight: 600;
 }
 
-.username {
-    font-weight: bold;
-    margin: 0;
+/* Hero Section */
+.hero-section {
+    padding: 6rem 1rem;
+    text-align: center;
+    background-color: #ffffff;
+    margin: 2rem auto;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.07);
 }
 
-.kelas {
-    font-size: 0.8em;
-    margin: 0;
+.hero-title {
+    font-size: 3.5rem; /* 56px */
+    font-weight: 700;
+    color: #2b4cb4; /* Warna biru gelap dari CSS Anda */
+    margin-bottom: 1rem;
 }
 
-.title {
-    font-size: 28px;
-    font-weight: bold;
-    left: 50%;
-    transform: translateX(-50%);
-    color: black;
-    position: absolute;
+.hero-subtitle {
+    font-size: 1.25rem; /* 20px */
+    color: #6c757d; /* Abu-abu */
+    margin-bottom: 2rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-.login-btn {
-    background-color: #9be3ea;
+.hero-buttons .btn {
+    padding: 12px 30px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 50px; /* Tombol bulat (pill) */
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+}
+
+.hero-buttons .btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(13, 110, 253, 0.3);
+}
+
+.hero-buttons .btn-outline-secondary:hover {
+    background-color: #6c757d;
+    color: white;
+}
+
+/* Features Section (Mengapa GeoMath?) */
+.features-section {
+    padding: 4rem 1rem;
+}
+
+.features-section h2 {
+    text-align: center;
+    font-weight: 700;
+    margin-bottom: 3rem;
+    color: #343a40;
+}
+
+.feature-card {
+    background: #ffffff;
+    padding: 2rem;
+    border-radius: 15px;
+    text-align: center;
     border: none;
-    padding: 10px 20px;
-    border-radius: 8px;
-    font-weight: bold;
-    cursor: pointer;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+    transition: all 0.3s ease;
+    height: 100%;
 }
 
-.login-btn:hover {
-    background-color: #7ed5df;
+.feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
 }
 
-.content {
-
-    padding: 30px;
+.feature-icon {
+    font-size: 3rem;
+    color: #0d6efd; /* Biru Primer */
+    margin-bottom: 1.5rem;
 }
 
-.content h2 {
-    font-size: 40px;
-    font-weight: bold;
-}
-
-.content p {
-    font-size: 18px;
-    color: #333;
-}
-
-.daftar-btn {
-    background-color: #9be3ea;
-    border: none;
-    padding: 20px 80px;
-    border-radius: 16px;
-    font-size: 28px;
-    font-weight: bold;
-    cursor: pointer;
-    margin-top: 30px;
-}
-
-.daftar-btn:hover {
-    background-color: #7ed5df;
+/* Footer */
+footer {
+    padding: 1.5rem 0;
+    background-color: #e9ecef;
+    color: #6c757d;
+    margin-top: 4rem;
 }

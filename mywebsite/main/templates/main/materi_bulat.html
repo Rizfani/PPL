@@ -1,0 +1,114 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% block title %}Materi Bilangan Bulat - GeoMath{% endblock %}
+
+{% block content %}
+
+<section class="hero-detail text-center py-5 position-relative overflow-hidden text-white" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
+    
+    <i class="fa-solid fa-plus position-absolute text-white opacity-25" style="top: 10%; left: 10%; font-size: 4rem; animation: float 6s infinite;"></i>
+    <i class="fa-solid fa-minus position-absolute text-white opacity-25" style="bottom: 20%; right: 10%; font-size: 5rem; animation: float 5s infinite reverse;"></i>
+    <span class="position-absolute text-white opacity-25 fw-bold" style="top: 40%; right: 20%; font-size: 3rem; animation: float 7s infinite;">0</span>
+
+    <div class="container position-relative z-1 py-4">
+        <span class="badge bg-white text-primary px-3 py-2 rounded-pill mb-3 shadow-sm fw-bold">
+            <i class="fa-solid fa-book-open me-2"></i>BAB 1
+        </span>
+        <h1 class="fw-bold display-4 mb-3">Bilangan Bulat</h1>
+        <p class="fs-5 opacity-90 w-75 mx-auto">
+            Pelajari konsep bilangan positif, negatif, dan nol serta penerapannya dalam kehidupan sehari-hari.
+        </p>
+    </div>
+</section>
+
+<section class="container py-5" style="margin-top: -50px;">
+    
+    <div class="card shadow border-0 rounded-4 p-4 mb-5 bg-white">
+        <div class="row align-items-center">
+            <div class="col-lg-7">
+                <h2 class="fw-bold text-dark mb-3">Apa itu Bilangan Bulat?</h2>
+                <p class="text-muted fs-5" style="line-height: 1.8;">
+                    <strong>Bilangan bulat</strong> adalah kumpulan bilangan yang terdiri dari bilangan cacah (0, 1, 2, ...) dan negatifnya (-1, -2, -3, ...). 
+                    <br><br>
+                    Bayangkan sebuah garis lurus:
+                </p>
+                <ul class="list-unstyled mt-3">
+                    <li class="mb-2"><i class="fa-solid fa-circle-arrow-right text-primary me-2"></i> <strong>Kanan (Positif):</strong> Maju, untung, atau naik.</li>
+                    <li class="mb-2"><i class="fa-solid fa-circle-arrow-left text-danger me-2"></i> <strong>Kiri (Negatif):</strong> Mundur, rugi, atau turun.</li>
+                    <li><i class="fa-regular fa-circle text-secondary me-2"></i> <strong>Nol:</strong> Titik netral atau diam.</li>
+                </ul>
+            </div>
+            
+            <div class="col-lg-5 text-center mt-4 mt-lg-0">
+                <div class="bg-light rounded-4 p-4 border border-2 border-dashed">
+                    <img src="https://cdn-icons-png.flaticon.com/512/3563/3563447.png" alt="Ilustrasi Suhu" style="width: 120px; opacity: 0.8;" class="mb-3">
+                    <p class="small text-muted fst-italic">
+                        "Suhu di bawah nol derajat adalah contoh nyata bilangan negatif!"
+                    </p>
+                    <div class="d-flex justify-content-center gap-2 mt-3">
+                        <span class="badge bg-danger fs-6">-5</span>
+                        <span class="badge bg-secondary fs-6">0</span>
+                        <span class="badge bg-primary fs-6">+5</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="text-center mb-4">
+        <span class="text-uppercase text-primary fw-bold letter-spacing-2">Ayo Mencoba</span>
+        <h2 class="fw-bold text-dark">Simulasi Interaktif</h2>
+        <p class="text-muted">Geser titik-titik di bawah ini untuk melihat bagaimana penjumlahan bekerja.</p>
+    </div>
+
+    <div class="card shadow-lg border-0 rounded-4 overflow-hidden mb-5">
+        <div class="card-header bg-primary text-white p-3 d-flex align-items-center">
+            <i class="fa-solid fa-gamepad fs-4 me-3"></i>
+            <h5 class="mb-0 fw-bold">Lab Virtual: Garis Bilangan</h5>
+        </div>
+        <div class="card-body p-0 bg-light">
+            <div class="ratio ratio-16x9" style="max-height: 600px;">
+                
+                <iframe src="{% static 'main/geogebra_bulat/geogebra.html' %}" 
+                        style="border:0;" 
+                        allowfullscreen 
+                        loading="lazy">
+                </iframe>
+
+            </div>
+        </div>
+        <div class="card-footer bg-white p-3 text-center">
+            <small class="text-muted"><i class="fa-solid fa-lightbulb text-warning me-1"></i> Tips: Perhatikan arah panah saat kamu menambahkan bilangan negatif.</small>
+        </div>
+    </div>
+
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="alert alert-light border border-primary border-2 rounded-3 d-flex align-items-center" role="alert">
+                <div class="fs-1 text-primary me-3">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                </div>
+                <div>
+                    <h5 class="fw-bold mb-1">Sudah paham konsepnya?</h5>
+                    <p class="mb-0 small text-muted">Lanjutkan ke materi berikutnya tentang Bilangan Desimal atau uji kemampuanmu.</p>
+                </div>
+                <div class="ms-auto">
+                    <a href="{% url 'materi_desimal' %}" class="btn btn-primary fw-bold rounded-pill px-4">Lanjut <i class="fa-solid fa-arrow-right ms-1"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<style>
+    @keyframes float {
+        0% { transform: translateY(0px); }
+        50% { transform: translateY(-15px); }
+        100% { transform: translateY(0px); }
+    }
+    .letter-spacing-2 { letter-spacing: 2px; }
+    .opacity-90 { opacity: 0.9; }
+</style>
+
+{% endblock %}
