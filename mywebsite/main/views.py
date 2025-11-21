@@ -136,6 +136,11 @@ def dashboard(request):
         'skor_desimal': skor_desimal,
         'rata_rata': rata_rata,
         'leaderboard': leaderboard,
+
+
+        'profile' : profile,
+        'show_onboarding': show_onboarding 
+
     }
     return render(request, 'main/dashboard.html', context)
 
