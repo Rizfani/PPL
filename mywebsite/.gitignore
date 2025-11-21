@@ -8,4 +8,4 @@ db.sqlite3          # Database SQLite lokal Anda
 venv/               # Virtual Environment
 __pycache__/        # Cache file Python
 *.pyc               # Compiled Python files
-.vscode/            # (Opsional) Jika Anda menggunakan VS Code
+.vscode/            # (Opsional) Jika Anda menggunakan VS  

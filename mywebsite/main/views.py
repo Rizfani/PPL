@@ -117,7 +117,6 @@ def dashboard(request):
     context = {
         'username': request.user.username,
 
-        'kelas': kelas,
         'profile' : profile,
         'show_onboarding': show_onboarding, # Kirim ke HTML
         'kelas': profile.kelas,     # Mengambil kelas dari Model Profile
