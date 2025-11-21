@@ -2,15 +2,25 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login as auth_login, logout
 from django.contrib.auth.models import User  
 from django.contrib import messages
-from django.contrib.auth.decorators import login_required # <-- Tambahkan ini
+from django.contrib.auth.decorators import login_required
 from .models import Profile  
-from .forms import ProfileForm, UserForm
+# Pastikan nama form di forms.py Anda sesuai (UserForm atau ProfileUpdateForm?)
+# Saya asumsikan namanya ProfileForm dan UserForm sesuai kode awal Anda
+from .forms import ProfileForm, UserForm 
 
+# --- HALAMAN DEPAN (LANDING PAGE) ---
 def home(request):
+    # Jika user sudah login, redirect ke dashboard agar tidak perlu login lagi
+    if request.user.is_authenticated:
+        return redirect('dashboard')
     return render(request, "main/home.html")
 
-# --- UPDATE FUNGSI REGISTER ---
+# --- FUNGSI REGISTER (DAFTAR) ---
 def register(request):
+    # Jika user sudah login, tidak perlu daftar lagi
+    if request.user.is_authenticated:
+        return redirect('dashboard')
+
     if request.method == "POST":
         username = request.POST.get('username')
         email = request.POST.get('email')
@@ -22,91 +32,66 @@ def register(request):
             messages.error(request, "Username sudah digunakan.")
             return redirect('register')
 
-        # 1. Buat User
+        # 1. Buat User Baru
         user = User.objects.create_user(username=username, email=email, password=password)
         user.save()
 
-        # 2. Simpan Profile
+        # 2. Simpan Profile (Kelas)
         Profile.objects.create(user=user, kelas=kelas)
 
         # 3. LOGIN OTOMATIS (Auto-Login)
-        # Gunakan 'auth_login' agar tidak error (karena kita mengimpornya sebagai auth_login)
         auth_login(request, user) 
 
-        # 4. SET TANDA USER BARU
-        # Disimpan di session agar bisa dibaca di dashboard
+        # 4. SET TANDA USER BARU (Untuk Pop-up Onboarding)
         request.session['is_new_user'] = True 
 
         messages.success(request, "Pendaftaran berhasil! Selamat datang.")
         
         # 5. LANGSUNG KE DASHBOARD
         return redirect('dashboard') 
-# main/views.py
 
-from django.shortcuts import render, redirect 
-from django.contrib.auth.decorators import login_required
-from django.contrib.auth import logout, authenticate, login as auth_login
-# --- IMPOR WAJIB UNTUK PROFIL DAN FOTO ---
-from .forms import ProfileUpdateForm 
-from .models import Profile 
-# ------------------------------------------
+    return render(request, "main/register.html")
 
-# --- Bagian Login dan Register ---
-
-def home(request):
-    """View untuk halaman utama."""
-    return render(request, 'main/home.html', {})
-
-def register(request):
-    """View placeholder untuk halaman registrasi."""
-    return render(request, 'main/register.html', {})
-
+# --- FUNGSI LOGIN ---
 def login(request):
-    """View yang menangani proses login dan autentikasi."""
-    if request.method == 'POST':
+    # Jika user sudah login, redirect ke dashboard
+    if request.user.is_authenticated:
+        return redirect('dashboard')
+
+    if request.method == "POST":
         username = request.POST.get('username')
         password = request.POST.get('password')
 
-        
-
+        # Autentikasi user
         user = authenticate(request, username=username, password=password)
-        
+
         if user is not None:
             auth_login(request, user)
+            
+            # (Opsional: Hapus komentar di bawah ini jika ingin tes pop-up muncul tiap login)
+            # request.session['is_new_user'] = True 
 
-            
-            request.session['is_new_user'] = True
-            
             messages.success(request, "Login berhasil!")
-
             return redirect('dashboard')
         else:
-            pass 
-            
-    return render(request, 'main/login.html', {})
+            messages.error(request, "Username atau password salah.")
+            return redirect('login')
 
+    return render(request, "main/login.html")
 
-# --- UPDATE FUNGSI DASHBOARD ---
-@login_required # Gunakan decorator ini agar lebih aman
+# --- FUNGSI LOGOUT ---
+def logout_view(request):
+    logout(request)
+    messages.success(request, "Anda telah logout.")
+    return redirect('home')
+
+# --- FUNGSI DASHBOARD (PUSAT) ---
+@login_required
 def dashboard(request):
-    # (Pengecekan manual 'if not request.user...' bisa dihapus jika pakai decorator)
-
-    try:
-        profile = Profile.objects.get(user=request.user)
-        kelas = profile.kelas
-    except Profile.DoesNotExist:
-        profile = None
-        kelas = "-"
-
-# --- Bagian Setelah Login (Memerlukan autentikasi) ---
-
-@login_required 
-def dashboard(request):
-    """View untuk halaman dashboard. Mengambil data foto dan kelas."""
-    # Ambil atau buat objek Profile. Ini memastikan setiap user memiliki profile.
+    # Ambil data profile user
+    # get_or_create mencegah error jika user lama belum punya profile
     profile, created = Profile.objects.get_or_create(user=request.user)
-
-
+    
     # LOGIKA ONBOARDING POP-UP
     show_onboarding = False
     if request.session.get('is_new_user'):
@@ -118,88 +103,25 @@ def dashboard(request):
         'username': request.user.username,
 
         'profile' : profile,
-        'show_onboarding': show_onboarding, # Kirim ke HTML
-        'kelas': profile.kelas,     # Mengambil kelas dari Model Profile
-        'profile': profile          # Mengirim objek profile untuk mengakses foto
+        'show_onboarding': show_onboarding 
     }
-    return render(request, 'main/dashboard.html', context)
+    return render(request, "main/dashboard.html", context)
 
-@login_required 
+# --- FITUR EDIT PROFIL ---
+@login_required
 def edit_profile_view(request):
-    """View untuk memproses form update foto dan kelas."""
-    # Ambil atau buat objek Profile.
     profile, created = Profile.objects.get_or_create(user=request.user)
-    
-    if request.method == 'POST':
-        # request.FILES WAJIB disertakan untuk form file upload (foto)
-        p_form = ProfileUpdateForm(request.POST, 
-                                   request.FILES,
-                                   instance=profile)
-        if p_form.is_valid():
-            p_form.save()
-            return redirect('dashboard') # Redirect ke dashboard setelah simpan
-    else:
-        # Inisialisasi form dengan data yang sudah ada
-        p_form = ProfileUpdateForm(instance=profile) 
-
-    context = {
-        'p_form': p_form,
-        'user_display_name': request.user.username,
-        'profile': profile # Mengirim objek profile untuk menampilkan foto saat ini
-
-    }
-    return render(request, 'main/edit_profile.html', context)
-
-
-def logout_view(request):
-    """Fungsi untuk log out pengguna."""
-    logout(request)
-
-    messages.success(request, "Anda telah logout.")
-    return redirect('home')
-
-@login_required
-def materi(request):
-    profile = Profile.objects.get(user=request.user) # Gunakan .get jika yakin profile ada
-    return render(request, "main/materi.html", {
-        'username': request.user.username,
-        'kelas': profile.kelas,
-        'active': 'materi',
-        'profile' : profile
-    })
-
-@login_required
-def materi_bulat(request):
-    profile = Profile.objects.get(user=request.user)
-    return render(request, "main/materi_bulat.html", {
-        'username': request.user.username,
-        'kelas': profile.kelas,
-        'active': 'materi',
-        'profile' : profile
-    })
-
-@login_required
-def materi_desimal(request):
-    profile = Profile.objects.get(user=request.user)
-    return render(request, "main/materi_desimal.html", {
-        'username': request.user.username,
-        'kelas': profile.kelas,
-        'active': 'materi',
-        'profile' : profile
-    })
-    
-@login_required
-def edit_profile_view(request):
-    profile = Profile.objects.get(user=request.user)
 
     if request.method == 'POST':
         u_form = UserForm(request.POST, instance=request.user)
+        # request.FILES wajib ada untuk upload foto
         p_form = ProfileForm(request.POST, request.FILES, instance=profile)
+        
         if p_form.is_valid() and u_form.is_valid(): 
             u_form.save()
             p_form.save()
             messages.success(request, 'Profil Anda berhasil diperbarui!')
-            return redirect('edit_profile')
+            return redirect('edit_profile') # Tetap di halaman edit agar user bisa lihat hasilnya
     else:
         p_form = ProfileForm(instance=profile)
         u_form = UserForm(instance=request.user)
@@ -214,9 +136,41 @@ def edit_profile_view(request):
     }
     return render(request, 'main/edit_profile.html', context)
 
+# --- HALAMAN MATERI ---
+@login_required
+def materi(request):
+    profile, created = Profile.objects.get_or_create(user=request.user)
+    return render(request, "main/materi.html", {
+        'username': request.user.username,
+        'kelas': profile.kelas,
+        'active': 'materi',
+        'profile' : profile
+    })
+
+@login_required
+def materi_bulat(request):
+    profile, created = Profile.objects.get_or_create(user=request.user)
+    return render(request, "main/materi_bulat.html", {
+        'username': request.user.username,
+        'kelas': profile.kelas,
+        'active': 'materi',
+        'profile' : profile
+    })
+
+@login_required
+def materi_desimal(request):
+    profile, created = Profile.objects.get_or_create(user=request.user)
+    return render(request, "main/materi_desimal.html", {
+        'username': request.user.username,
+        'kelas': profile.kelas,
+        'active': 'materi',
+        'profile' : profile
+    })
+
+# --- HALAMAN LAINNYA ---
 @login_required  
 def latihan(request):
-    profile = Profile.objects.get(user=request.user)
+    profile, created = Profile.objects.get_or_create(user=request.user)
     context = {
         'username': request.user.username,
         'kelas': profile.kelas,
@@ -226,13 +180,10 @@ def latihan(request):
 
 @login_required
 def tentang(request):
-    profile = Profile.objects.get(user=request.user)
+    profile, created = Profile.objects.get_or_create(user=request.user)
     context = {
         'username': request.user.username,
         'kelas': profile.kelas,
         'profile': profile,
     }
     return render(request, 'main/tentang.html', context)
-
-    return redirect('home')
-
