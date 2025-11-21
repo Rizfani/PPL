@@ -13,5 +13,9 @@ urlpatterns = [
     path('profile/', views.edit_profile_view, name='edit_profile'),
     path('latihan/', views.latihan, name='latihan'),
     path('tentang/', views.tentang, name='tentang'),
+    path('latihan/bulat/', views.latihan_bulat, name='latihan_bulat'),     # <-- BARU
+    path('latihan/desimal/', views.latihan_desimal, name='latihan_desimal'), # <-- BARU
+    path('tandai-selesai/<str:kategori>/', views.tandai_selesai, name='tandai_selesai'),
+    path('kuis/<int:kuis_id>/', views.kerjakan_kuis, name='kerjakan_kuis'),
 
 ]

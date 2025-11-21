@@ -5,64 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit Profil</title>
+    
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-    
-    <link rel="stylesheet" href="{% static 'main/profile.css' %}">
-
-    <style>
-        body { 
-            background-color: #f7faff; 
-            font-family: "Poppins", sans-serif;
-        }
-        .card-container {
-            background-color: #e0e0e0; /* Warna abu-abu terang */
-            border-radius: 20px;
-            padding: 30px;
-            max-width: 700px; /* Lebar lebih kecil agar fokus */
-            margin: 50px auto;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-        }
-        .profile-header {
-            text-align: center;
-            padding-bottom: 20px;
-            margin-bottom: 20px;
-            border-bottom: 1px solid #c0c0c0;
-        }
-        .profile-img-container {
-            width: 150px;
-            height: 150px;
-            overflow: hidden;
-            border-radius: 50%;
-            margin: 0 auto 10px;
-            background-color: white; 
-            border: 3px solid #9be3ea; /* Border warna biru muda */
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-        }
-        .profile-img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        .form-label {
-            font-weight: bold;
-            color: #333;
-        }
-        .form-control {
-            border-radius: 8px;
-        }
-        /* Mengatur style input file agar tampil utuh */
-        input[type="file"] {
-            border: 1px solid #ced4da; /* Tambahkan border agar terlihat seperti form control */
-            padding: 8px;
-            border-radius: 8px;
-        }
-        .btn-success {
-            background-color: #28a745;
-            border-color: #28a745;
-        }
-    </style>
+    <link rel="stylesheet" href="{% static 'main/profile.css' %}"> 
 </head>
 <body>
     <div class="card-container">
@@ -76,27 +23,16 @@
             
             <p class="h4 fw-bold mb-0">{{ user_display_name }}</p>
             <p class="text-secondary">{{ profile.kelas }}</p>
-
-
-            </div>
-            <a href="{% url 'dashboard' %}" class="btn btn-secondary btn-sm mt-3">
-                <i class="fa-solid fa-arrow-left me-1"></i> Kembali ke Dashboard
-            </a>
         </div>
         
         <form method="POST" enctype="multipart/form-data">
             {% csrf_token %}
             
-            <h4 class="fw-bold mb-3">Informasi Akun</h4>
+            <h4 class="fw-bold mb-3" style="color: #0d6efd; border-bottom: 1px solid #eee; padding-bottom: 10px;">Informasi Akun</h4>
 
             <div class="mb-4">
                  <label class="form-label">Username:</label>
-                {{ u_form.username }}
-            <h4 class="fw-bold text-dark mb-3">Informasi Akun</h4>
-
-            <div class="mb-4">
-                <label class="form-label">Username:</label>
-                <input type="text" class="form-control" value="{{ user_display_name }}" readonly>
+                 {{ u_form.username }}
             </div>
             
             <div class="mb-4">
@@ -104,9 +40,8 @@
                 {{ p_form.kelas }}
             </div>
 
-            <h4 class="fw-bold mb-3 mt-5">Ganti Foto</h4>
-
-            <h4 class="fw-bold text-dark mb-3 mt-5">Ganti Foto</h4>
+            <h4 class="fw-bold mb-3 mt-5" style="color: #0d6efd; border-bottom: 1px solid #eee; padding-bottom: 10px;">Ganti Foto</h4>
+            
             <div class="mb-4">
                 <label for="{{ p_form.foto.id_for_label }}" class="form-label">Pilih Foto Baru:</label>
                 {{ p_form.foto }}
@@ -121,13 +56,10 @@
             </button>
         </form>
 
-        <a href="{% url 'dashboard' %}" class="btn btn-outline-secondary mt-2 w-100">
+        <a href="{% url 'dashboard' %}" class="btn btn-outline-secondary mt-3 w-100" style="border-radius: 10px; padding: 10px;">
             <i class="fa-solid fa-arrow-left me-1"></i> Kembali ke Dashboard
         </a>
-            <button type="submit" class="btn btn-success fw-bold px-4 py-2 mt-3 w-100">
-                <i class="fa-solid fa-save me-1"></i> Simpan Perubahan
-            </button>
-        </form>
+
     </div>
 </body>
 </html>

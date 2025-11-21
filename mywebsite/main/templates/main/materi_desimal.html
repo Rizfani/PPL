@@ -1,141 +1,385 @@
-{% extends "main/base.html" %}
-{% block title %}Bilangan Desimal - GeoMath{% endblock %}
+{% extends 'main/base.html' %}
+{% load static %}
+{% block title %}Materi Bilangan Desimal - GeoMath{% endblock %}
 
 {% block content %}
 
-<!-- Hero -->
-<section class="py-5 text-center bg-primary text-white">
-    <h1 class="fw-bold">Materi: Bilangan Desimal</h1>
-    <p class="fs-5 mt-2">Memahami desimal dengan cara yang mudah dan menyenangkan!</p>
+<section class="hero-detail text-center py-5 position-relative overflow-hidden text-white" style="background: linear-gradient(135deg, #20c997 0%, #0dcaf0 100%);">
+    <i class="fa-solid fa-percent position-absolute text-white opacity-25" style="top: 15%; left: 8%; font-size: 4rem; animation: float 6s infinite;"></i>
+    <span class="position-absolute text-white opacity-25 fw-bold" style="bottom: 15%; right: 12%; font-size: 5rem; animation: float 5s infinite reverse;">0,5</span>
+    <i class="fa-solid fa-divide position-absolute text-white opacity-25" style="top: 40%; right: 30%; font-size: 3rem; animation: float 7s infinite;"></i>
+
+    <div class="container position-relative z-1 py-4">
+        <span class="badge bg-white text-success px-3 py-2 rounded-pill mb-3 shadow-sm fw-bold">
+            <i class="fa-solid fa-book-open me-2"></i>BAB 2
+        </span>
+        <h1 class="fw-bold display-4 mb-3">Bilangan Desimal</h1>
+        <p class="fs-5 opacity-90 w-75 mx-auto">
+            Pahami konsep angka di belakang koma, nilai tempat, dan cara membandingkannya.
+        </p>
+    </div>
 </section>
 
-<!-- Container -->
-<div class="container my-5">
-
-    <!-- Pengertian -->
-    <div class="card shadow-sm p-4 mb-4 border-0">
-        <h3 class="fw-bold text-primary">1. Pengertian Bilangan Desimal</h3>
-        <p class="mt-2 text-secondary fs-5">
-            <strong>Bilangan desimal</strong> adalah bilangan yang memiliki tanda koma (,)
-            untuk memisahkan bagian bulat dan bagian pecahan.
-        </p>
-
-        <div class="alert alert-primary fs-5 mt-3">
-            Contoh: <strong>3,5</strong> → (3 adalah bagian bulat, 5 adalah bagian desimal)
+<section class="container py-5" style="margin-top: -50px;">
+    
+    <div class="card shadow border-0 rounded-4 p-4 mb-5 bg-white">
+        <div class="row align-items-center">
+            <div class="col-lg-7">
+                <h3 class="fw-bold text-primary mb-3">1. Memahami Bilangan Desimal</h3>
+                <p class="text-secondary fs-5" style="line-height: 1.8;">
+                    <strong>Apa itu bilangan desimal?</strong> Bilangan desimal adalah bilangan yang punya tanda koma (,) di tengahnya. [cite: 114] Angka di depan koma menunjukkan bagian utuh, dan angka di belakang koma menunjukkan bagian pecahan.
+                </p>
+                
+                <div class="alert alert-success border-0 bg-success bg-opacity-10 mt-3">
+                    <h5 class="fw-bold text-success"><i class="fa-solid fa-lightbulb me-2"></i>Contoh:</h5>
+                    <ul class="mb-0 fs-5">
+                        <li><strong>0,5</strong> = setengah (1/2)</li>
+                        <li><strong>1,25</strong> = satu dan seperempat (1 1/4)</li>
+                        <li><strong>3,75</strong> = tiga dan tiga perempat (3 3/4)</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="col-lg-5 text-center mt-4 mt-lg-0">
+                <div class="bg-light rounded-4 p-4 border border-2 border-dashed">
+                    <i class="fa-solid fa-chart-pie text-success fa-4x mb-3 opacity-75"></i>
+                    <p class="small text-muted fst-italic">"0,5 sama artinya dengan setengah (1/2) kue!"</p>
+                    <div class="d-flex justify-content-center align-items-center gap-3 mt-2">
+                        <h2 class="fw-bold text-dark mb-0">0,75</h2>
+                        <i class="fa-solid fa-greater-than text-muted"></i>
+                        <h2 class="fw-bold text-dark mb-0">0,50</h2>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
-    <!-- Bentuk Pecahan dan Desimal -->
-    <div class="card shadow-sm p-4 mb-4 border-0">
-        <h3 class="fw-bold text-primary">2. Konversi: Pecahan ↔ Desimal</h3>
-
-        <p class="fs-5 text-secondary">a. Pecahan ke Desimal</p>
-        <p class="fs-5">→ Caranya: pembilang ÷ penyebut</p>
-        <div class="alert alert-success fs-5">Contoh: 1/4 = 0,25</div>
-
-        <p class="fs-5 mt-3 text-secondary">b. Desimal ke Pecahan</p>
-        <p class="fs-5">→ Lihat jumlah angka di belakang koma</p>
-        <div class="alert alert-success fs-5">Contoh: 0,6 = 6/10 = 3/5</div>
+    <div class="text-center mb-4">
+        <span class="text-uppercase text-success fw-bold letter-spacing-2">Lab Virtual</span>
+        <h2 class="fw-bold text-dark">Membandingkan Desimal</h2>
     </div>
 
-    <!-- Perbandingan Desimal -->
-    <div class="card shadow-sm p-4 mb-4 border-0">
-        <h3 class="fw-bold text-primary">3. Membandingkan Bilangan Desimal</h3>
-
-        <p class="fs-5">Langkah membandingkan:</p>
-        <ol class="fs-5">
-            <li>Samakan jumlah angka di belakang koma</li>
-            <li>Bandingkan seperti bilangan bulat</li>
-        </ol>
-
-        <div class="alert alert-primary fs-5 mt-3">
-            Contoh:  
-            2,45 < 2,5 karena 2,45 = 2,450 dan 2,5 = 2,500
+    <div class="card border-0 shadow-sm rounded-4 mb-4 bg-white">
+        <div class="card-header bg-info bg-opacity-10 p-3 border-bottom-0">
+            <h5 class="fw-bold text-dark mb-0"><i class="fa-solid fa-circle-info me-2 text-info"></i>Cara Menggunakan Simulasi</h5>
+        </div>
+        <div class="card-body p-4">
+            <div class="row align-items-center">
+                <div class="col-md-4 mb-3 mb-md-0">
+                    <div class="d-flex align-items-start">
+                        <div class="icon-box bg-primary text-white rounded-circle d-flex align-items-center justify-content-center flex-shrink-0 me-3" style="width: 40px; height: 40px; font-weight: bold;">1</div>
+                        <div><h6 class="fw-bold mb-1">Lihat Angka</h6><p class="text-muted small mb-0">Perhatikan dua bilangan desimal di layar.</p></div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-3 mb-md-0">
+                    <div class="d-flex align-items-start">
+                        <div class="icon-box bg-primary text-white rounded-circle d-flex align-items-center justify-content-center flex-shrink-0 me-3" style="width: 40px; height: 40px; font-weight: bold;">2</div>
+                        <div><h6 class="fw-bold mb-1">Klik Panah Biru</h6><p class="text-muted small mb-0">Klik tombol <span class="badge bg-primary"><i class="fa-solid fa-arrow-right"></i></span> untuk membandingkan.</p></div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="d-flex align-items-start">
+                        <div class="icon-box bg-primary text-white rounded-circle d-flex align-items-center justify-content-center flex-shrink-0 me-3" style="width: 40px; height: 40px; font-weight: bold;">3</div>
+                        <div><h6 class="fw-bold mb-1">Hasilnya</h6><p class="text-muted small mb-0">Lihat tanda <strong>&gt;</strong> atau <strong>&lt;</strong> yang muncul.</p></div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
-    <!-- Penjumlahan -->
-    <div class="card shadow-sm p-4 mb-4 border-0">
-        <h3 class="fw-bold text-primary">4. Penjumlahan Bilangan Desimal</h3>
-
-        <p class="fs-5">Kunci penting:</p>
-        <div class="alert alert-warning fs-5">
-            Tulis angka sejajar (koma harus sejajar)
+    <div class="card shadow-lg border-0 rounded-4 overflow-hidden mb-5">
+        <div class="card-body p-0 bg-light">
+            <div class="ratio ratio-16x9" style="max-height: 600px;">
+                <iframe src="{% static 'main/geogebra_desimal/geogebra.html' %}" style="border:0;" allowfullscreen loading="lazy"></iframe>
+            </div>
         </div>
-
-        <div class="alert alert-success fs-5">
-            Contoh:  
-            3,4 + 1,25 = 4,65
+        <div class="card-footer bg-white p-3 text-center">
+            <small class="text-muted"><i class="fa-solid fa-lightbulb text-warning me-1"></i> <strong>Tips:</strong> Klik tombol "New Numbers" untuk mencoba soal baru.</small>
         </div>
     </div>
 
-    <!-- Pengurangan -->
-    <div class="card shadow-sm p-4 mb-4 border-0">
-        <h3 class="fw-bold text-primary">5. Pengurangan Bilangan Desimal</h3>
+    <div class="card border-0 shadow-sm rounded-4 mt-4 bg-white mb-5">
+        <div class="card-header bg-primary text-white p-3">
+            <h5 class="mb-0 fw-bold"><i class="fa-solid fa-flask me-2"></i>Cek Jawabanmu</h5>
+        </div>
+        <div class="card-body p-4">
+            <p class="text-muted mb-3">Masukkan angka yang muncul di GeoGebra, lalu tebak mana yang lebih besar!</p>
+            
+            <form id="formSimulasi" onsubmit="return false;">
+                {% csrf_token %}
+                <div class="row align-items-center justify-content-center g-3 text-center">
+                    <div class="col-4">
+                        <label class="form-label fw-bold text-primary">Angka Kiri</label>
+                        <input type="text" name="angka1" class="form-control form-control-lg text-center bg-light" placeholder="0.xxx" required>
+                    </div>
+                    <div class="col-4">
+                        <label class="form-label fw-bold">Mana Lebih Besar?</label>
+                        <div class="d-flex justify-content-center gap-2">
+                            <input type="radio" class="btn-check" name="pilihan" id="pilihA" value="A" required>
+                            <label class="btn btn-outline-primary fw-bold" for="pilihA">&gt;</label>
+                            <input type="radio" class="btn-check" name="pilihan" id="pilihB" value="B">
+                            <label class="btn btn-outline-primary fw-bold" for="pilihB">&lt;</label>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <label class="form-label fw-bold text-success">Angka Kanan</label>
+                        <input type="text" name="angka2" class="form-control form-control-lg text-center bg-light" placeholder="0.xx" required>
+                    </div>
+                </div>
+                <div class="d-grid mt-4">
+                    <button type="button" onclick="kirimJawaban()" class="btn btn-dark fw-bold rounded-pill">Cek Jawaban</button>
+                </div>
+            </form>
 
-        <p class="fs-5">Kunci penting:</p>
-        <div class="alert alert-warning fs-5">Sejajarkan koma lalu kurangi</div>
-
-        <div class="alert alert-success fs-5">
-            Contoh:  
-            5,80 − 2,6 = 3,20
+            <div id="hasilContainer" class="mt-4" style="display: none;">
+                <div id="alertBox" class="alert border-2">
+                    <h4 id="alertTitle" class="alert-heading fw-bold"></h4>
+                    <p id="alertText" class="mb-2 fs-5"></p>
+                    <hr>
+                    <p id="alertDetail" class="mb-0"></p>
+                </div>
+                <div class="text-center mt-2">
+                    <button onclick="resetForm()" class="btn btn-sm btn-outline-secondary">Coba Angka Baru</button>
+                </div>
+            </div>
         </div>
     </div>
 
-    <!-- Perkalian -->
-    <div class="card shadow-sm p-4 mb-4 border-0">
-        <h3 class="fw-bold text-primary">6. Perkalian Bilangan Desimal</h3>
+    <div class="text-center mb-4 pt-5 border-top">
+        <span class="text-uppercase text-warning fw-bold letter-spacing-2">Penerapan Sehari-hari</span>
+        <h2 class="fw-bold text-dark">Contoh Soal Cerita</h2>
+    </div>
 
-        <p class="fs-5">Langkah:</p>
-        <ol class="fs-5">
-            <li>Kalikan seperti bilangan bulat</li>
-            <li>Hitung total angka di belakang koma</li>
-            <li>Letakkan koma pada hasil akhir</li>
-        </ol>
 
-        <div class="alert alert-success fs-5">
-            Contoh:  
-            1,2 × 0,5  
-            = 12 × 5 = 60  
-            = 0,60
+    <!-- contoh soal -->
+    <div class="row g-4 justify-content-center mb-5">
+        
+        <div class="col-md-6">
+            <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden">
+                <div class="card-body p-4">
+                    <div class="d-flex align-items-center mb-3">
+                        <div class="icon-box bg-warning bg-opacity-10 text-warning p-3 rounded-circle me-3">
+                            <i class="fa-solid fa-bottle-droplet fs-4"></i>
+                        </div>
+                        <h5 class="fw-bold mb-0">Stok Sirup (Penjumlahan)</h5>
+                    </div>
+                    <p class="text-muted bg-light p-3 rounded-3 border-start border-warning border-4">
+                        "Di dapur ada <strong>2,5 liter</strong> sirup. Ibu membeli lagi <strong>1,2 liter</strong>. Berapa total sirup sekarang?"
+                    </p>
+                    <div class="alert alert-warning mb-0">
+                        <strong>Jawab:</strong><br>
+                        2,5 + 1,2 = <strong>3,7 liter</strong>. <br>
+                        <small>(Ingat: Luruskan tanda koma saat menjumlahkan!)</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden">
+                <div class="card-body p-4">
+                    <div class="d-flex align-items-center mb-3">
+                        <div class="icon-box bg-success bg-opacity-10 text-success p-3 rounded-circle me-3">
+                            <i class="fa-solid fa-bread-slice fs-4"></i>
+                        </div>
+                        <h5 class="fw-bold mb-0">Memotong Roti (Pembagian)</h5>
+                    </div>
+                    <p class="text-muted bg-light p-3 rounded-3 border-start border-success border-4">
+                        "Roti sepanjang <strong>7,5 meter</strong> dipotong-potong menjadi bagian kecil yang panjangnya <strong>2,5 meter</strong>. Ada berapa potong?"
+                    </p>
+                    <div class="alert alert-success mb-0">
+                        <strong>Jawab:</strong><br>
+                        7,5 : 2,5 = <strong>3 potong</strong>. <br>
+                        <small>(Tips: Hilangkan koma dengan mengalikan kedua angka dengan 10 → 75 : 25 = 3)</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- Akhir Contoh Soal -->
+
+    <div class="text-center mb-4 pt-5 border-top">
+        <span class="text-uppercase text-primary fw-bold letter-spacing-2">Operasi Hitung</span>
+        <h2 class="fw-bold text-dark">Penjumlahan Bilangan Desimal</h2>
+    </div>
+
+    <div class="row g-4 justify-content-center mb-5">
+        
+        <div class="col-lg-6">
+            <div class="card h-100 border-0 shadow-sm rounded-4 p-4">
+                <div class="d-flex align-items-center mb-3">
+                    <div class="icon-box bg-primary bg-opacity-10 text-primary p-3 rounded-circle me-3">
+                        <i class="fa-solid fa-list-ol fs-4"></i>
+                    </div>
+                    <h5 class="fw-bold mb-0 text-dark">Aturan Utama</h5>
+                </div>
+                
+                <p class="text-muted">
+                    Penjumlahan desimal mirip seperti penjumlahan biasa. Kuncinya hanya satu:
+                </p>
+                
+                <div class="alert alert-primary border-0 d-flex align-items-center">
+                    <i class="fa-solid fa-key fs-3 me-3"></i>
+                    <div>
+                        <strong>Sejajarkan Tanda Koma ( , )</strong><br>
+                        <span class="small">Pastikan satuan lurus dengan satuan, persepuluhan dengan persepuluhan.</span>
+                    </div>
+                </div>
+
+                <div class="bg-light p-3 rounded-3 mt-3">
+                    <h6 class="fw-bold text-dark mb-2"><i class="fa-solid fa-coins text-warning me-2"></i>Analogi Uang:</h6>
+                    <p class="mb-0 small text-muted">
+                        Kalau kamu punya <strong>Rp 4,25</strong> lalu ditambah <strong>Rp 2,70</strong>, total uangmu jadi <strong>Rp 6,95</strong>.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-6">
+            <div class="card h-100 border-0 shadow-sm rounded-4 p-4">
+                <div class="d-flex align-items-center mb-3">
+                    <div class="icon-box bg-success bg-opacity-10 text-success p-3 rounded-circle me-3">
+                        <i class="fa-solid fa-calculator fs-4"></i>
+                    </div>
+                    <h5 class="fw-bold mb-0 text-dark">Contoh Perhitungan</h5>
+                </div>
+
+                <p class="text-muted mb-2">Hitunglah: <strong>4,25 + 2,7 = ...</strong></p>
+
+                <div class="p-4 bg-dark text-white rounded-3 font-monospace fs-4 text-end position-relative overflow-hidden">
+                    <div class="position-absolute bg-warning opacity-50" style="width: 2px; height: 100%; top: 0; right: 38%;"></div>
+                    
+                    <div style="position: relative; z-index: 1;">
+                        4<span class="text-warning">,</span>25<br>
+                        2<span class="text-warning">,</span>7&nbsp;<br>
+                        <hr class="border-white my-1">
+                        <span class="text-success">6<span class="text-warning">,</span>95</span>
+                        <i class="fa-solid fa-plus position-absolute top-50 start-0 translate-middle-y ms-3 fs-5 text-secondary"></i>
+                    </div>
+                </div>
+                
+                <p class="text-center mt-2 small text-muted">
+                    <i class="fa-solid fa-arrow-up text-warning"></i><br>
+                    Lihat? Tanda komanya lurus dari atas ke bawah!
+                </p>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="card shadow-lg border-0 rounded-4 overflow-hidden mb-5">
+        <div class="card-header bg-dark text-white p-3 d-flex align-items-center">
+            <i class="fa-solid fa-shapes fs-4 me-3"></i>
+            <h5 class="mb-0 fw-bold">Penerapan pada GeoGebra</h5>
+        </div>
+        <div class="card-body p-0 bg-light">
+            <div class="ratio ratio-16x9" style="max-height: 600px;">
+                
+                <iframe src="" 
+                        style="border:0;" 
+                        allowfullscreen 
+                        loading="lazy">
+                        </iframe>
+                
+                <div class="d-flex flex-column align-items-center justify-content-center h-100 text-muted">
+                    <i class="fa-solid fa-cube fa-3x mb-3"></i>
+                    <p>Simulasi Penjumlahan Desimal akan muncul di sini.</p>
+                    <small>(Silakan download materi GeoGebra baru untuk bagian ini)</small>
+                </div>
+
+            </div>
         </div>
     </div>
 
-    <!-- Pembagian -->
-    <div class="card shadow-sm p-4 mb-4 border-0">
-        <h3 class="fw-bold text-primary">7. Pembagian Bilangan Desimal</h3>
-
-        <p class="fs-5">Kunci penting:</p>
-        <ul class="fs-5">
-            <li>Ubah penyebut menjadi bilangan bulat</li>
-            <li>Koma pembilang ikut bergeser</li>
-        </ul>
-
-        <div class="alert alert-success fs-5">
-            Contoh:  
-            4,5 ÷ 0,5  
-            = geser koma: 45 ÷ 5  
-            = <strong>9</strong>
+    <!-- Masuk ke latihan -->
+    <div class="row justify-content-center mb-5">
+        <div class="col-md-8">
+            <div class="alert alert-light border border-primary border-2 rounded-3 d-flex align-items-center shadow-sm" role="alert">
+                <div class="fs-1 text-primary me-3">
+                    <i class="fa-solid fa-gamepad"></i>
+                </div>
+                <div>
+                    <h5 class="fw-bold mb-1 text-primary">Siap Mengerjakan Misi?</h5>
+                    <p class="mb-0 small text-muted">Sekarang giliranmu membantu Geo-Cafe menyelesaikan masalah seperti contoh di atas!</p>
+                </div>
+                <div class="ms-auto">
+                    <a href="{% url 'latihan' %}" class="btn btn-primary fw-bold rounded-pill px-4">
+                        Mulai Misi <i class="fa-solid fa-arrow-right ms-1"></i>
+                    </a>
+                </div>
+            </div>
         </div>
     </div>
+    <!-- Akhir kode latihan -->
 
-    <!-- Latihan Soal -->
-    <div class="card shadow-sm p-4 mb-5 border-0">
-        <h3 class="fw-bold text-primary">8. Latihan Soal</h3>
 
-        <ol class="fs-5">
-            <li>Ubah 3/5 menjadi desimal.</li>
-            <li>Bandingkan: 2,45 … 2,5</li>
-            <li>Hitung: 6,4 + 2,35</li>
-            <li>Hitung: 9,2 − 3,75</li>
-            <li>Hitung: 0,6 × 0,3</li>
-        </ol>
+</section>
 
-        <div class="mt-4 text-center">
-            <a href="#" class="btn btn-primary px-4 py-2 fw-bold">Cek Jawaban</a>
-        </div>
-    </div>
+<style>
+    @keyframes float {
+        0% { transform: translateY(0px); }
+        50% { transform: translateY(-15px); }
+        100% { transform: translateY(0px); }
+    }
+    .letter-spacing-2 { letter-spacing: 2px; }
+    .opacity-90 { opacity: 0.9; }
+</style>
 
-</div>
+<script>
+    function kirimJawaban() {
+        const form = document.getElementById('formSimulasi');
+        const formData = new FormData(form);
+        const btn = form.querySelector('button');
+        const originalText = btn.innerHTML;
+
+        if (!formData.get('angka1') || !formData.get('angka2') || !formData.get('pilihan')) {
+            Swal.fire({ icon: 'warning', title: 'Belum Lengkap', text: 'Isi kedua angka dan pilih tanda pembanding dulu ya!', confirmButtonColor: '#0d6efd' });
+            return;
+        }
+
+        btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Mengecek...';
+        btn.disabled = true;
+
+        fetch("{% url 'materi_desimal' %}", {
+            method: 'POST',
+            body: formData,
+            headers: { 'X-Requested-With': 'XMLHttpRequest' }
+        })
+        .then(response => response.json())
+        .then(data => {
+            btn.innerHTML = originalText;
+            btn.disabled = false;
+
+            const container = document.getElementById('hasilContainer');
+            const alertBox = document.getElementById('alertBox');
+            
+            container.style.display = 'block'; 
+
+            if (data.benar) {
+                alertBox.className = "alert alert-success border-2 border-success animate__animated animate__fadeInUp";
+                document.getElementById('alertTitle').innerHTML = '<i class="fa-solid fa-check-circle me-2"></i>Jawaban Tepat!';
+            } else {
+                alertBox.className = "alert alert-danger border-2 border-danger animate__animated animate__fadeInUp";
+                document.getElementById('alertTitle').innerHTML = '<i class="fa-solid fa-xmark-circle me-2"></i>Masih Keliru';
+            }
+
+            document.getElementById('alertText').innerText = data.text_hasil;
+            document.getElementById('alertDetail').innerHTML = data.detail_penjelasan;
+            container.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            btn.innerHTML = originalText;
+            btn.disabled = false;
+        });
+    }
+
+    function resetForm() {
+        document.getElementById('formSimulasi').reset();
+        document.getElementById('hasilContainer').style.display = 'none';
+        document.getElementById('formSimulasi').scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+</script>
 
 {% endblock %}

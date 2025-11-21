@@ -4,57 +4,60 @@ from django.contrib.auth.models import User
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from .models import Profile  
-# Pastikan nama form di forms.py Anda sesuai (UserForm atau ProfileUpdateForm?)
-# Saya asumsikan namanya ProfileForm dan UserForm sesuai kode awal Anda
-from .forms import ProfileForm, UserForm 
+from .forms import ProfileForm, UserForm
+from django.db.models import Sum, Avg
+from .models import Profile, Nilai, Feedback
+from .models import Kuis, ButirSoal, StatusMateri, Nilai
+from .models import RiwayatSimulasi
+from django.http import JsonResponse
 
-# --- HALAMAN DEPAN (LANDING PAGE) ---
+# --- HALAMAN DEPAN ---
 def home(request):
-    # Jika user sudah login, redirect ke dashboard agar tidak perlu login lagi
     if request.user.is_authenticated:
         return redirect('dashboard')
     return render(request, "main/home.html")
 
-# --- FUNGSI REGISTER (DAFTAR) ---
+# --- REGISTER (DAFTAR) ---
 def register(request):
-    # Jika user sudah login, tidak perlu daftar lagi
+    # Jika sudah login, lempar ke dashboard
     if request.user.is_authenticated:
         return redirect('dashboard')
 
     if request.method == "POST":
+        # Ambil data dari form HTML manual
         username = request.POST.get('username')
         email = request.POST.get('email')
         password = request.POST.get('password')
         kelas = request.POST.get('kelas')
 
-        # Cek apakah username sudah ada
+        # 1. Cek apakah username sudah ada
         if User.objects.filter(username=username).exists():
-            messages.error(request, "Username sudah digunakan.")
+            messages.error(request, "Username sudah digunakan, silakan pilih yang lain.")
             return redirect('register')
 
-        # 1. Buat User Baru
-        user = User.objects.create_user(username=username, email=email, password=password)
-        user.save()
+        # 2. Buat User Baru
+        # create_user otomatis meng-hash password (aman)
+        try:
+            user = User.objects.create_user(username=username, email=email, password=password)
+            user.save()
+            
+            # 3. Buat Profile (Simpan Kelas)
+            Profile.objects.create(user=user, kelas=kelas)
 
-        # 2. Simpan Profile (Kelas)
-        Profile.objects.create(user=user, kelas=kelas)
+            # 4. BERHASIL -> ARAHKAN KE LOGIN (Bukan Dashboard)
+            messages.success(request, "Pendaftaran berhasil! Silakan login dengan akun baru Anda.")
+            return redirect('login')
 
-        # 3. LOGIN OTOMATIS (Auto-Login)
-        auth_login(request, user) 
-
-        # 4. SET TANDA USER BARU (Untuk Pop-up Onboarding)
-        request.session['is_new_user'] = True 
-
-        messages.success(request, "Pendaftaran berhasil! Selamat datang.")
-        
-        # 5. LANGSUNG KE DASHBOARD
-        return redirect('dashboard') 
+        except Exception as e:
+            # Jaga-jaga jika ada error database
+            messages.error(request, f"Terjadi kesalahan saat mendaftar: {e}")
+            return redirect('register')
 
     return render(request, "main/register.html")
 
-# --- FUNGSI LOGIN ---
+# --- LOGIN (MASUK) ---
 def login(request):
-    # Jika user sudah login, redirect ke dashboard
+    # Jika sudah login, lempar ke dashboard
     if request.user.is_authenticated:
         return redirect('dashboard')
 
@@ -62,81 +65,87 @@ def login(request):
         username = request.POST.get('username')
         password = request.POST.get('password')
 
-        # Autentikasi user
+        # Cek kecocokan username & password
         user = authenticate(request, username=username, password=password)
 
         if user is not None:
+            # Login Sukses
             auth_login(request, user)
             
-            # (Opsional: Hapus komentar di bawah ini jika ingin tes pop-up muncul tiap login)
+            # (Opsional) Set tanda user baru untuk pop-up jika perlu
             # request.session['is_new_user'] = True 
-
-            messages.success(request, "Login berhasil!")
+            
+            messages.success(request, f"Selamat datang kembali, {username}!")
             return redirect('dashboard')
         else:
-            messages.error(request, "Username atau password salah.")
+            # Login Gagal
+            messages.error(request, "Username atau password salah. Silakan coba lagi.")
             return redirect('login')
 
     return render(request, "main/login.html")
 
-# --- FUNGSI LOGOUT ---
-def logout_view(request):
-    logout(request)
-    messages.success(request, "Anda telah logout.")
-    return redirect('home')
-
-# --- FUNGSI DASHBOARD (PUSAT) ---
+# --- DASHBOARD ---
 @login_required
 def dashboard(request):
-    # Ambil data profile user
-    # get_or_create mencegah error jika user lama belum punya profile
     profile, created = Profile.objects.get_or_create(user=request.user)
+
+    # --- LOGIKA 1: PROGRES SAYA (STATISTIK) ---
+    # Ambil nilai terakhir user untuk setiap kategori
+    nilai_bulat_obj = Nilai.objects.filter(user=request.user, kategori='bulat').last()
+    nilai_desimal_obj = Nilai.objects.filter(user=request.user, kategori='desimal').last()
+
+    # Jika belum ada nilai, set ke 0
+    skor_bulat = nilai_bulat_obj.skor if nilai_bulat_obj else 0
+    skor_desimal = nilai_desimal_obj.skor if nilai_desimal_obj else 0
     
-    # LOGIKA ONBOARDING POP-UP
+    # Hitung rata-rata total (untuk level user)
+    rata_rata = (skor_bulat + skor_desimal) / 2
+
+    # --- LOGIKA 2: PAPAN PERINGKAT (LEADERBOARD) ---
+    # Mengambil 5 user dengan total skor tertinggi
+    leaderboard = User.objects.annotate(
+        total_skor=Sum('nilai__skor')
+    ).order_by('-total_skor')[:5]
+
+    # --- LOGIKA 3: FEEDBACK ---
+    if request.method == "POST":
+        print(f"DEBUG: Ada POST request! Data: {request.POST}") # <-- Cek Terminal nanti
+
+        if 'btn_feedback' in request.POST:
+            print("DEBUG: Tombol Feedback Ditekan!") # <-- Cek Terminal nanti
+            pesan = request.POST.get('pesan')
+            if pesan:
+                Feedback.objects.create(user=request.user, isi_pesan=pesan)
+                messages.success(request, "Masukan berhasil dikirim!")
+                return redirect('dashboard')
+
+    # --- LOGIKA 4: ONBOARDING (YANG LAMA) ---
     show_onboarding = False
     if request.session.get('is_new_user'):
         show_onboarding = True
-        # Hapus tanda agar pop-up tidak muncul terus menerus saat refresh
         del request.session['is_new_user']
 
     context = {
         'username': request.user.username,
         'kelas': profile.kelas,
-        'profile' : profile,
-        'show_onboarding': show_onboarding 
-    }
-    return render(request, "main/dashboard.html", context)
-
-# --- FITUR EDIT PROFIL ---
-@login_required
-def edit_profile_view(request):
-    profile, created = Profile.objects.get_or_create(user=request.user)
-
-    if request.method == 'POST':
-        u_form = UserForm(request.POST, instance=request.user)
-        # request.FILES wajib ada untuk upload foto
-        p_form = ProfileForm(request.POST, request.FILES, instance=profile)
-        
-        if p_form.is_valid() and u_form.is_valid(): 
-            u_form.save()
-            p_form.save()
-            messages.success(request, 'Profil Anda berhasil diperbarui!')
-            return redirect('edit_profile') # Tetap di halaman edit agar user bisa lihat hasilnya
-    else:
-        p_form = ProfileForm(instance=profile)
-        u_form = UserForm(instance=request.user)
-
-    context = {
-        'username': request.user.username,
-        'kelas': profile.kelas,
         'profile': profile,
-        'p_form': p_form, 
-        'u_form': u_form,
-        'user_display_name': request.user.username 
+        'show_onboarding': show_onboarding,
+        
+        # Data Baru
+        'skor_bulat': skor_bulat,
+        'skor_desimal': skor_desimal,
+        'rata_rata': rata_rata,
+        'leaderboard': leaderboard,
     }
-    return render(request, 'main/edit_profile.html', context)
+    return render(request, 'main/dashboard.html', context)
 
-# --- HALAMAN MATERI ---
+# --- LOGOUT ---
+def logout_view(request):
+    logout(request)
+    messages.success(request, "Anda telah logout.")
+    return redirect('home')
+
+# --- HALAMAN LAINNYA (MATERI, DLL) ---
 @login_required
 def materi(request):
     profile, created = Profile.objects.get_or_create(user=request.user)
@@ -160,23 +169,189 @@ def materi_bulat(request):
 @login_required
 def materi_desimal(request):
     profile, created = Profile.objects.get_or_create(user=request.user)
+    
+    if request.method == "POST":
+        try:
+            # Ambil input
+            s1 = request.POST.get('angka1')
+            s2 = request.POST.get('angka2')
+            a1 = float(s1)
+            a2 = float(s2)
+            jawaban = request.POST.get('pilihan')
+
+            # Logika Perbandingan
+            if a1 > a2:
+                kunci = "A"
+                tanda = ">"
+                besar = s1
+            elif a2 > a1:
+                kunci = "B"
+                tanda = "<"
+                besar = s2
+            else:
+                kunci = "Sama"
+                tanda = "="
+
+            # Logika Penjelasan (Analisis Digit)
+            analisis = "Angka sama persis."
+            max_len = max(len(s1), len(s2))
+            s1_pad = s1.ljust(max_len, '0')
+            s2_pad = s2.ljust(max_len, '0')
+
+            for i in range(max_len):
+                if s1_pad[i] != s2_pad[i]:
+                    koma_index = s1.find('.')
+                    jarak = i - koma_index
+                    nama_posisi = "angka depan"
+                    if jarak == 1: nama_posisi = "persepuluhan"
+                    elif jarak == 2: nama_posisi = "perseratusan"
+                    elif jarak == 3: nama_posisi = "perseribuan"
+                    
+                    analisis = f"Lihat posisi <b>{nama_posisi}</b>: Angka <b>{s1_pad[i]}</b> vs <b>{s2_pad[i]}</b>. Karena itu, {besar} lebih besar."
+                    break
+
+            is_correct = (jawaban == kunci)
+            
+            # Simpan Riwayat (Opsional, aktifkan jika perlu)
+            # RiwayatSimulasi.objects.create(...)
+
+            # 👇 PERUBAHAN UTAMA: Return JSON, bukan render HTML
+            return JsonResponse({
+                'status': 'success',
+                'benar': is_correct,
+                'text_hasil': f"Hasil: {a1} {tanda} {a2}",
+                'detail_penjelasan': analisis
+            })
+
+        except ValueError:
+            return JsonResponse({'status': 'error', 'msg': 'Input tidak valid'})
+
+    # GET Request (Buka Halaman Pertama Kali)
     return render(request, "main/materi_desimal.html", {
         'username': request.user.username,
         'kelas': profile.kelas,
         'active': 'materi',
         'profile' : profile
     })
+    
+@login_required
+def edit_profile_view(request):
+    profile, created = Profile.objects.get_or_create(user=request.user)
 
-# --- HALAMAN LAINNYA ---
+    if request.method == 'POST':
+        u_form = UserForm(request.POST, instance=request.user)
+        p_form = ProfileForm(request.POST, request.FILES, instance=profile)
+        if p_form.is_valid() and u_form.is_valid(): 
+            u_form.save()
+            p_form.save()
+            messages.success(request, 'Profil Anda berhasil diperbarui!')
+            return redirect('edit_profile')
+    else:
+        p_form = ProfileForm(instance=profile)
+        u_form = UserForm(instance=request.user)
+
+    context = {
+        'username': request.user.username,
+        'kelas': profile.kelas,
+        'profile': profile,
+        'p_form': p_form, 
+        'u_form': u_form,
+        'user_display_name': request.user.username 
+    }
+    return render(request, 'main/edit_profile.html', context)
+
 @login_required  
 def latihan(request):
+    profile, created = Profile.objects.get_or_create(user=request.user)
+    status, created = StatusMateri.objects.get_or_create(user=request.user)
+    context = {
+        'username': request.user.username,
+        'kelas': profile.kelas,
+        'profile': profile,
+        'status': status,
+    }
+    return render(request, 'main/latihan.html', context)
+
+@login_required
+def tandai_selesai(request, kategori):
+    status, created = StatusMateri.objects.get_or_create(user=request.user)
+    
+    if kategori == 'bulat':
+        status.materi_bulat_selesai = True
+    elif kategori == 'desimal':
+        status.materi_desimal_selesai = True
+    
+    status.save()
+    messages.success(request, f"Hebat! Materi {kategori} selesai. Latihan soal terbuka!")
+    return redirect('latihan')
+
+@login_required
+def kerjakan_kuis(request, kuis_id):
+    # --- MODE DUMMY (DATA PALSU) ---
+    # Agar tidak error "DoesNotExist"
+    
+    kuis = {}
+    soal_list = []
+
+    if kuis_id == 1:
+        # Data Latihan 1 (Bulat)
+        kuis = { 'nama': 'Latihan 1: Bilangan Bulat', 'minimal_nilai': 60 }
+        soal_list = [
+            {'id': 1, 'teks_soal': 'Suhu awal -5°C, naik 4°C. Berapa suhu sekarang?', 'opsi_a': '-1°C', 'opsi_b': '-9°C', 'opsi_c': '1°C', 'opsi_d': '9°C', 'kunci': 'a'},
+            {'id': 2, 'teks_soal': 'Utang 5.000, dibayar 2.000. Sisa utang?', 'opsi_a': '-3000', 'opsi_b': '-7000', 'opsi_c': '3000', 'opsi_d': '7000', 'kunci': 'a'},
+            {'id': 3, 'teks_soal': '8 + (-5) = ...', 'opsi_a': '3', 'opsi_b': '-3', 'opsi_c': '13', 'opsi_d': '-13', 'kunci': 'a'},
+        ]
+        
+    elif kuis_id == 2:
+        # Data Latihan 2 (Desimal)
+        kuis = { 'nama': 'Latihan 2: Bilangan Desimal', 'minimal_nilai': 60 }
+        soal_list = [
+            {'id': 1, 'teks_soal': '2,5 liter + 1,2 liter = ...', 'opsi_a': '3,7 liter', 'opsi_b': '3,07 liter', 'opsi_c': '4,7 liter', 'opsi_d': '2,7 liter', 'kunci': 'a'},
+            {'id': 2, 'teks_soal': 'Manakah yang lebih besar?', 'opsi_a': '0,7', 'opsi_b': '0,49', 'opsi_c': '0,099', 'opsi_d': '0,1', 'kunci': 'a'},
+            {'id': 3, 'teks_soal': 'Hasil dari 0,5 x 0,5 adalah...', 'opsi_a': '0,25', 'opsi_b': '2,5', 'opsi_c': '0,55', 'opsi_d': '0,10', 'kunci': 'a'},
+        ]
+
+    # Logika sederhana untuk menangkap jawaban (Tanpa Database)
+    if request.method == 'POST':
+        skor = 0
+        total_soal = len(soal_list)
+        for soal in soal_list:
+            jawaban = request.POST.get(f"soal_{soal['id']}")
+            if jawaban == soal['kunci']:
+                skor += 1
+        
+        nilai_akhir = (skor / total_soal) * 100
+        
+        if nilai_akhir >= 60:
+            messages.success(request, f"Selamat! Nilai kamu {int(nilai_akhir)}.")
+            return redirect('latihan')
+        else:
+            messages.error(request, f"Nilai kamu {int(nilai_akhir)}. Coba lagi ya!")
+            return redirect('kerjakan_kuis', kuis_id=kuis_id)
+
+    return render(request, 'main/quiz_interface.html', {'kuis': kuis, 'soal_list': soal_list})
+
+# --- FUNGSI LATIHAN BULAT (BARU) ---
+@login_required
+def latihan_bulat(request):
     profile, created = Profile.objects.get_or_create(user=request.user)
     context = {
         'username': request.user.username,
         'kelas': profile.kelas,
         'profile': profile,
     }
-    return render(request, 'main/latihan.html', context)
+    return render(request, 'main/latihan_bulat.html', context)
+
+# --- FUNGSI LATIHAN DESIMAL (BARU) ---
+@login_required
+def latihan_desimal(request):
+    profile, created = Profile.objects.get_or_create(user=request.user)
+    context = {
+        'username': request.user.username,
+        'kelas': profile.kelas,
+        'profile': profile,
+    }
+    return render(request, 'main/latihan_desimal.html', context)
 
 @login_required
 def tentang(request):

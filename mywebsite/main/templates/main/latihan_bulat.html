@@ -1,0 +1,81 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% block title %}Misi Bilangan Bulat - GeoMath{% endblock %}
+
+{% block content %}
+
+<section class="hero text-center py-5 text-white" style="background: linear-gradient(135deg, #0061ff 0%, #60efff 100%);">
+    <div class="container">
+        <h1 class="fw-bold display-5 mb-3">Misi: Bilangan Bulat</h1>
+        <p class="fs-5 opacity-90">Selesaikan masalah suhu dan keuangan di Geo-Cafe!</p>
+    </div>
+</section>
+
+<section class="container py-5" style="margin-top: -50px;">
+    <div class="row g-4 justify-content-center">
+
+        <div class="col-lg-8">
+            <div class="card shadow-sm p-4 rounded-4 border-0 mb-4">
+                <div class="d-flex align-items-center mb-4">
+                    <div class="icon-box bg-info bg-opacity-10 text-info p-3 rounded-circle me-3">
+                        <i class="fa-solid fa-temperature-low fs-3"></i>
+                    </div>
+                    <h4 class="fw-bold mb-0 text-dark">Misi 1: Suhu Freezer</h4>
+                </div>
+                <p class="text-muted fs-5">
+                    Untuk menyimpan es batu, suhu freezer diatur pada <strong>-4°C</strong>. Tiba-tiba, listrik padam dan suhu freezer naik <strong>7°C</strong>.
+                </p>
+                <div class="card bg-light border-0 p-3 rounded-3 mb-3">
+                    <p class="fw-bold text-dark mb-0"><i class="fa-solid fa-circle-question me-2 text-info"></i>Berapa suhu freezer sekarang?</p>
+                </div>
+                <button class="btn btn-info w-100 fw-bold text-white" data-bs-toggle="modal" data-bs-target="#hintModal1">
+                    <i class="fa-regular fa-lightbulb me-2"></i>Lihat Petunjuk
+                </button>
+            </div>
+        </div>
+
+        <div class="col-lg-8">
+            <div class="card shadow-sm p-4 rounded-4 border-0">
+                <div class="d-flex align-items-center mb-4">
+                    <div class="icon-box bg-danger bg-opacity-10 text-danger p-3 rounded-circle me-3">
+                        <i class="fa-solid fa-file-invoice-dollar fs-3"></i>
+                    </div>
+                    <h4 class="fw-bold mb-0 text-dark">Misi 2: Catatan Utang</h4>
+                </div>
+                <p class="text-muted fs-5">
+                    Geo-Cafe punya utang <strong>Rp7.000 (-7.000)</strong> ke kas kelas. Dari hasil jualan hari ini, kamu membayar utang itu sebesar <strong>Rp3.000</strong>.
+                </p>
+                <div class="card bg-light border-0 p-3 rounded-3 mb-3">
+                    <p class="fw-bold text-dark mb-0"><i class="fa-solid fa-circle-question me-2 text-danger"></i>Berapa sisa utang Geo-Cafe sekarang?</p>
+                </div>
+                <button class="btn btn-danger w-100 fw-bold" data-bs-toggle="modal" data-bs-target="#hintModal2">
+                    <i class="fa-regular fa-lightbulb me-2"></i>Lihat Petunjuk
+                </button>
+            </div>
+        </div>
+
+    </div>
+    
+    <div class="text-center mt-4">
+        <a href="{% url 'latihan' %}" class="btn btn-outline-secondary rounded-pill px-4">Kembali ke Menu Latihan</a>
+    </div>
+</section>
+
+<div class="modal fade" id="hintModal1" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header bg-info bg-opacity-10"><h5 class="modal-title fw-bold">Petunjuk Misi 1</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div>
+      <div class="modal-body"><p>Gunakan operasi penjumlahan: <strong>-4 + 7</strong>. Ingat, jika naik berarti ditambah positif.</p></div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="hintModal2" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header bg-danger bg-opacity-10"><h5 class="modal-title fw-bold">Petunjuk Misi 2</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div>
+      <div class="modal-body"><p>Utang awal adalah -7000. Membayar berarti menambah nilai positif (+3000). Hitung: <strong>-7000 + 3000</strong>.</p></div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
