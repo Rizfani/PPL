@@ -198,7 +198,7 @@
 
     </div>
     <!-- Akhir Contoh Soal -->
-
+    <!-- PENJUMLAHAN -->
     <div class="text-center mb-4 pt-5 border-top">
         <span class="text-uppercase text-primary fw-bold letter-spacing-2">Operasi Hitung</span>
         <h2 class="fw-bold text-dark">Penjumlahan Bilangan Desimal</h2>
@@ -267,30 +267,816 @@
         </div>
 
     </div>
+    <!-- AKHIR PENJUMALAHN -->
+ <!-- Penerapan geogebra penjumlahan -->
+<div class="card border-0 shadow-sm rounded-4 mb-4 bg-white">
+        <div class="card-header bg-primary bg-opacity-10 p-3 border-bottom-0">
+            <h5 class="fw-bold text-dark mb-0">
+                <i class="fa-solid fa-circle-info me-2 text-primary"></i>Cara Menggunakan Simulasi
+            </h5>
+        </div>
+        <div class="card-body p-4">
+            <div class="row align-items-center">
+                <div class="col-md-4 mb-3 mb-md-0">
+                    <div class="d-flex align-items-start">
+                        <div class="icon-box bg-primary text-white rounded-circle d-flex align-items-center justify-content-center flex-shrink-0 me-3" style="width: 40px; height: 40px; font-weight: bold;">1</div>
+                        <div>
+                            <h6 class="fw-bold mb-1">Lihat Soal</h6>
+                            <p class="text-muted small mb-0">Lihat angka soal di sebelah kanan (misal: 1.15 + 2.11).</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4 mb-3 mb-md-0">
+                    <div class="d-flex align-items-start">
+                        <div class="icon-box bg-primary text-white rounded-circle d-flex align-items-center justify-content-center flex-shrink-0 me-3" style="width: 40px; height: 40px; font-weight: bold;">2</div>
+                        <div>
+                            <h6 class="fw-bold mb-1">Geser untuk Menambah</h6>
+                            <p class="text-muted small mb-0">
+                                Tarik tombol ungu <strong>"Slide to add"</strong> di bawah ke kanan.
+                                <br>
+                                <span class="text-primary fw-bold">Setiap geseran akan menambahkan balok baru ke dalam kotak.</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="d-flex align-items-start">
+                        <div class="icon-box bg-primary text-white rounded-circle d-flex align-items-center justify-content-center flex-shrink-0 me-3" style="width: 40px; height: 40px; font-weight: bold;">3</div>
+                        <div>
+                            <h6 class="fw-bold mb-1">Amati Penggabungan</h6>
+                            <p class="text-muted small mb-0">Perhatikan saat balok kecil penuh (10 buah), mereka akan otomatis bergabung menjadi 1 balok yang lebih besar di sebelah kirinya.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <div class="card shadow-lg border-0 rounded-4 overflow-hidden mb-5">
         <div class="card-header bg-dark text-white p-3 d-flex align-items-center">
             <i class="fa-solid fa-shapes fs-4 me-3"></i>
-            <h5 class="mb-0 fw-bold">Penerapan pada GeoGebra</h5>
+            <h5 class="mb-0 fw-bold">Area Simulasi</h5>
         </div>
         <div class="card-body p-0 bg-light">
             <div class="ratio ratio-16x9" style="max-height: 600px;">
-                
-                <iframe src="" 
+                <iframe src="{% static 'main/geogebra_tambah/geogebra.html' %}" 
                         style="border:0;" 
                         allowfullscreen 
                         loading="lazy">
-                        </iframe>
+                </iframe>
+            </div>
+        </div>
+        <div class="card-footer bg-white p-3 text-center">
+            <small class="text-muted">
+                <i class="fa-solid fa-rotate-right text-primary me-1"></i> 
+                <strong>Ulangi:</strong> Klik tombol ungu "START AGAIN" untuk mencoba soal baru.
+            </small>
+        </div>
+    </div>
+<!-- AKHIR PENERAPAN GEOGEBRA PENJUMLAHAN -->
+ <div class="card border-0 shadow-sm rounded-4 mb-5 bg-white">
+        <div class="card-body p-4">
+            <div class="text-center mb-4">
+                <h5 class="fw-bold text-dark">Apa Arti Balok-Balok Itu?</h5>
+                <p class="text-muted small">Setiap bentuk balok mewakili nilai tempat yang berbeda.</p>
+            </div>
+
+            <div class="row g-4 justify-content-center text-center">
                 
-                <div class="d-flex flex-column align-items-center justify-content-center h-100 text-muted">
-                    <i class="fa-solid fa-cube fa-3x mb-3"></i>
-                    <p>Simulasi Penjumlahan Desimal akan muncul di sini.</p>
-                    <small>(Silakan download materi GeoGebra baru untuk bagian ini)</small>
+                <div class="col-md-4">
+                    <div class="p-3 bg-light rounded-3 h-100 border border-2 border-light">
+                        <div class="mx-auto mb-2 shadow-sm" style="width: 60px; height: 60px; background-color: #d63384; border: 2px solid #333;"></div>
+                        <h6 class="fw-bold text-dark">Kotak Besar (Ones)</h6>
+                        <p class="mb-0 small text-muted">
+                            Ini bernilai <strong>1 (Satuan)</strong>.<br>
+                            Angka di depan koma (misal: <strong>1</strong>.15).
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="p-3 bg-light rounded-3 h-100 border border-2 border-light">
+                        <div class="mx-auto mb-2 shadow-sm" style="width: 60px; height: 15px; background-color: #d63384; border: 2px solid #333; margin-top: 22px;"></div>
+                        <h6 class="fw-bold text-dark">Batang Panjang (Tenths)</h6>
+                        <p class="mb-0 small text-muted">
+                            Ini bernilai <strong>0,1 (Persepuluhan)</strong>.<br>
+                            Angka pertama di belakang koma (misal: 1.<strong>1</strong>5).
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="p-3 bg-light rounded-3 h-100 border border-2 border-light">
+                        <div class="mx-auto mb-2 shadow-sm" style="width: 15px; height: 15px; background-color: #d63384; border: 2px solid #333; margin-top: 22px;"></div>
+                        <h6 class="fw-bold text-dark">Kotak Kecil (Hundredths)</h6>
+                        <p class="mb-0 small text-muted">
+                            Ini bernilai <strong>0,01 (Perseratusan)</strong>.<br>
+                            Angka kedua di belakang koma (misal: 1.1<strong>5</strong>).
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="alert alert-primary d-flex align-items-center mt-4 mb-0" role="alert">
+                <div class="fs-2 me-3">🔄</div>
+                <div>
+                    <h6 class="fw-bold mb-1">Aturan Penggabungan (Regrouping)</h6>
+                    <p class="mb-0 small">
+                        Jika kamu mengumpulkan <strong>10 kotak kecil</strong>, mereka akan berubah menjadi <strong>1 batang panjang</strong>.<br>
+                        Jika kamu punya <strong>10 batang panjang</strong>, mereka akan berubah menjadi <strong>1 kotak besar</strong>.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+ <!-- Soa Pemahaman -->
+  <div class="row justify-content-center mb-5 mt-5">
+        <div class="col-lg-10">
+            <div class="card border-0 shadow-sm rounded-4 overflow-hidden">
+                <div class="card-header bg-primary text-white p-4">
+                    <h4 class="mb-0 fw-bold"><i class="fa-solid fa-clipboard-check me-2"></i>Uji Pemahamanmu</h4>
+                    <p class="mb-0 opacity-75 small">Jawab pertanyaan ini berdasarkan apa yang sudah kamu pelajari di simulasi.</p>
+                </div>
+                <div class="card-body p-4 bg-white">
+
+                    <div class="mb-4 border-bottom pb-4">
+                        <h6 class="fw-bold text-dark mb-3">1. Apa aturan paling penting saat menjumlahkan bilangan desimal bersusun?</h6>
+                        <div class="d-grid gap-2">
+                            <button onclick="cekKuis(1, 'salah')" id="btn_1a" class="btn btn-outline-secondary text-start p-3 rounded-3">A. Angka terakhir harus lurus</button>
+                            <button onclick="cekKuis(1, 'benar')" id="btn_1b" class="btn btn-outline-secondary text-start p-3 rounded-3">B. Tanda koma harus lurus sejajar</button>
+                            <button onclick="cekKuis(1, 'salah')" id="btn_1c" class="btn btn-outline-secondary text-start p-3 rounded-3">C. Jumlah angka di belakang koma harus sama</button>
+                        </div>
+                        <div id="hasil_1" class="mt-2 fw-bold" style="display: none;"></div>
+                    </div>
+
+                    <div class="mb-4 border-bottom pb-4">
+                        <h6 class="fw-bold text-dark mb-3">2. Hitunglah hasil dari: <span class="text-primary">0,4 + 0,8</span></h6>
+                        <div class="d-grid gap-2">
+                            <button onclick="cekKuis(2, 'salah')" id="btn_2a" class="btn btn-outline-secondary text-start p-3 rounded-3">A. 0,12</button>
+                            <button onclick="cekKuis(2, 'benar')" id="btn_2b" class="btn btn-outline-secondary text-start p-3 rounded-3">B. 1,2</button>
+                            <button onclick="cekKuis(2, 'salah')" id="btn_2c" class="btn btn-outline-secondary text-start p-3 rounded-3">C. 12,0</button>
+                        </div>
+                        <div id="hasil_2" class="mt-2 fw-bold" style="display: none;"></div>
+                    </div>
+
+                    <div class="mb-0">
+                        <h6 class="fw-bold text-dark mb-3">3. Jika kamu punya 1,5 liter air dan ditambah 0,25 liter, berapa totalnya?</h6>
+                        <div class="d-grid gap-2">
+                            <button onclick="cekKuis(3, 'salah')" id="btn_3a" class="btn btn-outline-secondary text-start p-3 rounded-3">A. 1,30 liter</button>
+                            <button onclick="cekKuis(3, 'salah')" id="btn_3b" class="btn btn-outline-secondary text-start p-3 rounded-3">B. 0,40 liter</button>
+                            <button onclick="cekKuis(3, 'benar')" id="btn_3c" class="btn btn-outline-secondary text-start p-3 rounded-3">C. 1,75 liter</button>
+                        </div>
+                        <div id="hasil_3" class="mt-2 fw-bold" style="display: none;"></div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+<!-- Akhir soal pemahaman -->
+
+<!-- Materi Pengurangan -->
+<div class="text-center mb-4 pt-5 border-top">
+        <span class="text-uppercase text-danger fw-bold letter-spacing-2">Operasi Hitung</span>
+        <h2 class="fw-bold text-dark">Pengurangan Bilangan Desimal</h2>
+    </div>
+
+    <div class="row g-4 justify-content-center mb-5">
+        
+        <div class="col-lg-6">
+            <div class="card h-100 border-0 shadow-sm rounded-4 p-4">
+                <div class="d-flex align-items-center mb-3">
+                    <div class="icon-box bg-danger bg-opacity-10 text-danger p-3 rounded-circle me-3">
+                        <i class="fa-solid fa-minus fs-4"></i>
+                    </div>
+                    <h5 class="fw-bold mb-0 text-dark">Aturan Penting</h5>
+                </div>
+                
+                <div class="alert alert-danger border-0 d-flex align-items-start">
+                    <i class="fa-solid fa-triangle-exclamation fs-4 me-3 mt-1"></i>
+                    <div>
+                        <strong>Hati-hati dengan Digit Kosong!</strong><br>
+                        <span class="small">Jika jumlah angka di belakang koma tidak sama, tambahkan <strong>NOL (0)</strong> di ujung kanan agar seimbang.</span>
+                    </div>
+                </div>
+
+                <div class="bg-light p-3 rounded-3 mt-2">
+                    <h6 class="fw-bold text-dark mb-2"><i class="fa-solid fa-wallet text-success me-2"></i>Analogi Uang Kembalian:</h6>
+                    <p class="mb-0 small text-muted">
+                        Ibu punya <strong>Rp 5,50</strong> (5 setengah). Adik minta <strong>Rp 2,25</strong>.<br>
+                        Ubah 5,5 menjadi <strong>5,50</strong> agar mudah dikurangi 2,25.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-6">
+            <div class="card h-100 border-0 shadow-sm rounded-4 p-4">
+                <div class="d-flex align-items-center mb-3">
+                    <div class="icon-box bg-success bg-opacity-10 text-success p-3 rounded-circle me-3">
+                        <i class="fa-solid fa-calculator fs-4"></i>
+                    </div>
+                    <h5 class="fw-bold mb-0 text-dark">Contoh: 5,8 - 2,35</h5>
+                </div>
+
+                <div class="p-4 bg-dark text-white rounded-3 font-monospace fs-4 text-end position-relative overflow-hidden">
+                    <div class="position-absolute bg-warning opacity-50" style="width: 2px; height: 100%; top: 0; right: 38%;"></div>
+                    
+                    <div style="position: relative; z-index: 1;">
+                        <small class="fs-6 text-info">Gunakan Nol Bantuan</small>
+                        5<span class="text-warning">,</span>8<span class="text-info fw-bold">0</span> <br>
+                        2<span class="text-warning">,</span>35<br>
+                        <hr class="border-white my-1">
+                        <span class="text-warning">3,45</span>
+                        <i class="fa-solid fa-minus position-absolute top-50 start-0 translate-middle-y ms-3 fs-5 text-secondary"></i>
+                    </div>
+                </div>
+                
+                <p class="text-center mt-2 small text-muted">
+                    Lihat angka <span class="text-info fw-bold">0</span> berwarna biru? Itu ditambahkan agar bisa dikurangi angka 5 di bawahnya.
+                </p>
+            </div>
+        </div>
+
+    </div>
+    <div class="card border-0 shadow-sm rounded-4 mb-4 bg-white">
+        <div class="card-header bg-danger bg-opacity-10 p-3 border-bottom-0">
+            <h5 class="fw-bold text-dark mb-0">
+                <i class="fa-solid fa-circle-info me-2 text-danger"></i>Cara Menggunakan Simulasi
+            </h5>
+        </div>
+        <div class="card-body p-4">
+            <div class="row align-items-center">
+                
+                <div class="col-md-4 mb-3 mb-md-0">
+                    <div class="d-flex align-items-start">
+                        <div class="icon-box bg-danger text-white rounded-circle d-flex align-items-center justify-content-center flex-shrink-0 me-3" style="width: 40px; height: 40px; font-weight: bold;">1</div>
+                        <div>
+                            <h6 class="fw-bold mb-1">Lihat Modal Awal</h6>
+                            <p class="text-muted small mb-0">
+                                Perhatikan angka di atas (misal 2.70). Balok yang tampil adalah jumlah modal awal kamu.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4 mb-3 mb-md-0">
+                    <div class="d-flex align-items-start">
+                        <div class="icon-box bg-danger text-white rounded-circle d-flex align-items-center justify-content-center flex-shrink-0 me-3" style="width: 40px; height: 40px; font-weight: bold;">2</div>
+                        <div>
+                            <h6 class="fw-bold mb-1">Geser Slider</h6>
+                            <p class="text-muted small mb-0">
+                                Geser tombol <strong>"Slide to subtract"</strong> ke kanan. Balok akan menghilang (dikurangi) sesuai angka pengurang.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="d-flex align-items-start">
+                        <div class="icon-box bg-danger text-white rounded-circle d-flex align-items-center justify-content-center flex-shrink-0 me-3" style="width: 40px; height: 40px; font-weight: bold;">3</div>
+                        <div>
+                            <h6 class="fw-bold mb-1">Konsep "Meminjam"</h6>
+                            <p class="text-muted small mb-0">
+                                <i class="fa-solid fa-eye text-danger"></i> <strong>Perhatikan!</strong> Jika balok kecil tidak cukup, balok besar akan <strong>PECAH</strong> menjadi 10 balok kecil. Itulah konsep meminjam.
+                            </p>
+                        </div>
+                    </div>
                 </div>
 
             </div>
         </div>
     </div>
+    <div class="card shadow-lg border-0 rounded-4 overflow-hidden mb-5">
+        <div class="card-header bg-dark text-white p-3 d-flex align-items-center">
+            <i class="fa-solid fa-shapes fs-4 me-3"></i>
+            <h5 class="mb-0 fw-bold">Visualisasi Pengurangan</h5>
+        </div>
+        <div class="card-body p-0 bg-light">
+            <div class="ratio ratio-16x9" style="max-height: 600px;">
+                
+                <iframe src="{% static 'main/geogebra_pengurangan_desimal/geogebra.html' %}" 
+                        style="border:0;" 
+                        allowfullscreen 
+                        loading="lazy">
+                </iframe>
+                
+            </div>
+        </div>
+        <div class="card-footer bg-white p-3 text-center">
+            <small class="text-muted">
+                <i class="fa-solid fa-lightbulb text-warning me-1"></i> <strong>Tips:</strong> Pengurangan berarti "mengambil/membuang" balok dari tumpukan.
+            </small>
+        </div>
+    </div>
+
+    <div class="row justify-content-center mb-5 mt-4">
+        <div class="col-lg-10">
+            <div class="card border-0 shadow-sm rounded-4 overflow-hidden border-top border-danger border-4">
+                <div class="card-header bg-white p-4">
+                    <h4 class="mb-0 fw-bold text-danger"><i class="fa-solid fa-clipboard-question me-2"></i>Cek Pemahaman Pengurangan</h4>
+                </div>
+                <div class="card-body p-4 bg-white">
+
+                    <div class="mb-4 border-bottom pb-4">
+                        <h6 class="fw-bold text-dark mb-3">1. Apa yang harus dilakukan jika menghitung <span class="text-danger">4,5 - 1,25</span>?</h6>
+                        <div class="d-grid gap-2">
+                            <button onclick="cekKuisKurang(1, 'salah')" id="sub_btn_1a" class="btn btn-outline-secondary text-start p-3 rounded-3">A. Langsung kurangi saja (5 - 25)</button>
+                            <button onclick="cekKuisKurang(1, 'benar')" id="sub_btn_1b" class="btn btn-outline-secondary text-start p-3 rounded-3">B. Ubah 4,5 menjadi 4,50 dulu (tambah nol)</button>
+                            <button onclick="cekKuisKurang(1, 'salah')" id="sub_btn_1c" class="btn btn-outline-secondary text-start p-3 rounded-3">C. Hilangkan komanya</button>
+                        </div>
+                        <div id="sub_hasil_1" class="mt-2 fw-bold" style="display: none;"></div>
+                    </div>
+
+                    <div class="mb-4 border-bottom pb-4">
+                        <h6 class="fw-bold text-dark mb-3">2. Hasil dari 10,0 - 0,5 adalah...</h6>
+                        <div class="d-grid gap-2">
+                            <button onclick="cekKuisKurang(2, 'salah')" id="sub_btn_2a" class="btn btn-outline-secondary text-start p-3 rounded-3">A. 0,5</button>
+                            <button onclick="cekKuisKurang(2, 'benar')" id="sub_btn_2b" class="btn btn-outline-secondary text-start p-3 rounded-3">B. 9,5</button>
+                            <button onclick="cekKuisKurang(2, 'salah')" id="sub_btn_2c" class="btn btn-outline-secondary text-start p-3 rounded-3">C. 10,5</button>
+                        </div>
+                        <div id="sub_hasil_2" class="mt-2 fw-bold" style="display: none;"></div>
+                    </div>
+
+                    <div class="mb-0">
+                        <h6 class="fw-bold text-dark mb-3">3. Ibu membeli kain 3,5 meter, lalu dipotong 1,2 meter. Sisa kain ibu?</h6>
+                        <div class="d-grid gap-2">
+                            <button onclick="cekKuisKurang(3, 'benar')" id="sub_btn_3a" class="btn btn-outline-secondary text-start p-3 rounded-3">A. 2,3 meter</button>
+                            <button onclick="cekKuisKurang(3, 'salah')" id="sub_btn_3b" class="btn btn-outline-secondary text-start p-3 rounded-3">B. 2,5 meter</button>
+                            <button onclick="cekKuisKurang(3, 'salah')" id="sub_btn_3c" class="btn btn-outline-secondary text-start p-3 rounded-3">C. 4,7 meter</button>
+                        </div>
+                        <div id="sub_hasil_3" class="mt-2 fw-bold" style="display: none;"></div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+   
+<!-- Akhir Materi Pengurangan -->
+
+<!-- Awal Materi Perkalian -->
+
+<div class="text-center mb-4 pt-5 border-top">
+        <span class="text-uppercase text-warning fw-bold letter-spacing-2">Operasi Hitung</span>
+        <h2 class="fw-bold text-dark">Perkalian Bilangan Desimal</h2>
+    </div>
+
+    <div class="row g-4 justify-content-center mb-5">
+        
+        <div class="col-lg-6">
+            <div class="card h-100 border-0 shadow-sm rounded-4 p-4">
+                <div class="d-flex align-items-center mb-3">
+                    <div class="icon-box bg-warning bg-opacity-10 text-warning p-3 rounded-circle me-3">
+                        <i class="fa-solid fa-xmark fs-4"></i>
+                    </div>
+                    <h5 class="fw-bold mb-0 text-dark">Aturan Utama</h5>
+                </div>
+                
+                <p class="text-muted">
+                    Perkalian desimal itu mudah! Caranya mirip dengan perkalian biasa.
+                </p>
+                
+                <div class="alert alert-warning border-0 d-flex align-items-start">
+                    <i class="fa-solid fa-lightbulb fs-4 me-3 mt-1"></i>
+                    <div>
+                        <strong>Hitung Total Digit!</strong><br>
+                        <span class="small">Abaikan komanya dulu saat mengali. Setelah ketemu hasilnya, hitung total angka di belakang koma dari semua bilangan yang dikalikan.</span>
+                    </div>
+                </div>
+
+                <div class="bg-light p-3 rounded-3 mt-2">
+                    <h6 class="fw-bold text-dark mb-2"><i class="fa-solid fa-glass-water text-primary me-2"></i>Analogi Minum Air:</h6>
+                    <p class="mb-0 small text-muted">
+                        Kamu minum <strong>1,2 liter</strong> air setiap kali makan. Kamu makan <strong>2,5 kali</strong> sehari.<br>
+                        Total minum: 1,2 x 2,5 = <strong>3 liter</strong>! 
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-6">
+            <div class="card h-100 border-0 shadow-sm rounded-4 p-4">
+                <div class="d-flex align-items-center mb-3">
+                    <div class="icon-box bg-success bg-opacity-10 text-success p-3 rounded-circle me-3">
+                        <i class="fa-solid fa-calculator fs-4"></i>
+                    </div>
+                    <h5 class="fw-bold mb-0 text-dark">Contoh: 2,5 x 1,2</h5>
+                </div>
+
+                <div class="p-4 bg-dark text-white rounded-3 font-monospace fs-5 position-relative overflow-hidden">
+                    <div style="position: relative; z-index: 1;">
+                        <div class="d-flex justify-content-between">
+                            <span>2,<span class="text-warning fw-bold">5</span></span>
+                            <span class="text-secondary small">-> 1 angka desimal</span>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <span>1,<span class="text-warning fw-bold">2</span></span>
+                            <span class="text-secondary small">-> 1 angka desimal</span>
+                        </div>
+                        <hr class="border-white my-1">
+                        <div class="text-muted small text-end mb-1">25 x 12 = 300</div>
+                        <div class="d-flex justify-content-between fw-bold">
+                            <span class="text-success">3,<span class="text-warning">00</span></span>
+                            <span class="text-warning small">Total: 2 angka desimal</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <p class="text-center mt-3 small text-muted">
+                    Hasilnya 3,00 bisa ditulis <strong>3</strong> saja.
+                </p>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="text-center mb-4 mt-5">
+        <span class="text-uppercase text-warning fw-bold letter-spacing-2">Lab Virtual</span>
+        <h2 class="fw-bold text-dark">Soal Cerita Perkalian</h2>
+    </div>
+
+    <div class="card border-0 shadow-sm rounded-4 mb-4 bg-white">
+        <div class="card-header bg-warning bg-opacity-10 p-3 border-bottom-0">
+            <h5 class="fw-bold text-dark mb-0">
+                <i class="fa-solid fa-book-open-reader me-2 text-warning"></i>Panduan & Kamus Mini
+            </h5>
+        </div>
+        <div class="card-body p-4">
+            <div class="row">
+                
+                <div class="col-md-5 border-end">
+                    <h6 class="fw-bold text-muted mb-3"><i class="fa-solid fa-language me-2"></i>Terjemahan Kata:</h6>
+                    <ul class="list-group list-group-flush small">
+                        <li class="list-group-item d-flex justify-content-between px-0 py-1 border-0">
+                            <span class="badge bg-light text-dark border">Mangoes</span> <span>🥭 Mangga</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between px-0 py-1 border-0">
+                            <span class="badge bg-light text-dark border">Weigh ... pounds</span> <span>⚖️ Beratnya ... pon</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between px-0 py-1 border-0">
+                            <span class="badge bg-light text-dark border">Each</span> <span>1️⃣ Masing-masing (Satuannya)</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between px-0 py-1 border-0">
+                            <span class="badge bg-light text-dark border">Total</span> <span>∑ Jumlah Semuanya</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="col-md-7 ps-md-4 mt-3 mt-md-0">
+                    <h6 class="fw-bold text-muted mb-3"><i class="fa-solid fa-gamepad me-2"></i>Cara Mengerjakan:</h6>
+                    
+                    <div class="d-flex align-items-start mb-3">
+                        <div class="icon-box bg-warning text-white rounded-circle d-flex align-items-center justify-content-center flex-shrink-0 me-3" style="width: 30px; height: 30px; font-size: 0.9rem;">1</div>
+                        <div>
+                            <p class="small mb-0"><strong>Baca Angkanya:</strong><br>
+                            Misal: "There are <strong>7</strong> mangoes" (Ada 7 mangga).<br>
+                            "Weigh <strong>1.9</strong> pounds" (Beratnya 1,9 pon).</p>
+                        </div>
+                    </div>
+
+                    <div class="d-flex align-items-start">
+                        <div class="icon-box bg-warning text-white rounded-circle d-flex align-items-center justify-content-center flex-shrink-0 me-3" style="width: 30px; height: 30px; font-size: 0.9rem;">2</div>
+                        <div>
+                            <p class="small mb-0"><strong>Tarik (Drag) ke Kotak:</strong><br>
+                            Klik dan tahan angka <strong>1.9</strong> lalu tarik ke kotak <em>"A mango weighs"</em> (Berat satu mangga).<br>
+                            Tarik angka <strong>7</strong> ke kotak di sebelahnya.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="card shadow-lg border-0 rounded-4 overflow-hidden mb-5">
+        <div class="card-header bg-dark text-white p-3 d-flex align-items-center">
+            <i class="fa-solid fa-shapes fs-4 me-3"></i>
+            <h5 class="mb-0 fw-bold">Area Simulasi</h5>
+        </div>
+        <div class="card-body p-0 bg-light">
+            <div class="ratio ratio-16x9" style="max-height: 600px;">
+                
+                <iframe src="{% static 'main/geogebra_perkalian_desimal/geogebra.html' %}" 
+                        style="border:0;" 
+                        allowfullscreen 
+                        loading="lazy">
+                </iframe>
+                
+            </div>
+        </div>
+        <div class="card-footer bg-white p-3 text-center">
+            <small class="text-muted">
+                <i class="fa-solid fa-lightbulb text-warning me-1"></i> 
+                <strong>Tips:</strong> Masukkan angka desimal ke kotak "weighs" (berat), dan angka bulat ke kotak jumlah buah.
+            </small>
+        </div>
+    </div>
+
+    <div class="row justify-content-center mb-5 mt-4">
+        <div class="col-lg-10">
+            <div class="card border-0 shadow-sm rounded-4 overflow-hidden border-top border-warning border-4">
+                <div class="card-header bg-white p-4">
+                    <h4 class="mb-0 fw-bold text-dark"><i class="fa-solid fa-clipboard-question me-2 text-warning"></i>Cek Pemahaman Perkalian</h4>
+                </div>
+                <div class="card-body p-4 bg-white">
+
+                    <div class="mb-4 border-bottom pb-4">
+                        <h6 class="fw-bold text-dark mb-3">1. Jika menghitung <span class="text-warning">0,3 x 0,4</span>, ada berapa angka di belakang koma pada hasilnya?</h6>
+                        <div class="d-grid gap-2">
+                            <button onclick="cekKuisKali(1, 'salah')" id="mul_btn_1a" class="btn btn-outline-secondary text-start p-3 rounded-3">A. 1 angka</button>
+                            <button onclick="cekKuisKali(1, 'benar')" id="mul_btn_1b" class="btn btn-outline-secondary text-start p-3 rounded-3">B. 2 angka (karena 3 dan 4 ada di belakang koma)</button>
+                            <button onclick="cekKuisKali(1, 'salah')" id="mul_btn_1c" class="btn btn-outline-secondary text-start p-3 rounded-3">C. Tidak ada koma</button>
+                        </div>
+                        <div id="mul_hasil_1" class="mt-2 fw-bold" style="display: none;"></div>
+                    </div>
+
+                    <div class="mb-4 border-bottom pb-4">
+                        <h6 class="fw-bold text-dark mb-3">2. Hasil dari 1,5 x 2,0 adalah...</h6>
+                        <div class="d-grid gap-2">
+                            <button onclick="cekKuisKali(2, 'benar')" id="mul_btn_2a" class="btn btn-outline-secondary text-start p-3 rounded-3">A. 3,00 (atau 3)</button>
+                            <button onclick="cekKuisKali(2, 'salah')" id="mul_btn_2b" class="btn btn-outline-secondary text-start p-3 rounded-3">B. 0,30</button>
+                            <button onclick="cekKuisKali(2, 'salah')" id="mul_btn_2c" class="btn btn-outline-secondary text-start p-3 rounded-3">C. 30</button>
+                        </div>
+                        <div id="mul_hasil_2" class="mt-2 fw-bold" style="display: none;"></div>
+                    </div>
+
+                    <div class="mb-0">
+                        <h6 class="fw-bold text-dark mb-3">3. 0,01 x 10 = ...</h6>
+                        <div class="d-grid gap-2">
+                            <button onclick="cekKuisKali(3, 'salah')" id="mul_btn_3a" class="btn btn-outline-secondary text-start p-3 rounded-3">A. 0,001</button>
+                            <button onclick="cekKuisKali(3, 'benar')" id="mul_btn_3b" class="btn btn-outline-secondary text-start p-3 rounded-3">B. 0,1 (Koma geser ke kanan)</button>
+                            <button onclick="cekKuisKali(3, 'salah')" id="mul_btn_3c" class="btn btn-outline-secondary text-start p-3 rounded-3">C. 1,0</button>
+                        </div>
+                        <div id="mul_hasil_3" class="mt-2 fw-bold" style="display: none;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!-- Akhir materi Perkalian -->
+
+
+<!-- Awal Materi Pembagian -->
+ <div class="text-center mb-4 pt-5 border-top">
+        <span class="text-uppercase text-info fw-bold letter-spacing-2">Operasi Hitung</span>
+        <h2 class="fw-bold text-dark">Pembagian Bilangan Desimal</h2>
+    </div>
+
+    <div class="row g-4 justify-content-center mb-5">
+        
+        <div class="col-lg-6">
+            <div class="card h-100 border-0 shadow-sm rounded-4 p-4">
+                <div class="d-flex align-items-center mb-3">
+                    <div class="icon-box bg-info bg-opacity-10 text-info p-3 rounded-circle me-3">
+                        <i class="fa-solid fa-wand-magic-sparkles fs-4"></i>
+                    </div>
+                    <h5 class="fw-bold mb-0 text-dark">Trik: Geser Koma!</h5>
+                </div>
+                
+                <p class="text-muted">
+                    Kunci pembagian desimal adalah mengubah <strong>pembagi</strong> menjadi bilangan bulat.
+                </p>
+                
+                <div class="alert alert-info border-0 d-flex align-items-start">
+                    <i class="fa-solid fa-arrow-right-long fs-4 me-3 mt-1"></i>
+                    <div>
+                        <strong>Geser ke Kanan</strong><br>
+                        <span class="small">Geser koma pada <b>pembagi</b> dan <b>yang dibagi</b> dengan jumlah langkah yang sama sampai pembaginya tidak punya koma lagi.</span>
+                    </div>
+                </div>
+
+                <div class="bg-light p-3 rounded-3 mt-2 text-center">
+                    <p class="mb-2 fw-bold text-muted">Contoh: <span class="text-dark">4,5 : 1,5</span></p>
+                    <div class="d-flex justify-content-center align-items-center gap-2">
+                        <span class="badge bg-white text-dark border px-3 py-2">4,5</span>
+                        <i class="fa-solid fa-arrow-right text-info"></i>
+                        <span class="badge bg-info text-white px-3 py-2">45</span>
+                    </div>
+                    <div class="d-flex justify-content-center align-items-center gap-2 mt-2">
+                        <span class="badge bg-white text-dark border px-3 py-2">1,5</span>
+                        <i class="fa-solid fa-arrow-right text-info"></i>
+                        <span class="badge bg-info text-white px-3 py-2">15</span>
+                    </div>
+                    <p class="mt-2 mb-0 small text-muted">Sekarang hitung: <strong>45 : 15 = 3</strong></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-6">
+            <div class="card h-100 border-0 shadow-sm rounded-4 p-4">
+                <div class="d-flex align-items-center mb-3">
+                    <div class="icon-box bg-primary bg-opacity-10 text-primary p-3 rounded-circle me-3">
+                        <i class="fa-solid fa-list-ol fs-4"></i>
+                    </div>
+                    <h5 class="fw-bold mb-0 text-dark">Contoh Lainnya</h5>
+                </div>
+
+                <p class="text-muted mb-3">Hitunglah: <strong>7,5 : 1,5 = ...</strong></p>
+
+                <div class="p-4 bg-dark text-white rounded-3 font-monospace fs-5 position-relative overflow-hidden">
+                    <div style="position: relative; z-index: 1;">
+                        
+                        <div class="mb-3">
+                            <small class="text-secondary d-block mb-1">Langkah 1: Geser Koma</small>
+                            7<span class="text-warning">,</span>5 &nbsp; <i class="fa-solid fa-arrow-right text-secondary mx-2"></i> 75<br>
+                            1<span class="text-warning">,</span>5 &nbsp; <i class="fa-solid fa-arrow-right text-secondary mx-2"></i> 15
+                        </div>
+                        
+                        <hr class="border-white my-2">
+                        
+                        <div>
+                            <small class="text-secondary d-block mb-1">Langkah 2: Bagi Biasa</small>
+                            75 : 15 = <span class="text-success fw-bold fs-3">5</span>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="card border-0 shadow-sm rounded-4 mb-4 bg-white">
+        <div class="card-header bg-info bg-opacity-10 p-3 border-bottom-0">
+            <h5 class="fw-bold text-dark mb-0">
+                <i class="fa-solid fa-book-open-reader me-2 text-info"></i>Panduan & Kamus Mini
+            </h5>
+        </div>
+        <div class="card-body p-4">
+            <div class="row">
+                
+                <div class="col-md-5 border-end">
+                    <h6 class="fw-bold text-muted mb-3"><i class="fa-solid fa-language me-2"></i>Terjemahan Kata:</h6>
+                    <ul class="list-group list-group-flush small">
+                        <li class="list-group-item d-flex justify-content-between px-0 py-1 border-0">
+                            <span class="badge bg-light text-dark border">Candy</span> <span>Permen</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between px-0 py-1 border-0">
+                            <span class="badge bg-light text-dark border">Jars / Bags</span> <span>Toples / Kantong</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between px-0 py-1 border-0">
+                            <span class="badge bg-light text-dark border">Cost / Price</span> <span>Harga / Biaya</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between px-0 py-1 border-0">
+                            <span class="badge bg-light text-dark border">Each</span> <span>Setiap satuannya</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="col-md-7 ps-md-4 mt-3 mt-md-0">
+                    <h6 class="fw-bold text-muted mb-3"><i class="fa-solid fa-gamepad me-2"></i>Cara Mengerjakan:</h6>
+                    
+                    <div class="d-flex align-items-start mb-3">
+                        <div class="icon-box bg-info text-white rounded-circle d-flex align-items-center justify-content-center flex-shrink-0 me-3" style="width: 30px; height: 30px; font-size: 0.9rem;">1</div>
+                        <div>
+                            <p class="small mb-0"><strong>Tentukan Posisi Angka:</strong><br>
+                            Ingat prinsip pembagian kurung (Porogapit).<br>
+                            <span class="text-danger">Yang Dibagi</span> (Total berat/harga) masuk ke <strong>DALAM</strong>.<br>
+                            <span class="text-primary">Pembagi</span> (Jumlah toples/orang) taruh di <strong>LUAR</strong>.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="d-flex align-items-start">
+                        <div class="icon-box bg-info text-white rounded-circle d-flex align-items-center justify-content-center flex-shrink-0 me-3" style="width: 30px; height: 30px; font-size: 0.9rem;">2</div>
+                        <div>
+                            <p class="small mb-0"><strong>Tarik (Drag) Angka:</strong><br>
+                            Klik dan tahan angkanya, lalu seret ke kotak garis putus-putus <span style="border: 1px dashed blue; padding: 0 3px; color: blue;">--</span> yang sesuai.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="card shadow-lg border-0 rounded-4 overflow-hidden mb-5">
+        <div class="card-header bg-dark text-white p-3 d-flex align-items-center">
+            <i class="fa-solid fa-shapes fs-4 me-3"></i>
+            <h5 class="mb-0 fw-bold">Visualisasi Pembagian</h5>
+        </div>
+        <div class="card-body p-0 bg-light">
+            <div class="ratio ratio-16x9" style="max-height: 600px;">
+                
+                <iframe src="{% static 'main/geogebra_pembagian_desimal/geogebra.html' %}" 
+                        style="border:0;" 
+                        allowfullscreen 
+                        loading="lazy">
+                </iframe>
+                
+            </div>
+        </div>
+        <div class="card-footer bg-white p-3 text-center">
+            <small class="text-muted">
+                <i class="fa-solid fa-lightbulb text-info me-1"></i> 
+                <strong>Tips:</strong> Total Barang selalu di dalam, Jumlah Wadah selalu di luar.
+            </small>
+        </div>
+    </div>
+    <!-- Akhir Simulasi geogebra -->
+
+    <div class="card border-0 shadow-sm rounded-4 mb-5 bg-white">
+        <div class="card-body p-4">
+            <div class="row align-items-center">
+                
+                <div class="col-md-5 text-center border-end">
+                    <h5 class="fw-bold text-info mb-3">Contoh Kunci Rahasia Porogapit</h5>
+                    <div class="d-inline-block text-start font-monospace fs-5 bg-light p-3 rounded-3 border border-info">
+                        &nbsp;&nbsp;<span class="text-success fw-bold">1<span class="text-danger">.</span>16</span><br>
+                        &nbsp;&nbsp;_______<br>
+                        3 / 3<span class="text-danger fw-bold">.</span>48<br>
+                        &nbsp;&nbsp;-3<br>
+                        &nbsp;&nbsp;--<br>
+                        &nbsp;&nbsp;&nbsp;0 4<br>
+                        &nbsp;&nbsp;&nbsp;-3<br>
+                        &nbsp;&nbsp;&nbsp;--<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;18<br>
+                        &nbsp;&nbsp;&nbsp;-18<br>
+                        &nbsp;&nbsp;&nbsp;---<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0
+                    </div>
+                    <p class="mt-2 small text-muted"><i class="fa-solid fa-arrow-up text-danger"></i> Perhatikan komanya lurus ke atas!</p>
+                </div>
+
+                <div class="col-md-7 ps-md-4 mt-3 mt-md-0">
+                    <h5 class="fw-bold text-dark">Bagaimana Cara Menghitungnya?</h5>
+                    <ul class="list-group list-group-flush mt-3">
+                        <li class="list-group-item border-0 ps-0">
+                            <span class="badge bg-primary rounded-circle me-2">1</span>
+                            <strong>Bagi Angka Depan:</strong> 3 dibagi 3 = 1. Tulis 1 di atas.
+                        </li>
+                        <li class="list-group-item border-0 ps-0 bg-info bg-opacity-10 rounded-3">
+                            <span class="badge bg-danger rounded-circle me-2">2</span>
+                            <strong>Naikkan Koma:</strong> Saat melewati tanda koma, langsung tulis koma di atas (di tempat hasil). <span class="fw-bold text-danger">Koma harus lurus!</span>
+                        </li>
+                        <li class="list-group-item border-0 ps-0">
+                            <span class="badge bg-primary rounded-circle me-2">3</span>
+                            <strong>Turunkan Angka Berikutnya:</strong> Turunkan angka 4. 4 dibagi 3 dapat 1, sisa 1.
+                        </li>
+                        <li class="list-group-item border-0 ps-0">
+                            <span class="badge bg-primary rounded-circle me-2">4</span>
+                            <strong>Selesaikan:</strong> Gabungkan sisa 1 dengan 8 menjadi 18. 18 dibagi 3 = 6. Selesai!
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- Akhir penjelasan -->
+    
+    <div class="row justify-content-center mb-5 mt-4">
+        <div class="col-lg-10">
+            <div class="card border-0 shadow-sm rounded-4 overflow-hidden border-top border-info border-4">
+                <div class="card-header bg-white p-4">
+                    <h4 class="mb-0 fw-bold text-dark"><i class="fa-solid fa-clipboard-question me-2 text-info"></i>Cek Pemahaman Pembagian</h4>
+                </div>
+                <div class="card-body p-4 bg-white">
+
+                    <div class="mb-4 border-bottom pb-4">
+                        <h6 class="fw-bold text-dark mb-3">1. Apa langkah pertama menghitung <span class="text-info">2,4 : 0,6</span>?</h6>
+                        <div class="d-grid gap-2">
+                            <button onclick="cekKuisBagi(1, 'salah')" id="div_btn_1a" class="btn btn-outline-secondary text-start p-3 rounded-3">A. Langsung bagi 24 dengan 60</button>
+                            <button onclick="cekKuisBagi(1, 'benar')" id="div_btn_1b" class="btn btn-outline-secondary text-start p-3 rounded-3">B. Geser koma keduanya ke kanan jadi 24 : 6</button>
+                            <button onclick="cekKuisBagi(1, 'salah')" id="div_btn_1c" class="btn btn-outline-secondary text-start p-3 rounded-3">C. Bulatkan menjadi 2 : 1</button>
+                        </div>
+                        <div id="div_hasil_1" class="mt-2 fw-bold" style="display: none;"></div>
+                    </div>
+
+                    <div class="mb-4 border-bottom pb-4">
+                        <h6 class="fw-bold text-dark mb-3">2. Hasil dari 4,5 : 0,5 adalah...</h6>
+                        <div class="d-grid gap-2">
+                            <button onclick="cekKuisBagi(2, 'salah')" id="div_btn_2a" class="btn btn-outline-secondary text-start p-3 rounded-3">A. 0,9</button>
+                            <button onclick="cekKuisBagi(2, 'benar')" id="div_btn_2b" class="btn btn-outline-secondary text-start p-3 rounded-3">B. 9 (Sama dengan 45 : 5)</button>
+                            <button onclick="cekKuisBagi(2, 'salah')" id="div_btn_2c" class="btn btn-outline-secondary text-start p-3 rounded-3">C. 90</button>
+                        </div>
+                        <div id="div_hasil_2" class="mt-2 fw-bold" style="display: none;"></div>
+                    </div>
+
+                    <div class="mb-0">
+                        <h6 class="fw-bold text-dark mb-3">3. Pak Budi punya 1,2 kg gula. Setiap plastik memuat 0,4 kg. Berapa plastik yang dibutuhkan?</h6>
+                        <div class="d-grid gap-2">
+                            <button onclick="cekKuisBagi(3, 'salah')" id="div_btn_3a" class="btn btn-outline-secondary text-start p-3 rounded-3">A. 4 plastik</button>
+                            <button onclick="cekKuisBagi(3, 'salah')" id="div_btn_3b" class="btn btn-outline-secondary text-start p-3 rounded-3">B. 0,3 plastik</button>
+                            <button onclick="cekKuisBagi(3, 'benar')" id="div_btn_3c" class="btn btn-outline-secondary text-start p-3 rounded-3">C. 3 plastik (12 : 4)</button>
+                        </div>
+                        <div id="div_hasil_3" class="mt-2 fw-bold" style="display: none;"></div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+<!-- Akhir Materi Pembagian -->
 
     <!-- Masuk ke latihan -->
     <div class="row justify-content-center mb-5">
@@ -380,6 +1166,104 @@
         document.getElementById('hasilContainer').style.display = 'none';
         document.getElementById('formSimulasi').scrollIntoView({ behavior: 'smooth', block: 'center' });
     }
+
+    // penerapan soal penjumlahan
+    function cekKuis(nomor, status) {
+            // Ambil elemen div hasil
+            var hasilDiv = document.getElementById('hasil_' + nomor);
+            
+            // Reset warna tombol di soal ini
+            var btns = document.querySelectorAll(`[id^="btn_${nomor}"]`);
+            btns.forEach(btn => {
+                btn.classList.remove('btn-success', 'btn-danger', 'text-white');
+                btn.classList.add('btn-outline-secondary');
+            });
+
+            // Logika Benar/Salah
+            if (status === 'benar') {
+                hasilDiv.innerHTML = '<span class="text-success"><i class="fa-solid fa-check-circle me-2"></i>Jawaban Benar!</span>';
+                // Highlight tombol yang diklik jadi hijau
+                event.target.classList.remove('btn-outline-secondary');
+                event.target.classList.add('btn-success', 'text-white');
+            } else {
+                hasilDiv.innerHTML = '<span class="text-danger"><i class="fa-solid fa-xmark-circle me-2"></i>Kurang tepat, coba lagi.</span>';
+                // Highlight tombol yang diklik jadi merah
+                event.target.classList.remove('btn-outline-secondary');
+                event.target.classList.add('btn-danger', 'text-white');
+            }
+            
+            hasilDiv.style.display = 'block';
+            hasilDiv.classList.add('animate__animated', 'animate__fadeIn');
+        }
+
+        // Pengurangan
+        function cekKuisKurang(nomor, status) {
+            var hasilDiv = document.getElementById('sub_hasil_' + nomor);
+            var btns = document.querySelectorAll(`[id^="sub_btn_${nomor}"]`);
+            
+            btns.forEach(btn => {
+                btn.classList.remove('btn-success', 'btn-danger', 'text-white');
+                btn.classList.add('btn-outline-secondary');
+            });
+
+            if (status === 'benar') {
+                hasilDiv.innerHTML = '<span class="text-success"><i class="fa-solid fa-check-circle me-2"></i>Tepat Sekali!</span>';
+                event.target.classList.remove('btn-outline-secondary');
+                event.target.classList.add('btn-success', 'text-white');
+            } else {
+                hasilDiv.innerHTML = '<span class="text-danger"><i class="fa-solid fa-xmark-circle me-2"></i>Masih keliru, perhatikan komanya.</span>';
+                event.target.classList.remove('btn-outline-secondary');
+                event.target.classList.add('btn-danger', 'text-white');
+            }
+            hasilDiv.style.display = 'block';
+            hasilDiv.classList.add('animate__animated', 'animate__fadeIn');
+        }
+
+        // Perkalian
+        function cekKuisKali(nomor, status) {
+            var hasilDiv = document.getElementById('mul_hasil_' + nomor);
+            var btns = document.querySelectorAll(`[id^="mul_btn_${nomor}"]`);
+            
+            btns.forEach(btn => {
+                btn.classList.remove('btn-success', 'btn-danger', 'text-white');
+                btn.classList.add('btn-outline-secondary');
+            });
+
+            if (status === 'benar') {
+                hasilDiv.innerHTML = '<span class="text-success"><i class="fa-solid fa-check-circle me-2"></i>Mantap! Kamu paham konsepnya.</span>';
+                event.target.classList.remove('btn-outline-secondary');
+                event.target.classList.add('btn-success', 'text-white');
+            } else {
+                hasilDiv.innerHTML = '<span class="text-danger"><i class="fa-solid fa-xmark-circle me-2"></i>Kurang tepat. Hitung digitnya lagi ya.</span>';
+                event.target.classList.remove('btn-outline-secondary');
+                event.target.classList.add('btn-danger', 'text-white');
+            }
+            hasilDiv.style.display = 'block';
+            hasilDiv.classList.add('animate__animated', 'animate__fadeIn');
+        }
+
+        // Pembagian
+         function cekKuisBagi(nomor, status) {
+            var hasilDiv = document.getElementById('div_hasil_' + nomor);
+            var btns = document.querySelectorAll(`[id^="div_btn_${nomor}"]`);
+            
+            btns.forEach(btn => {
+                btn.classList.remove('btn-success', 'btn-danger', 'text-white');
+                btn.classList.add('btn-outline-secondary');
+            });
+
+            if (status === 'benar') {
+                hasilDiv.innerHTML = '<span class="text-success"><i class="fa-solid fa-check-circle me-2"></i>Jawaban Tepat!</span>';
+                event.target.classList.remove('btn-outline-secondary');
+                event.target.classList.add('btn-success', 'text-white');
+            } else {
+                hasilDiv.innerHTML = '<span class="text-danger"><i class="fa-solid fa-xmark-circle me-2"></i>Masih keliru. Coba geser komanya lagi.</span>';
+                event.target.classList.remove('btn-outline-secondary');
+                event.target.classList.add('btn-danger', 'text-white');
+            }
+            hasilDiv.style.display = 'block';
+            hasilDiv.classList.add('animate__animated', 'animate__fadeIn');
+        }
 </script>
 
 {% endblock %}
