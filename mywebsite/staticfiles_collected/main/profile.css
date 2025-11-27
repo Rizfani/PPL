@@ -1,0 +1,105 @@
+/* main/static/main/profil.css */
+
+/* Menggunakan font yang sama dengan navbar */
+body { 
+    background-color: #f7faff; /* Latar belakang soft biru, sama seperti dashboard */
+    font-family: "Poppins", sans-serif;
+}
+
+/* KARTU UTAMA: Dibuat putih bersih dengan bayangan modern */
+.card-container {
+    background-color: #FFFFFF; /* Ganti dari abu-abu ke putih */
+    border-radius: 20px;
+    padding: 30px;
+    max-width: 700px;
+    margin: 50px auto;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.07); /* Bayangan yang lebih soft */
+    border: 1px solid #e9ecef; /* Border tipis */
+}
+
+/* HEADER PROFIL: Diberi jarak */
+.profile-header {
+    text-align: center;
+    padding-bottom: 25px;
+    margin-bottom: 30px;
+    border-bottom: 1px solid #e9ecef; /* Garis pemisah */
+}
+
+/* FOTO PROFIL: Border diganti jadi biru (warna primer) */
+.profile-img-container {
+    width: 150px;
+    height: 150px;
+    overflow: hidden;
+    border-radius: 50%;
+    margin: 0 auto 15px;
+    background-color: white; 
+    border: 4px solid #0d6efd; /* Ganti ke border biru (primary) */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Bayangan agar foto 'pop-up' */
+}
+.profile-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Tombol Kembali: Dibuat lebih soft */
+.profile-header .btn {
+    border-radius: 20px; /* Dibuat bulat */
+    font-size: 0.9rem;
+}
+
+/* JUDUL FORM: Diberi garis bawah */
+form h4 {
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 20px;
+    color: #0d6efd; /* Diberi warna biru */
+}
+
+/* Form Inputs: Dibuat lebih modern */
+.form-label {
+    font-weight: 600; /* Ditebalkan */
+    color: #333;
+}
+
+/* Ini akan menata input 'Username' dan widget Django Anda ('Kelas' dan 'Foto') */
+.form-control,
+select[name="kelas"],
+input[type="file"] {
+    border-radius: 10px; /* Sudut lebih bulat */
+    padding: 12px;
+    border: 1px solid #ced4da;
+    background-color: #f8f9fa; /* Latar input sedikit abu-abu */
+    box-shadow: none; /* Hilangkan shadow default */
+    transition: all 0.3s ease;
+}
+
+/* Efek saat input diklik */
+.form-control:focus,
+select[name="kelas"]:focus,
+input[type="file"]:focus {
+    background-color: #fff;
+    border-color: #0d6efd;
+    box-shadow: 0 0 0 3px rgba(13, 110, 253, 0.15); /* Efek 'glow' biru */
+}
+
+.form-control[readonly] {
+    background-color: #e9ecef; /* Warna input readonly */
+    opacity: 1;
+}
+
+/* Tombol Simpan: Dibuat lebih 'menarik' */
+.btn-simpan {
+    background-color: #0d6efd; /* Ganti jadi biru (primary) */
+    border-color: #0d6efd;
+    font-weight: bold;
+    padding: 12px;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+.btn-simpan:hover {
+    background-color: #0b5ed7;
+    border-color: #0a58ca;
+    transform: translateY(-2px); /* Efek sedikit terangkat */
+    box-shadow: 0 4px 10px rgba(13, 110, 253, 0.3);
+}
