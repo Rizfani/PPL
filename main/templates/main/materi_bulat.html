@@ -1,0 +1,349 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% block title %}Materi Bilangan Bulat - GeoMath{% endblock %}
+
+{% block content %}
+
+<style>
+    /* Sidebar Sticky */
+    .sidebar-wrapper {
+        position: sticky;
+        top: 80px; /* Jarak dari navbar atas */
+        height: calc(100vh - 100px); /* Tinggi sidebar pas layar */
+        overflow-y: auto; /* Scrollable */
+        padding-right: 15px;
+        border-right: 1px solid #dee2e6;
+    }
+
+    /* Link Sidebar */
+    .sidebar-link {
+        display: block;
+        padding: 10px 15px;
+        color: #495057;
+        text-decoration: none;
+        border-radius: 8px;
+        margin-bottom: 5px;
+        font-weight: 500;
+        transition: all 0.2s;
+    }
+
+    .sidebar-link:hover {
+        background-color: #e9ecef;
+        color: #0d6efd;
+        transform: translateX(5px);
+    }
+
+    .sidebar-link.active {
+        background-color: #0d6efd;
+        color: white;
+        font-weight: bold;
+        box-shadow: 0 4px 6px rgba(13, 110, 253, 0.2);
+    }
+
+    /* Agar scroll tidak tertutup navbar */
+    .scroll-margin {
+        scroll-margin-top: 100px;
+    }
+
+    /* Animasi Ikon */
+    @keyframes float {
+        0% { transform: translateY(0px); }
+        50% { transform: translateY(-15px); }
+        100% { transform: translateY(0px); }
+    }
+
+    /* Sembunyikan sidebar di HP */
+    @media (max-width: 992px) {
+        .sidebar-wrapper { display: none; }
+    }
+</style>
+
+<section class="hero-detail text-center py-5 position-relative overflow-hidden text-white" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
+    <i class="fa-solid fa-plus position-absolute text-white opacity-25" style="top: 10%; left: 10%; font-size: 4rem; animation: float 6s infinite;"></i>
+    <span class="position-absolute text-white opacity-25 fw-bold" style="top: 40%; right: 20%; font-size: 3rem; animation: float 7s infinite;">0</span>
+
+    <div class="container position-relative z-1 py-4">
+        <span class="badge bg-white text-primary px-3 py-2 rounded-pill mb-3 shadow-sm fw-bold">
+            <i class="fa-solid fa-book-open me-2"></i>BAB 1
+        </span>
+        <h1 class="fw-bold display-4 mb-3">Bilangan Bulat</h1>
+        <p class="fs-5 opacity-90 w-75 mx-auto">
+            Pelajari konsep bilangan positif, negatif, dan nol serta penerapannya dalam kehidupan sehari-hari.
+        </p>
+    </div>
+</section>
+
+<div class="container py-5">
+    <div class="row">
+        
+        <div class="col-lg-3">
+            <div class="sidebar-wrapper">
+                <h5 class="fw-bold text-dark mb-3 px-2">Daftar Materi</h5>
+                
+                <small class="text-muted text-uppercase fw-bold ms-2" style="font-size: 0.75rem;">Pengenalan</small>
+                <a href="#pengertian" class="sidebar-link" onclick="setActive(this)">
+                    <i class="fa-solid fa-book me-2"></i>Pengertian
+                </a>
+                <a href="#konsep" class="sidebar-link" onclick="setActive(this)">
+                    <i class="fa-solid fa-shapes me-2"></i>Komponen Bilangan
+                </a>
+                <a href="#analogi" class="sidebar-link" onclick="setActive(this)">
+                    <i class="fa-solid fa-temperature-half me-2"></i>Analogi Suhu
+                </a>
+                <a href="#membandingkan" class="sidebar-link" onclick="setActive(this)">
+                    <i class="fa-solid fa-scale-balanced me-2"></i>Membandingkan
+                </a>
+                
+                <hr class="my-3 opacity-25">
+                
+                <small class="text-muted text-uppercase fw-bold ms-2" style="font-size: 0.75rem;">Operasi Hitung</small>
+                <a href="#penjumlahan" class="sidebar-link" onclick="setActive(this)">
+                    <i class="fa-solid fa-plus me-2"></i>Penjumlahan
+                </a>
+                <a href="#pengurangan" class="sidebar-link" onclick="setActive(this)">
+                    <i class="fa-solid fa-minus me-2"></i>Pengurangan
+                </a>
+                <a href="#perkalian" class="sidebar-link" onclick="setActive(this)">
+                    <i class="fa-solid fa-xmark me-2"></i>Perkalian & Bagi
+                </a>
+                
+                <hr class="my-3 opacity-25">
+                
+                <a href="#latihan" class="sidebar-link text-success fw-bold" onclick="setActive(this)">
+                    <i class="fa-solid fa-pencil me-2"></i>Latihan Soal
+                </a>
+            </div>
+        </div>
+
+        <div class="col-lg-9">
+            
+            <div id="pengertian" class="scroll-margin mb-5">
+                <div class="card shadow-lg border-0 rounded-4 overflow-hidden">
+                    <div class="card-body p-0">
+                        <div class="row g-0">
+                            <div class="col-lg-7 p-5 d-flex flex-column justify-content-center">
+                                <h6 class="text-uppercase text-primary fw-bold letter-spacing-2 mb-0">Ayo Mengingat Kembali</h6>
+                                <h2 class="fw-bold text-dark mb-3">Apa itu Garis Bilangan?</h2>
+                                <p class="text-muted fs-5 lh-lg">
+                                    <strong>Garis Bilangan</strong> adalah garis yang berisi titik-titik angka. Garis ini membantu kita membandingkan angka dan melakukan operasi hitung.
+                                </p>
+                                <div class="alert alert-light border-start border-primary border-4 bg-light mt-2">
+                                    <strong>Info:</strong> Tanda panah di ujung artinya garis ini panjangnya <em>tak terhingga</em>!
+                                </div>
+                            </div>
+                            <div class="col-lg-5 bg-primary bg-opacity-10 p-5 d-flex align-items-center justify-content-center">
+                                <div class="bg-white p-3 rounded-4 shadow-sm border border-2 border-white text-center">
+                                    <img src="{% static 'img/garis.avif' %}" alt="Garis Bilangan" class="img-fluid rounded-3">
+                                    <p class="small text-muted mt-2 mb-0">Kiri (Negatif) <-> Kanan (Positif)</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="konsep" class="scroll-margin mb-5">
+                <div class="card shadow-lg border-0 rounded-4 overflow-hidden">
+                    <div class="card-body p-5">
+                        <div class="text-center mb-4">
+                            <h2 class="fw-bold text-dark">Apa Saja Isi Bilangan Bulat?</h2>
+                            <p class="text-muted">Terbagi menjadi tiga kelompok besar.</p>
+                        </div>
+                        <div class="row align-items-center">
+                            <div class="col-lg-5 text-center mb-4 mb-lg-0">
+                                <img src="{% static 'img/bilangan(+-).png' %}" alt="Diagram" class="img-fluid rounded-circle shadow-sm" style="max-width: 250px;">
+                            </div>
+                            <div class="col-lg-7">
+                                <div class="vstack gap-3">
+                                    <div class="d-flex p-3 rounded-3 bg-danger bg-opacity-10 align-items-center">
+                                        <div class="me-3 text-danger fs-2"><i class="fa-solid fa-circle-minus"></i></div>
+                                        <div><h6 class="fw-bold text-danger mb-0">1. Bilangan Negatif</h6><small>Kiri nol. Contoh: -1, -5.</small></div>
+                                    </div>
+                                    <div class="d-flex p-3 rounded-3 bg-light align-items-center">
+                                        <div class="me-3 text-secondary fs-2"><i class="fa-regular fa-circle"></i></div>
+                                        <div><h6 class="fw-bold text-secondary mb-0">2. Bilangan Nol (0)</h6><small>Netral.</small></div>
+                                    </div>
+                                    <div class="d-flex p-3 rounded-3 bg-primary bg-opacity-10 align-items-center">
+                                        <div class="me-3 text-primary fs-2"><i class="fa-solid fa-circle-plus"></i></div>
+                                        <div><h6 class="fw-bold text-primary mb-0">3. Bilangan Positif</h6><small>Kanan nol. Contoh: 1, 2, 5.</small></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="analogi" class="scroll-margin mb-5">
+                <div class="card shadow-lg border-0 rounded-4 overflow-hidden">
+                    <div class="card-body p-0">
+                        <div class="row g-0">
+                            <div class="col-lg-5 bg-info bg-opacity-10 p-5 text-center d-flex align-items-center justify-content-center">
+                                <div class="bg-white p-2 rounded-pill shadow-sm border border-4 border-white">
+                                    <img src="{% static 'img/termometer.png' %}" alt="Termometer" class="img-fluid" style="max-height: 250px;">
+                                </div>
+                            </div>
+                            <div class="col-lg-7 p-5">
+                                <h2 class="fw-bold text-dark mb-3">Termometer & Bilangan</h2>
+                                <p class="text-muted">Termometer adalah garis bilangan vertikal. <strong>Di atas 0</strong> panas (Positif), <strong>di bawah 0</strong> dingin (Negatif).</p>
+                                <div class="alert alert-info border-0"><i class="fa-solid fa-snowflake me-2"></i>Puncak Jaya bersalju karena suhunya <strong>Negatif</strong>.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="membandingkan" class="scroll-margin mb-5">
+                <div class="card shadow-lg border-0 rounded-4 overflow-hidden">
+                    <div class="card-header bg-primary bg-opacity-10 p-4 border-bottom-0">
+                        <h4 class="text-primary fw-bold mb-0"><i class="fa-solid fa-earth-americas me-2"></i>Studi Kasus: Suhu Kota</h4>
+                    </div>
+                    <div class="card-body p-4">
+                        <div class="text-center mb-4">
+                            <img src="{% static 'img/suhukota.png' %}" alt="Peta Suhu" class="img-fluid rounded-3 shadow-sm" style="max-height: 300px;">
+                        </div>
+                        <div class="alert alert-light border border-primary d-flex align-items-center">
+                            <i class="fa-solid fa-key fs-3 me-3 text-primary"></i>
+                            <div>
+                                <strong>Kunci:</strong> Semakin ke Kanan (Positif) = Panas. Semakin ke Kiri (Negatif) = Dingin.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="penjumlahan" class="scroll-margin mb-5">
+                <div class="text-center mb-4 border-top pt-4"><span class="badge bg-primary rounded-pill">OPERASI HITUNG</span></div>
+                
+                <div class="row g-4">
+                    <div class="col-md-6">
+                        <div class="card h-100 border-0 shadow-sm rounded-4 bg-primary bg-opacity-10 p-4">
+                            <h5 class="fw-bold text-primary">1. Tanda Sama</h5>
+                            <p class="small">Angka dijumlahkan, tanda tetap.</p>
+                            <div class="bg-white p-2 rounded fw-bold text-center">3 + 5 = 8 <br> -4 + (-2) = -6</div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card h-100 border-0 shadow-sm rounded-4 bg-warning bg-opacity-10 p-4">
+                            <h5 class="fw-bold text-dark">2. Tanda Beda</h5>
+                            <p class="small">Angka besar kurangi kecil, tanda ikut yang besar.</p>
+                            <div class="bg-white p-2 rounded fw-bold text-center">-7 + 3 = -4 <br> 6 + (-9) = -3</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card shadow-lg border-0 rounded-4 overflow-hidden mt-4">
+                    <div class="card-header bg-primary text-white p-3"><i class="fa-solid fa-gamepad me-2"></i>Lab Virtual: Kapal Selam</div>
+                    <div class="card-body p-0 bg-light">
+                        <div class="ratio ratio-16x9" style="max-height: 500px;">
+                            <iframe src="{% static 'main/geogebra_bilangan_bulat/geogebra.html' %}" style="border:0;" allowfullscreen loading="lazy"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="pengurangan" class="scroll-margin mb-5">
+                <div class="card border-0 shadow-sm rounded-4 bg-danger bg-opacity-10 p-4 mb-4">
+                    <h4 class="fw-bold text-danger mb-2"><i class="fa-solid fa-wand-magic-sparkles me-2"></i>Rumus Pengurangan</h4>
+                    <div class="bg-white p-3 rounded-3 border border-danger border-opacity-25 text-center">
+                        <h3 class="mb-0 font-monospace text-danger">a - b = a + (-b)</h3>
+                    </div>
+                    <p class="text-center mt-2 small text-muted">"Ubah Kurang jadi Tambah, angka belakang jadi Lawannya"</p>
+                </div>
+
+                <div class="card shadow-sm border-0 rounded-4 p-4">
+                    <div class="d-flex align-items-center mb-3">
+                        <div class="icon-box bg-warning text-white p-2 rounded-circle me-3"><i class="fa-solid fa-basket-shopping"></i></div>
+                        <h5 class="fw-bold mb-0">Kasus: Uang Lina</h5>
+                    </div>
+                    <p class="text-muted">Punya Rp 20.000, Belanja Rp 25.000. <br> <strong>20.000 - 25.000 = -5.000</strong> (Utang 5.000).</p>
+                </div>
+            </div>
+
+            <div id="perkalian" class="scroll-margin mb-5">
+                <div class="text-center mb-4 border-top pt-4"><span class="badge bg-warning text-dark rounded-pill">PERKALIAN & BAGI</span></div>
+                
+                <div class="card shadow-sm border-0 rounded-4 p-4 mb-4">
+                    <h5 class="fw-bold text-center mb-3">Tabel Aturan Tanda</h5>
+                    <div class="row text-center g-2">
+                        <div class="col-6"><div class="p-2 bg-success text-white rounded"> (+) x (+) = Positif</div></div>
+                        <div class="col-6"><div class="p-2 bg-danger text-white rounded"> (+) x (-) = Negatif</div></div>
+                        <div class="col-6"><div class="p-2 bg-danger text-white rounded"> (-) x (+) = Negatif</div></div>
+                        <div class="col-6"><div class="p-2 bg-success text-white rounded"> (-) x (-) = Positif</div></div>
+                    </div>
+                </div>
+
+                <div class="card shadow-lg border-0 rounded-4 overflow-hidden mb-4">
+                    <div class="card-header bg-warning text-dark p-3"><i class="fa-solid fa-gamepad me-2"></i>Lab Virtual: Perkalian</div>
+                    <div class="card-body p-0 bg-light">
+                        <div class="ratio ratio-16x9" style="max-height: 500px;">
+                            <iframe src="{% static 'main/geogebra_perkalian_bulat/geogebra.html' %}" style="border:0;" allowfullscreen loading="lazy"></iframe>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card shadow-lg border-0 rounded-4 overflow-hidden">
+                    <div class="card-header bg-success text-white p-3"><i class="fa-solid fa-gamepad me-2"></i>Lab Virtual: Pembagian</div>
+                    <div class="card-body p-0 bg-light">
+                        <div class="ratio ratio-16x9" style="max-height: 500px;">
+                            <iframe src="{% static 'main/geogebra_pembagian_bulat/geogebra.html' %}" style="border:0;" allowfullscreen loading="lazy"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="latihan" class="scroll-margin mb-5">
+                <div class="card border-0 shadow rounded-4">
+                    <div class="card-header bg-white p-4 border-bottom-0">
+                        <h4 class="fw-bold text-dark mb-0"><i class="fa-solid fa-pencil me-2 text-success"></i>Latihan Soal Cerita</h4>
+                        <p class="text-muted small mb-0">Cobalah kerjakan soal-soal berikut!</p>
+                    </div>
+                    <div class="card-body p-4 pt-0">
+                        <div class="quiz-item mb-4 pb-4 border-bottom">
+                            <h6 class="fw-bold text-dark mb-3">1. Andi punya 5 ikan, beli 3, mati 2. Sisa ikan?</h6>
+                            <div class="d-grid gap-2">
+                                <button onclick="cekCerita(1, 'salah')" id="cerita_btn_1a" class="btn btn-outline-secondary text-start p-3 rounded-3">A. 5</button>
+                                <button onclick="cekCerita(1, 'benar')" id="cerita_btn_1b" class="btn btn-outline-secondary text-start p-3 rounded-3">B. 6</button>
+                                <button onclick="cekCerita(1, 'salah')" id="cerita_btn_1c" class="btn btn-outline-secondary text-start p-3 rounded-3">C. 8</button>
+                            </div>
+                            <div id="cerita_hasil_1" class="mt-2 fw-bold" style="display: none;"></div>
+                        </div>
+                        <div class="text-center mt-5">
+                            <a href="{% url 'latihan' %}" class="btn btn-primary btn-lg rounded-pill px-5 shadow fw-bold">
+                                Lanjut ke Misi Berikutnya <i class="fa-solid fa-arrow-right ms-2"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div> </div>
+</div>
+
+<script>
+    function setActive(el) {
+        document.querySelectorAll('.sidebar-link').forEach(link => link.classList.remove('active'));
+        el.classList.add('active');
+    }
+
+    function cekCerita(nomor, status) {
+        var hasilDiv = document.getElementById('cerita_hasil_' + nomor);
+        var btns = document.querySelectorAll(`[id^="cerita_btn_${nomor}"]`);
+        btns.forEach(btn => {
+            btn.classList.remove('btn-success', 'btn-danger', 'text-white');
+            btn.classList.add('btn-outline-secondary');
+        });
+        if (status === 'benar') {
+            hasilDiv.innerHTML = '<div class="alert alert-success mt-2 py-2"><i class="fa-solid fa-check-circle me-2"></i><strong>Benar!</strong></div>';
+            event.target.classList.remove('btn-outline-secondary');
+            event.target.classList.add('btn-success', 'text-white');
+        } else {
+            hasilDiv.innerHTML = '<div class="alert alert-danger mt-2 py-2"><i class="fa-solid fa-xmark-circle me-2"></i><strong>Salah.</strong></div>';
+            event.target.classList.remove('btn-outline-secondary');
+            event.target.classList.add('btn-danger', 'text-white');
+        }
+        hasilDiv.style.display = 'block';
+    }
+</script>
+
+{% endblock %}
