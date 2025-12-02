@@ -144,12 +144,42 @@
     </div>
 </div>
 
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 <script>
     function nextSlide(current) {
+        // 1. Cari slide/soal yang sedang aktif
+        const currentSlide = document.getElementById('soal-' + current);
+        
+        // 2. Cari semua radio button di dalam slide tersebut
+        const inputs = currentSlide.querySelectorAll('input[type="radio"]');
+        let isSelected = false;
+
+        // 3. Cek apakah ada satu saja yang dicentang
+        inputs.forEach(input => {
+            if (input.checked) {
+                isSelected = true;
+            }
+        });
+
+        // 4. Jika BELUM dipilih, munculkan peringatan & Stop
+        if (!isSelected) {
+            Swal.fire({
+                icon: 'warning',
+                title: 'Ups, belum diisi!',
+                text: 'Silakan pilih jawaban dulu sebelum lanjut ke soal berikutnya.',
+                confirmButtonColor: '#0d6efd' // Warna biru
+            });
+            return; // Berhenti di sini, jangan lanjut
+        }
+
+        // 5. Jika SUDAH dipilih, lanjut ke slide berikutnya
         document.getElementById('soal-' + current).classList.add('d-none');
         document.getElementById('soal-' + (current + 1)).classList.remove('d-none');
     }
+
     function prevSlide(current) {
+        // Tombol kembali tidak perlu validasi
         document.getElementById('soal-' + current).classList.add('d-none');
         document.getElementById('soal-' + (current - 1)).classList.remove('d-none');
     }
