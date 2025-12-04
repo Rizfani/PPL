@@ -36,4 +36,14 @@ urlpatterns = [
     path('kuis/<int:kuis_id>/', views.kerjakan_kuis, name='kerjakan_kuis'),
     
     
+    # Desimal
+    path('materi/bilangan-desimal/', views.desimal_pengertian, name='materi_desimal'), 
+
+    path('materi/desimal/pengertian/', views.desimal_pengertian, name='desimal_pengertian'),
+    path('materi/desimal/membandingkan/', views.desimal_membandingkan, name='desimal_membandingkan'),
+    path('materi/desimal/penjumlahan/', views.desimal_penjumlahan, name='desimal_penjumlahan'),
+    path('materi/desimal/pengurangan/', views.desimal_pengurangan, name='desimal_pengurangan'),
+    path('materi/desimal/perkalian/', views.desimal_perkalian, name='desimal_perkalian'),
+    path('materi/desimal/pembagian/', views.desimal_pembagian, name='desimal_pembagian'),
+    path('materi/desimal/latihan/', views.desimal_latihan, name='desimal_latihan'),
 ]
