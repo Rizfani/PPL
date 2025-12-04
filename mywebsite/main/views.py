@@ -449,3 +449,66 @@ def bulat_latihan(request):
         'username': request.user.username,
         'kelas': profile.kelas
     })
+    
+    
+    # main/views.py
+
+# ... (import dan fungsi bulat lainnya) ...
+
+# --- VIEW MATERI DESIMAL ---
+
+@login_required
+def desimal_pengertian(request):
+    profile, created = Profile.objects.get_or_create(user=request.user)
+    return render(request, 'main/materi_desimal/01_pengertian.html', {
+        'profile': profile, 'active_tab': 'pengertian',
+        'username': request.user.username, 'kelas': profile.kelas
+    })
+
+@login_required
+def desimal_membandingkan(request):
+    profile, created = Profile.objects.get_or_create(user=request.user)
+    return render(request, 'main/materi_desimal/02_membandingkan.html', {
+        'profile': profile, 'active_tab': 'membandingkan',
+        'username': request.user.username, 'kelas': profile.kelas
+    })
+
+@login_required
+def desimal_penjumlahan(request):
+    profile, created = Profile.objects.get_or_create(user=request.user)
+    return render(request, 'main/materi_desimal/03_penjumlahan.html', {
+        'profile': profile, 'active_tab': 'penjumlahan',
+        'username': request.user.username, 'kelas': profile.kelas
+    })
+
+@login_required
+def desimal_pengurangan(request):
+    profile, created = Profile.objects.get_or_create(user=request.user)
+    return render(request, 'main/materi_desimal/04_pengurangan.html', {
+        'profile': profile, 'active_tab': 'pengurangan',
+        'username': request.user.username, 'kelas': profile.kelas
+    })
+
+@login_required
+def desimal_perkalian(request):
+    profile, created = Profile.objects.get_or_create(user=request.user)
+    return render(request, 'main/materi_desimal/05_perkalian.html', {
+        'profile': profile, 'active_tab': 'perkalian',
+        'username': request.user.username, 'kelas': profile.kelas
+    })
+
+@login_required
+def desimal_pembagian(request):
+    profile, created = Profile.objects.get_or_create(user=request.user)
+    return render(request, 'main/materi_desimal/06_pembagian.html', {
+        'profile': profile, 'active_tab': 'pembagian',
+        'username': request.user.username, 'kelas': profile.kelas
+    })
+
+@login_required
+def desimal_latihan(request):
+    profile, created = Profile.objects.get_or_create(user=request.user)
+    return render(request, 'main/materi_desimal/07_latihan.html', {
+        'profile': profile, 'active_tab': 'latihan',
+        'username': request.user.username, 'kelas': profile.kelas
+    })

@@ -1,0 +1,67 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% block title %}Pengertian Desimal - GeoMath{% endblock %}
+
+{% block content %}
+
+<style>
+    .page-container { display: flex; min-height: calc(100vh - 70px); background-color: #f8f9fa; }
+    .sidebar { width: 280px; background: white; border-right: 1px solid #dee2e6; padding: 20px; position: sticky; top: 70px; height: calc(100vh - 70px); overflow-y: auto; flex-shrink: 0; }
+    .content-area { flex-grow: 1; padding: 40px 50px; height: calc(100vh - 70px); overflow-y: auto; }
+    
+    /* Sidebar Link Style */
+    .menu-link { display: block; padding: 10px 15px; color: #495057; text-decoration: none; border-radius: 8px; margin-bottom: 5px; font-weight: 500; transition: all 0.2s; }
+    .menu-link:hover { background-color: #e9ecef; color: #198754; transform: translateX(5px); }
+    .menu-link.active { background-color: #198754; color: white; font-weight: 700; box-shadow: 0 4px 10px rgba(25, 135, 84, 0.3); }
+
+    @media (max-width: 992px) { .page-container { flex-direction: column; } .sidebar { width: 100%; height: auto; position: relative; top: 0; } .content-area { padding: 20px; } }
+</style>
+
+<div class="page-container">
+    
+    <aside class="sidebar">
+        {% include 'main/materi_desimal/sidebar.html' %}
+    </aside>
+
+    <main class="content-area">
+        
+        <h1 class="fw-bold text-dark mb-4">Pengertian Bilangan Desimal</h1>
+
+        <div class="card border-0 shadow-sm rounded-4 p-5 mb-5 bg-white">
+            <div class="row align-items-center">
+                <div class="col-lg-7">
+                    <h3 class="text-success fw-bold mb-3">Apa itu Desimal?</h3>
+                    <p class="text-secondary fs-5 lh-lg">
+                        [cite_start]<strong>Bilangan desimal</strong> adalah bentuk lain dari pecahan yang ditandai dengan penggunaan tanda koma (<strong>,</strong>). [cite: 114]
+                        [cite_start]<br>Angka di belakang koma menunjukkan nilai yang lebih kecil dari satu. [cite: 115]
+                    </p>
+                    
+                    <div class="alert alert-success border-0 bg-success bg-opacity-10 mt-3">
+                        <h6 class="fw-bold text-success"><i class="fa-solid fa-lightbulb me-2"></i>Contoh:</h6>
+                        <ul class="mb-0">
+                            <li><strong>0,5</strong> = Setengah (1/2)</li>
+                            <li><strong>0,25</strong> = Seperempat (1/4)</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="col-lg-5 text-center">
+                    <div class="bg-light rounded-4 p-4 border border-2 border-dashed border-success">
+                        <i class="fa-solid fa-chart-pie text-success fa-4x mb-3 opacity-75"></i>
+                        <h2 class="fw-bold text-dark mb-0">0,75</h2>
+                        <p class="small text-muted mb-0">Nol Koma Tujuh Lima</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="d-flex justify-content-end mt-5">
+            <a href="{% url 'desimal_membandingkan' %}" class="btn btn-success rounded-pill px-4 shadow fw-bold">
+                Lanjut: Membandingkan <i class="fa-solid fa-arrow-right ms-2"></i>
+            </a>
+        </div>
+
+    </main>
+</div>
+
+{% endblock %}
