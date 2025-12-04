@@ -1,0 +1,81 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% block title %}Misi Bilangan Desimal - GeoMath{% endblock %}
+
+{% block content %}
+
+<section class="hero text-center py-5 text-white" style="background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);">
+    <div class="container">
+        <h1 class="fw-bold display-5 mb-3">Misi: Bilangan Desimal</h1>
+        <p class="fs-5 opacity-90">Kelola stok dapur Geo-Cafe dengan presisi!</p>
+    </div>
+</section>
+
+<section class="container py-5" style="margin-top: -50px;">
+    <div class="row g-4 justify-content-center">
+
+        <div class="col-lg-8">
+            <div class="card shadow-sm p-4 rounded-4 border-0 mb-4">
+                <div class="d-flex align-items-center mb-4">
+                    <div class="icon-box bg-warning bg-opacity-10 text-warning p-3 rounded-circle me-3">
+                        <i class="fa-solid fa-bottle-droplet fs-3"></i>
+                    </div>
+                    <h4 class="fw-bold mb-0 text-dark">Misi 1: Stok Sirup</h4>
+                </div>
+                <p class="text-muted fs-5">
+                    Stok sirup coklat pagi ini adalah <strong>2,5 liter</strong>. Tadi ada kiriman baru datang sebanyak <strong>1,2 liter</strong>.
+                </p>
+                <div class="card bg-light border-0 p-3 rounded-3 mb-3">
+                    <p class="fw-bold text-dark mb-0"><i class="fa-solid fa-circle-question me-2 text-warning"></i>Berapa total sirup coklat yang kamu miliki sekarang?</p>
+                </div>
+                <button class="btn btn-warning w-100 fw-bold text-dark" data-bs-toggle="modal" data-bs-target="#hintModal1">
+                    <i class="fa-regular fa-lightbulb me-2"></i>Lihat Petunjuk
+                </button>
+            </div>
+        </div>
+
+        <div class="col-lg-8">
+            <div class="card shadow-sm p-4 rounded-4 border-0">
+                <div class="d-flex align-items-center mb-4">
+                    <div class="icon-box bg-success bg-opacity-10 text-success p-3 rounded-circle me-3">
+                        <i class="fa-solid fa-bread-slice fs-3"></i>
+                    </div>
+                    <h4 class="fw-bold mb-0 text-dark">Misi 2: Bagi Roti</h4>
+                </div>
+                <p class="text-muted fs-5">
+                    Masih ada sisa roti baguette sepanjang <strong>7,5 meter</strong>. Koki meminta kamu memotong-motongnya menjadi bagian yang masing-masing panjangnya <strong>2,5 meter</strong>.
+                </p>
+                <div class="card bg-light border-0 p-3 rounded-3 mb-3">
+                    <p class="fw-bold text-dark mb-0"><i class="fa-solid fa-circle-question me-2 text-success"></i>Berapa potong roti yang akan didapatkan?</p>
+                </div>
+                <button class="btn btn-success w-100 fw-bold" data-bs-toggle="modal" data-bs-target="#hintModal2">
+                    <i class="fa-regular fa-lightbulb me-2"></i>Lihat Petunjuk
+                </button>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="text-center mt-4">
+        <a href="{% url 'latihan' %}" class="btn btn-outline-secondary rounded-pill px-4">Kembali ke Menu Latihan</a>
+    </div>
+</section>
+
+<div class="modal fade" id="hintModal1" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header bg-warning bg-opacity-10"><h5 class="modal-title fw-bold text-dark">Petunjuk Misi 1</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div>
+      <div class="modal-body"><p>Lakukan penjumlahan desimal: <strong>2,5 + 1,2</strong>. Pastikan tanda koma sejajar saat menghitung.</p></div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="hintModal2" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header bg-success bg-opacity-10"><h5 class="modal-title fw-bold text-dark">Petunjuk Misi 2</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div>
+      <div class="modal-body"><p>Lakukan pembagian: <strong>7,5 : 2,5</strong>. Tips: Hilangkan koma dengan mengalikan keduanya dengan 10, jadi 75 : 25.</p></div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
