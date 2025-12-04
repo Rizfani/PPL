@@ -1,0 +1,196 @@
+{% extends 'main/base.html' %}
+{% block title %}Mengerjakan Kuis{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            
+            {% if hasil_data %}
+            
+            <div class="card border-0 shadow-lg rounded-4 text-center overflow-hidden animate__animated animate__fadeInDown">
+                <div class="card-header border-0 pt-5 pb-0 bg-white">
+                    {% if hasil_data.lulus %}
+                        <div class="p-4 rounded-circle d-inline-block mb-3" style="background-color: #d1e7dd; color: #198754;">
+                            <i class="fa-solid fa-trophy fa-4x"></i>
+                        </div>
+                        <h2 class="fw-bold text-success">Selamat, Kamu Lulus! 🎉</h2>
+                    {% else %}
+                        <div class="p-4 rounded-circle d-inline-block mb-3" style="background-color: #f8d7da; color: #dc3545;">
+                            <i class="fa-solid fa-face-frown-open fa-4x"></i>
+                        </div>
+                        <h2 class="fw-bold text-danger">Yah, Belum Lulus...</h2>
+                    {% endif %}
+                </div>
+
+                <div class="card-body p-5">
+                    <h1 class="display-1 fw-bold mb-0 {% if hasil_data.lulus %}text-success{% else %}text-danger{% endif %}">
+                        {{ hasil_data.skor }}
+                    </h1>
+                    <p class="text-muted mb-4">Nilai Akhir Kamu</p>
+
+                    <div class="row justify-content-center mb-4">
+                        <div class="col-6 col-md-4">
+                            <div class="border rounded-3 p-2 bg-light">
+                                <small class="text-muted d-block">Jawaban Benar</small>
+                                <span class="fw-bold fs-5">{{ hasil_data.benar }} / {{ hasil_data.total }}</span>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-4">
+                            <div class="border rounded-3 p-2 bg-light">
+                                <small class="text-muted d-block">KKM (Target)</small>
+                                <span class="fw-bold fs-5">{{ hasil_data.kkm }}</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="d-grid gap-3 d-md-block">
+                        {% if hasil_data.lulus %}
+                            <a href="{% url 'latihan' %}" class="btn btn-outline-secondary btn-lg rounded-pill px-4 fw-bold">
+                                <i class="fa-solid fa-arrow-left me-2"></i> Menu Latihan
+                            </a>
+                            <a href="{% url 'dashboard' %}" class="btn btn-success btn-lg rounded-pill px-5 fw-bold">
+                                Kembali ke Dashboard <i class="fa-solid fa-house ms-2"></i>
+                            </a>
+                        {% else %}
+                            <a href="{% url 'materi' %}" class="btn btn-outline-secondary btn-lg rounded-pill px-4 fw-bold mb-2 mb-md-0">
+                                <i class="fa-solid fa-book-open me-2"></i> Pelajari Materi
+                            </a>
+                            <a href="" class="btn btn-danger btn-lg rounded-pill px-5 fw-bold">
+                                <i class="fa-solid fa-rotate-right me-2"></i> Ulangi Latihan
+                            </a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+
+            {% else %}
+
+            <div class="card border-0 shadow-lg rounded-4 overflow-hidden">
+                <div class="card-header bg-primary text-white p-4">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <h4 class="mb-0 fw-bold"><i class="fa-solid fa-pen-to-square me-2"></i>{{ kuis.nama }}</h4>
+                            <small class="opacity-75">Target Kelulusan: {{ kuis.minimal_nilai }}</small>
+                        </div>
+                        <i class="fa-regular fa-clock fs-3 opacity-50"></i>
+                    </div>
+                </div>
+                
+                <div class="card-body p-5">
+                    <form method="POST" id="quizForm">
+                        {% csrf_token %}
+
+                        {% for soal in soal_list %}
+                        <div class="soal-slide {% if not forloop.first %}d-none{% endif %}" id="soal-{{ forloop.counter }}">
+                            
+                            <div class="d-flex justify-content-between align-items-center mb-4">
+                                <span class="badge bg-light text-primary border border-primary px-3 py-2 rounded-pill">
+                                    Soal {{ forloop.counter }} dari {{ soal_list|length }}
+                                </span>
+                            </div>
+
+                            <h5 class="fw-bold text-dark mb-4" style="line-height: 1.6;">
+                                {{ soal.teks_soal }}
+                            </h5>
+
+                            <div class="d-grid gap-3">
+                                <input type="radio" class="btn-check" name="soal_{{ soal.id }}" id="opt_a_{{ soal.id }}" value="a" required>
+                                <label class="btn btn-outline-secondary text-start p-3 rounded-3 position-relative" for="opt_a_{{ soal.id }}">
+                                    <strong class="me-2">A.</strong> {{ soal.opsi_a }}
+                                </label>
+
+                                <input type="radio" class="btn-check" name="soal_{{ soal.id }}" id="opt_b_{{ soal.id }}" value="b">
+                                <label class="btn btn-outline-secondary text-start p-3 rounded-3 position-relative" for="opt_b_{{ soal.id }}">
+                                    <strong class="me-2">B.</strong> {{ soal.opsi_b }}
+                                </label>
+
+                                <input type="radio" class="btn-check" name="soal_{{ soal.id }}" id="opt_c_{{ soal.id }}" value="c">
+                                <label class="btn btn-outline-secondary text-start p-3 rounded-3 position-relative" for="opt_c_{{ soal.id }}">
+                                    <strong class="me-2">C.</strong> {{ soal.opsi_c }}
+                                </label>
+
+                                <input type="radio" class="btn-check" name="soal_{{ soal.id }}" id="opt_d_{{ soal.id }}" value="d">
+                                <label class="btn btn-outline-secondary text-start p-3 rounded-3 position-relative" for="opt_d_{{ soal.id }}">
+                                    <strong class="me-2">D.</strong> {{ soal.opsi_d }}
+                                </label>
+                            </div>
+
+                            <div class="mt-5 d-flex justify-content-between">
+                                {% if not forloop.first %}
+                                <button type="button" class="btn btn-light text-muted fw-bold px-4" onclick="prevSlide({{ forloop.counter }})">
+                                    <i class="fa-solid fa-arrow-left me-2"></i> Sebelumnya
+                                </button>
+                                {% else %}
+                                <div></div>
+                                {% endif %}
+
+                                {% if not forloop.last %}
+                                <button type="button" class="btn btn-primary fw-bold px-4" onclick="nextSlide({{ forloop.counter }})">
+                                    Lanjut <i class="fa-solid fa-arrow-right ms-2"></i>
+                                </button>
+                                {% else %}
+                                <button type="submit" class="btn btn-success fw-bold px-4 shadow">
+                                    Kirim Jawaban <i class="fa-solid fa-paper-plane ms-2"></i>
+                                </button>
+                                {% endif %}
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </form>
+                </div>
+            </div>
+            {% endif %} </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script>
+    function nextSlide(current) {
+        // 1. Cari slide/soal yang sedang aktif
+        const currentSlide = document.getElementById('soal-' + current);
+        
+        // 2. Cari semua radio button di dalam slide tersebut
+        const inputs = currentSlide.querySelectorAll('input[type="radio"]');
+        let isSelected = false;
+
+        // 3. Cek apakah ada satu saja yang dicentang
+        inputs.forEach(input => {
+            if (input.checked) {
+                isSelected = true;
+            }
+        });
+
+        // 4. Jika BELUM dipilih, munculkan peringatan & Stop
+        if (!isSelected) {
+            Swal.fire({
+                icon: 'warning',
+                title: 'Ups, belum diisi!',
+                text: 'Silakan pilih jawaban dulu sebelum lanjut ke soal berikutnya.',
+                confirmButtonColor: '#0d6efd' // Warna biru
+            });
+            return; // Berhenti di sini, jangan lanjut
+        }
+
+        // 5. Jika SUDAH dipilih, lanjut ke slide berikutnya
+        document.getElementById('soal-' + current).classList.add('d-none');
+        document.getElementById('soal-' + (current + 1)).classList.remove('d-none');
+    }
+
+    function prevSlide(current) {
+        // Tombol kembali tidak perlu validasi
+        document.getElementById('soal-' + current).classList.add('d-none');
+        document.getElementById('soal-' + (current - 1)).classList.remove('d-none');
+    }
+</script>
+
+<style>
+    .btn-check:checked + .btn-outline-secondary {
+        background-color: #e7f1ff;
+        color: #0d6efd;
+        border-color: #0d6efd;
+        font-weight: bold;
+    }
+</style>
+{% endblock %}

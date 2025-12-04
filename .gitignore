@@ -1,3 +1,16 @@
+<<<<<<< HEAD
+# .gitignore
+
+# 1. File Database dan Media
+db.sqlite3          # Database SQLite lokal Anda
+/media/             # Folder tempat foto profil dan upload user disimpan
+
+# 2. File dan Folder Python/Git
+venv/               # Virtual Environment
+__pycache__/        # Cache file Python
+*.pyc               # Compiled Python files
+.vscode/            # (Opsional) Jika Anda menggunakan VS  
+=======
 Env/
 Env/
 __pycache__/
@@ -5,3 +18,4 @@ media/
 profile_pics/
 *.pyc
 db.sqlite3
+>>>>>>> 1ead18d013c67915dbcefe5ed608457ff656cb4e
