@@ -449,3 +449,5 @@ def bulat_latihan(request):
         'username': request.user.username,
         'kelas': profile.kelas
     })
+    
+    

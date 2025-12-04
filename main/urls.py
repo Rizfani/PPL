@@ -34,4 +34,6 @@ urlpatterns = [
     path('latihan/', views.latihan, name='latihan'),
     path('tandai-selesai/<str:kategori>/', views.tandai_selesai, name='tandai_selesai'),
     path('kuis/<int:kuis_id>/', views.kerjakan_kuis, name='kerjakan_kuis'),
+    
+    
 ]

@@ -1,0 +1,143 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% block title %}Latihan Soal Bilangan Bulat - GeoMath{% endblock %}
+
+{% block content %}
+
+<div class="container py-5">
+    <div class="row">
+        
+        <div class="col-md-3 col-lg-2 mb-4 mb-lg-0">
+            {% include 'main/materi_bulat/sidebar.html' %}
+        </div>
+
+        <div class="col-md-9 col-lg-10 px-md-4" style="height: calc(100vh - 70px); overflow-y: auto; scroll-behavior: smooth;">
+            
+            <div class="mb-5 pt-2 text-center">
+                <span class="badge bg-success text-white px-3 py-2 rounded-pill mb-2 fw-bold">EVALUASI AKHIR</span>
+                <h1 class="fw-bold text-dark display-6">Misi Bilangan Bulat</h1>
+                <p class="text-muted fs-5">Selesaikan 5 masalah di bawah ini untuk menuntaskan Bab 1!</p>
+            </div>
+
+            <div class="card border-0 shadow rounded-4 mb-5">
+                <div class="card-header bg-white p-4 border-bottom-0 d-flex justify-content-between align-items-center">
+                    <div>
+                        <h4 class="fw-bold text-dark mb-0"><i class="fa-solid fa-pencil me-2 text-success"></i>Latihan Soal Cerita</h4>
+                        <p class="text-muted small mb-0">Klik jawaban yang menurutmu benar.</p>
+                    </div>
+                    <i class="fa-solid fa-trophy fs-3 text-warning opacity-50"></i>
+                </div>
+                
+                <div class="card-body p-4 pt-0">
+                    
+                    <div class="quiz-item mb-4 pb-4 border-bottom">
+                        <h6 class="fw-bold text-dark mb-3">
+                            1. Andi punya 5 ekor ikan. Beli lagi 3 ekor, lalu mati 2 ekor. Berapa sisa ikan Andi?
+                        </h6>
+                        <div class="d-grid gap-2 d-md-block">
+                            <button onclick="cekJawaban(1, 'salah')" id="btn_1a" class="btn btn-outline-secondary text-start p-3 rounded-3 w-100 mb-2">A. 5 ekor</button>
+                            <button onclick="cekJawaban(1, 'benar')" id="btn_1b" class="btn btn-outline-secondary text-start p-3 rounded-3 w-100 mb-2">B. 6 ekor</button>
+                            <button onclick="cekJawaban(1, 'salah')" id="btn_1c" class="btn btn-outline-secondary text-start p-3 rounded-3 w-100 mb-2">C. 8 ekor</button>
+                            <button onclick="cekJawaban(1, 'salah')" id="btn_1d" class="btn btn-outline-secondary text-start p-3 rounded-3 w-100">D. 4 ekor</button>
+                        </div>
+                        <div id="hasil_1" class="mt-2 fw-bold" style="display: none;"></div>
+                    </div>
+
+                    <div class="quiz-item mb-4 pb-4 border-bottom">
+                        <h6 class="fw-bold text-dark mb-3">
+                            2. Rina punya Rp 12.000. Ia menabung lagi Rp 7.000. Berapa total uang Rina?
+                        </h6>
+                        <div class="d-grid gap-2 d-md-block">
+                            <button onclick="cekJawaban(2, 'benar')" id="btn_2a" class="btn btn-outline-secondary text-start p-3 rounded-3 w-100 mb-2">A. Rp 19.000</button>
+                            <button onclick="cekJawaban(2, 'salah')" id="btn_2b" class="btn btn-outline-secondary text-start p-3 rounded-3 w-100 mb-2">B. Rp 15.000</button>
+                            <button onclick="cekJawaban(2, 'salah')" id="btn_2c" class="btn btn-outline-secondary text-start p-3 rounded-3 w-100 mb-2">C. Rp 20.000</button>
+                            <button onclick="cekJawaban(2, 'salah')" id="btn_2d" class="btn btn-outline-secondary text-start p-3 rounded-3 w-100">D. Rp 5.000</button>
+                        </div>
+                        <div id="hasil_2" class="mt-2 fw-bold" style="display: none;"></div>
+                    </div>
+
+                    <div class="quiz-item mb-4 pb-4 border-bottom">
+                        <h6 class="fw-bold text-dark mb-3">
+                            3. Suhu kulkas -3°C. Listrik mati, suhu naik 8°C. Berapa suhu sekarang?
+                        </h6>
+                        <div class="d-grid gap-2 d-md-block">
+                            <button onclick="cekJawaban(3, 'salah')" id="btn_3a" class="btn btn-outline-secondary text-start p-3 rounded-3 w-100 mb-2">A. -11°C</button>
+                            <button onclick="cekJawaban(3, 'salah')" id="btn_3b" class="btn btn-outline-secondary text-start p-3 rounded-3 w-100 mb-2">B. -5°C</button>
+                            <button onclick="cekJawaban(3, 'benar')" id="btn_3c" class="btn btn-outline-secondary text-start p-3 rounded-3 w-100 mb-2">C. 5°C</button>
+                            <button onclick="cekJawaban(3, 'salah')" id="btn_3d" class="btn btn-outline-secondary text-start p-3 rounded-3 w-100">D. 11°C</button>
+                        </div>
+                        <div id="hasil_3" class="mt-2 fw-bold" style="display: none;"></div>
+                    </div>
+
+                    <div class="quiz-item mb-4 pb-4 border-bottom">
+                        <h6 class="fw-bold text-dark mb-3">
+                            4. Penyelam ada di kedalaman 15 meter di bawah laut (-15). Ia naik 5 meter. Di posisi berapa dia sekarang?
+                        </h6>
+                        <div class="d-grid gap-2 d-md-block">
+                            <button onclick="cekJawaban(4, 'benar')" id="btn_4a" class="btn btn-outline-secondary text-start p-3 rounded-3 w-100 mb-2">A. -10 meter</button>
+                            <button onclick="cekJawaban(4, 'salah')" id="btn_4b" class="btn btn-outline-secondary text-start p-3 rounded-3 w-100 mb-2">B. -20 meter</button>
+                            <button onclick="cekJawaban(4, 'salah')" id="btn_4c" class="btn btn-outline-secondary text-start p-3 rounded-3 w-100 mb-2">C. 10 meter</button>
+                            <button onclick="cekJawaban(4, 'salah')" id="btn_4d" class="btn btn-outline-secondary text-start p-3 rounded-3 w-100">D. -5 meter</button>
+                        </div>
+                        <div id="hasil_4" class="mt-2 fw-bold" style="display: none;"></div>
+                    </div>
+
+                    <div class="quiz-item">
+                        <h6 class="fw-bold text-dark mb-3">
+                            5. Gedung punya 5 lantai di atas tanah dan 3 lantai di bawah tanah (-3). Berapa selisih lantainya?
+                        </h6>
+                        <div class="d-grid gap-2 d-md-block">
+                            <button onclick="cekJawaban(5, 'salah')" id="btn_5a" class="btn btn-outline-secondary text-start p-3 rounded-3 w-100 mb-2">A. 2 lantai</button>
+                            <button onclick="cekJawaban(5, 'benar')" id="btn_5b" class="btn btn-outline-secondary text-start p-3 rounded-3 w-100 mb-2">B. 8 lantai</button>
+                            <button onclick="cekJawaban(5, 'salah')" id="btn_5c" class="btn btn-outline-secondary text-start p-3 rounded-3 w-100 mb-2">C. 5 lantai</button>
+                            <button onclick="cekJawaban(5, 'salah')" id="btn_5d" class="btn btn-outline-secondary text-start p-3 rounded-3 w-100">D. 15 lantai</button>
+                        </div>
+                        <div id="hasil_5" class="mt-2 fw-bold" style="display: none;"></div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="d-flex justify-content-between pb-5">
+                <a href="{% url 'bulat_pembagian' %}" class="btn btn-outline-secondary rounded-pill px-4">
+                    <i class="fa-solid fa-arrow-left me-2"></i> Pembagian
+                </a>
+                
+                <a href="{% url 'materi_desimal' %}" class="btn btn-success rounded-pill px-5 shadow fw-bold">
+                    Selesai! Lanjut ke Desimal <i class="fa-solid fa-arrow-right ms-2"></i>
+                </a>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script>
+    function cekJawaban(nomor, status) {
+        var hasilDiv = document.getElementById('hasil_' + nomor);
+        // Cari semua tombol dalam satu soal yang sama (prefix id btn_nomor_)
+        var btns = document.querySelectorAll(`button[id^='btn_${nomor}']`);
+        
+        // Reset warna tombol
+        btns.forEach(btn => {
+            btn.classList.remove('btn-success', 'btn-danger', 'text-white');
+            btn.classList.add('btn-outline-secondary');
+        });
+
+        // Ambil tombol yang diklik
+        var clickedBtn = event.target;
+
+        if (status === 'benar') {
+            hasilDiv.innerHTML = '<div class="alert alert-success mt-2 py-2"><i class="fa-solid fa-check-circle me-2"></i><strong>Benar!</strong> Kamu hebat.</div>';
+            clickedBtn.classList.remove('btn-outline-secondary');
+            clickedBtn.classList.add('btn-success', 'text-white');
+        } else {
+            hasilDiv.innerHTML = '<div class="alert alert-danger mt-2 py-2"><i class="fa-solid fa-xmark-circle me-2"></i><strong>Kurang Tepat.</strong> Coba hitung lagi.</div>';
+            clickedBtn.classList.remove('btn-outline-secondary');
+            clickedBtn.classList.add('btn-danger', 'text-white');
+        }
+        hasilDiv.style.display = 'block';
+    }
+</script>
+
+{% endblock %}

@@ -1,0 +1,158 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% block title %}Pembagian Bilangan Bulat - GeoMath{% endblock %}
+
+{% block content %}
+
+<div class="container py-5">
+    <div class="row">
+        
+        <div class="col-md-3 col-lg-2 mb-4 mb-lg-0">
+            {% include 'main/materi_bulat/sidebar.html' %}
+        </div>
+
+        <div class="col-md-9 col-lg-10 px-md-4" style="height: calc(100vh - 70px); overflow-y: auto; scroll-behavior: smooth;">
+            
+            <div class="mb-5 pt-2">
+                <span class="badge bg-info text-dark px-3 py-2 rounded-pill mb-2 fw-bold">BAB 1.E</span>
+                <h1 class="fw-bold text-dark display-6">Pembagian Bilangan Bulat</h1>
+                <p class="text-muted fs-5">Aturannya <strong>SAMA PERSIS</strong> dengan perkalian!</p>
+            </div>
+
+            <div class="card border-0 shadow-sm rounded-4 mb-5 bg-light">
+                <div class="card-body p-4 d-flex align-items-center">
+                    <div class="icon-box bg-white text-info p-3 rounded-circle shadow-sm me-4 d-none d-md-block">
+                        <i class="fa-solid fa-arrows-rotate fs-3"></i>
+                    </div>
+                    <div>
+                        <h5 class="fw-bold text-dark">Konsep Dasar</h5>
+                        <p class="mb-0 text-secondary fs-5">
+                            Pembagian adalah <strong>kebalikan dari perkalian</strong>. <br>
+                            Jika <span class="badge bg-success bg-opacity-25 text-success border">3 x 4 = 12</span>, maka <span class="badge bg-info bg-opacity-25 text-info border">12 : 4 = 3</span>.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card border-0 shadow-sm rounded-4 mb-5">
+                <div class="card-header bg-info bg-opacity-10 p-4 border-bottom-0">
+                    <h4 class="fw-bold text-dark mb-0 text-center">Rumus Tanda Pembagian</h4>
+                </div>
+                <div class="card-body p-4">
+                    <div class="row g-3 text-center">
+                        
+                        <div class="col-md-6">
+                            <div class="p-4 rounded-4 bg-success bg-opacity-10 border border-success border-opacity-25 h-100">
+                                <h5 class="fw-bold text-success mb-2">Tanda SAMA = POSITIF</h5>
+                                <div class="bg-white rounded-3 p-2 shadow-sm font-monospace">
+                                    (+) : (+) = <span class="text-success fw-bold">Positif</span><br>
+                                    (-) : (-) = <span class="text-success fw-bold">Positif</span>
+                                </div>
+                                <p class="small mt-2 mb-0 text-muted">Contoh: -10 : (-2) = 5</p>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="p-4 rounded-4 bg-danger bg-opacity-10 border border-danger border-opacity-25 h-100">
+                                <h5 class="fw-bold text-danger mb-2">Tanda BEDA = NEGATIF</h5>
+                                <div class="bg-white rounded-3 p-2 shadow-sm font-monospace">
+                                    (+) : (-) = <span class="text-danger fw-bold">Negatif</span><br>
+                                    (-) : (+) = <span class="text-danger fw-bold">Negatif</span>
+                                </div>
+                                <p class="small mt-2 mb-0 text-muted">Contoh: -10 : 2 = -5</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="card shadow-lg border-0 rounded-4 overflow-hidden mb-5">
+                <div class="card-header bg-dark text-white p-3 d-flex justify-content-between align-items-center">
+                    <div>
+                        <i class="fa-solid fa-gamepad fs-4 me-2"></i>
+                        <span class="fw-bold">Lab Virtual: Visualisasi Pembagian</span>
+                    </div>
+                </div>
+                <div class="card-body p-0 bg-light">
+                    <div class="ratio ratio-16x9" style="max-height: 550px;">
+                        <iframe src="{% static 'main/geogebra_pembagian_bulat/geogebra.html' %}" 
+                                style="border:0;" 
+                                allowfullscreen 
+                                loading="lazy">
+                        </iframe>
+                    </div>
+                </div>
+                <div class="card-footer bg-white p-3 text-center">
+                    <small class="text-muted">
+                        <i class="fa-solid fa-lightbulb text-info me-1"></i> 
+                        <strong>Tips:</strong> Gunakan slider untuk melihat langkah: Bagi → Kali → Kurang → Turun.
+                    </small>
+                </div>
+            </div>
+
+            <div class="card border-0 shadow-sm rounded-4 bg-white mb-5 border-top border-info border-4">
+                <div class="card-body p-5">
+                    <h4 class="fw-bold text-dark mb-4">Cek Pemahamanmu</h4>
+                    
+                    <div class="mb-4 pb-3 border-bottom">
+                        <label class="form-label fw-bold text-secondary">1. Hasil dari -20 : 5 adalah...</label>
+                        <div class="input-group w-md-50">
+                            <input type="number" id="bagi_1" class="form-control" placeholder="Jawaban...">
+                            <button class="btn btn-info text-white fw-bold" onclick="cekIsian('bagi_1', -4, 'res_b1')">Cek</button>
+                        </div>
+                        <div id="res_b1" class="mt-2 fw-bold" style="display:none;"></div>
+                        <small class="text-muted d-block mt-1">Negatif dibagi Positif hasilnya Negatif.</small>
+                    </div>
+
+                    <div class="mb-0">
+                        <label class="form-label fw-bold text-secondary">2. Hasil dari -18 : (-3) adalah...</label>
+                        <div class="input-group w-md-50">
+                            <input type="number" id="bagi_2" class="form-control" placeholder="Jawaban...">
+                            <button class="btn btn-info text-white fw-bold" onclick="cekIsian('bagi_2', 6, 'res_b2')">Cek</button>
+                        </div>
+                        <div id="res_b2" class="mt-2 fw-bold" style="display:none;"></div>
+                        <small class="text-muted d-block mt-1">Tanda sama, hasilnya Positif.</small>
+                    </div>
+                </div>
+            </div>
+
+            <div class="d-flex justify-content-between pb-5">
+                <a href="{% url 'bulat_perkalian' %}" class="btn btn-outline-secondary rounded-pill px-4">
+                    <i class="fa-solid fa-arrow-left me-2"></i> Perkalian
+                </a>
+                <a href="{% url 'bulat_latihan' %}" class="btn btn-success rounded-pill px-5 shadow fw-bold">
+                    Lanjut: Latihan Soal <i class="fa-solid fa-pencil ms-2"></i>
+                </a>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script>
+    function cekIsian(inputId, kunci, resId) {
+        var inputEl = document.getElementById(inputId);
+        var resEl = document.getElementById(resId);
+        var userVal = parseInt(inputEl.value);
+
+        if (!inputEl.value) {
+            resEl.innerHTML = '<span class="text-muted">Isi jawaban dulu ya!</span>';
+            resEl.style.display = 'block';
+            return;
+        }
+
+        if (userVal === kunci) {
+            resEl.innerHTML = '<span class="text-success"><i class="fa-solid fa-check-circle me-1"></i>Benar! Kamu hebat.</span>';
+            inputEl.classList.add('is-valid');
+            inputEl.classList.remove('is-invalid');
+        } else {
+            resEl.innerHTML = '<span class="text-danger"><i class="fa-solid fa-xmark-circle me-1"></i>Masih salah. Coba lagi.</span>';
+            inputEl.classList.add('is-invalid');
+            inputEl.classList.remove('is-valid');
+        }
+        resEl.style.display = 'block';
+    }
+</script>
+
+{% endblock %}
