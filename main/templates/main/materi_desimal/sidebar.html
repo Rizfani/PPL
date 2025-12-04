@@ -1,0 +1,41 @@
+<div class="sidebar-wrapper">
+    <h5 class="fw-bold text-success mb-3 px-2">
+        <i class="fa-solid fa-percent me-2"></i>Bilangan Desimal
+    </h5>
+    
+    <small class="text-muted text-uppercase fw-bold ms-2" style="font-size: 0.75rem;">Pengenalan</small>
+    <a href="{% url 'desimal_pengertian' %}" class="menu-link {% if active_tab == 'pengertian' %}active{% endif %}">
+        <i class="fa-solid fa-book me-2 small"></i>1. Pengertian
+    </a>
+    <a href="{% url 'desimal_membandingkan' %}" class="menu-link {% if active_tab == 'membandingkan' %}active{% endif %}">
+        <i class="fa-solid fa-scale-balanced me-2 small"></i>2. Membandingkan
+    </a>
+
+    <hr class="my-2 opacity-25">
+    
+    <small class="text-muted text-uppercase fw-bold ms-2" style="font-size: 0.75rem;">Operasi Hitung</small>
+    <a href="{% url 'desimal_penjumlahan' %}" class="menu-link {% if active_tab == 'penjumlahan' %}active{% endif %}">
+        <i class="fa-solid fa-plus me-2 small"></i>3. Penjumlahan
+    </a>
+    <a href="{% url 'desimal_pengurangan' %}" class="menu-link {% if active_tab == 'pengurangan' %}active{% endif %}">
+        <i class="fa-solid fa-minus me-2 small"></i>4. Pengurangan
+    </a>
+    <a href="{% url 'desimal_perkalian' %}" class="menu-link {% if active_tab == 'perkalian' %}active{% endif %}">
+        <i class="fa-solid fa-xmark me-2 small"></i>5. Perkalian
+    </a>
+    <a href="{% url 'desimal_pembagian' %}" class="menu-link {% if active_tab == 'pembagian' %}active{% endif %}">
+        <i class="fa-solid fa-divide me-2 small"></i>6. Pembagian
+    </a>
+
+    <hr class="my-2 opacity-25">
+
+    <a href="{% url 'desimal_latihan' %}" class="menu-link text-success fw-bold {% if active_tab == 'latihan' %}active{% endif %}">
+        <i class="fa-solid fa-pencil me-2"></i>Latihan Soal
+    </a>
+
+    <div class="mt-4 px-2">
+        <a href="{% url 'materi' %}" class="btn btn-outline-secondary w-100 btn-sm rounded-pill">
+            <i class="fa-solid fa-arrow-left me-1"></i> Menu Materi
+        </a>
+    </div>
+</div>
