@@ -1,0 +1,54 @@
+<style>
+    .sidebar-wrapper {
+        position: sticky;
+        top: 80px;
+        height: calc(100vh - 100px);
+        overflow-y: auto;
+        padding-right: 15px;
+        border-right: 1px solid #dee2e6;
+    }
+    .sidebar-link {
+        display: block;
+        padding: 10px 15px;
+        color: #495057;
+        text-decoration: none;
+        border-radius: 8px;
+        margin-bottom: 5px;
+        font-weight: 500;
+        transition: all 0.2s;
+    }
+    .sidebar-link:hover { background-color: #e9ecef; color: #0d6efd; transform: translateX(5px); }
+    
+    /* Warna Aktif (Logic Django) */
+    .sidebar-link.active { background-color: #0d6efd; color: white; font-weight: bold; }
+
+    @media (max-width: 992px) { .sidebar-wrapper { display: none; } }
+</style>
+
+<div class="sidebar-wrapper">
+    <h5 class="fw-bold text-primary mb-3 px-2">Bilangan Bulat</h5>
+    
+    <small class="text-muted text-uppercase fw-bold ms-2" style="font-size: 0.75rem;">Pengenalan</small>
+    <a href="{% url 'bulat_pengertian' %}" class="sidebar-link {% if active_tab == 'pengertian' %}active{% endif %}">1. Pengertian</a>
+    <a href="{% url 'bulat_membandingkan' %}" class="sidebar-link {% if active_tab == 'membandingkan' %}active{% endif %}">2. Membandingkan</a>
+
+    <hr class="my-2 opacity-25">
+    
+    <small class="text-muted text-uppercase fw-bold ms-2" style="font-size: 0.75rem;">Operasi Hitung</small>
+    <a href="{% url 'bulat_penjumlahan' %}" class="sidebar-link {% if active_tab == 'penjumlahan' %}active{% endif %}">3. Penjumlahan</a>
+    <a href="{% url 'bulat_pengurangan' %}" class="sidebar-link {% if active_tab == 'pengurangan' %}active{% endif %}">4. Pengurangan</a>
+    <a href="{% url 'bulat_perkalian' %}" class="sidebar-link {% if active_tab == 'perkalian' %}active{% endif %}">5. Perkalian</a>
+    <a href="{% url 'bulat_pembagian' %}" class="sidebar-link {% if active_tab == 'pembagian' %}active{% endif %}">6. Pembagian</a>
+
+    <hr class="my-2 opacity-25">
+
+    <a href="{% url 'bulat_latihan' %}" class="sidebar-link text-success {% if active_tab == 'latihan' %}active{% endif %}">
+        <i class="fa-solid fa-pencil me-2"></i>Latihan Soal
+    </a>
+
+    <div class="mt-4 px-2">
+        <a href="{% url 'materi' %}" class="btn btn-outline-secondary w-100 btn-sm rounded-pill">
+            <i class="fa-solid fa-arrow-left"></i> Menu Materi
+        </a>
+    </div>
+</div>
