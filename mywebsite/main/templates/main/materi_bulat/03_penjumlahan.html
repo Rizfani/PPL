@@ -1,0 +1,171 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% block title %}Penjumlahan Bilangan Bulat - GeoMath{% endblock %}
+
+{% block content %}
+
+<div class="container py-5">
+    <div class="row">
+        
+        <div class="col-md-3 col-lg-2 p-0">
+            {% include 'main/materi_bulat/sidebar.html' %}
+        </div>
+
+        <div class="col-md-9 col-lg-10 p-4" style="height: calc(100vh - 70px); overflow-y: auto; scroll-behavior: smooth;">
+            
+            <div class="mb-5">
+                <h1 class="fw-bold text-dark">Penjumlahan Bilangan Bulat</h1>
+                <p class="text-muted fs-5">Bagaimana cara menjumlahkan bilangan positif dan negatif?</p>
+            </div>
+
+            <div class="row g-4 mb-5">
+                
+                <div class="col-lg-6">
+                    <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden">
+                        <div class="card-header bg-primary text-white p-3 text-center border-0">
+                            <h5 class="mb-0 fw-bold"><i class="fa-solid fa-user-group me-2"></i>1. Tanda Sama</h5>
+                        </div>
+                        <div class="card-body p-4 bg-light">
+                            <div class="alert alert-primary text-center border-0 mb-3">
+                                <strong>JUMLAHKAN</strong> angkanya, tandanya <strong>TETAP</strong>.
+                            </div>
+                            <ul class="list-group list-group-flush bg-transparent">
+                                <li class="list-group-item bg-transparent px-0">
+                                    <i class="fa-solid fa-check text-success me-2"></i> 
+                                    3 + 5 = <strong>8</strong> <span class="badge bg-primary bg-opacity-10 text-primary ms-1">Positif</span>
+                                </li>
+                                <li class="list-group-item bg-transparent px-0">
+                                    <i class="fa-solid fa-check text-danger me-2"></i> 
+                                    -4 + (-2) = <strong>-6</strong> <span class="badge bg-danger bg-opacity-10 text-danger ms-1">Negatif</span>
+                                </li>
+                            </ul>
+                            <div class="mt-3 p-3 bg-white rounded border border-start border-4 border-primary small text-muted">
+                                <em>"Contoh pertama: punya 3 apel, lalu ditambah 5 apel, jadi totalnya 8 apel.<br>
+                                Contoh kedua: kedalaman –4 meter turun lagi 2 meter menjadi –6 meter."</em>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6">
+                    <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden">
+                        <div class="card-header bg-warning text-dark p-3 text-center border-0">
+                            <h5 class="mb-0 fw-bold"><i class="fa-solid fa-scale-unbalanced me-2"></i>2. Tanda Beda</h5>
+                        </div>
+                        <div class="card-body p-4 bg-light">
+                            <div class="alert alert-warning text-center border-0 mb-3">
+                                <strong>KURANGI</strong> (Besar - Kecil), tanda ikut yang <strong>BESAR</strong>.
+                            </div>
+                            <ul class="list-group list-group-flush bg-transparent">
+                                <li class="list-group-item bg-transparent px-0">
+                                    <strong>-7 + 3 = -4</strong> <br>
+                                    <small class="text-muted">(7 lebih besar dari 3, tandanya negatif)</small>
+                                </li>
+                                <li class="list-group-item bg-transparent px-0">
+                                    <strong>6 + (-2) = 4</strong> <br>
+                                    <small class="text-muted">(6 lebih besar dari 2, tandanya positif)</small>
+                                </li>
+                            </ul>
+                            <div class="mt-3 p-3 bg-white rounded border border-start border-4 border-warning small text-muted">
+                                <em>"Contoh 1: Suhu –7 derajat lalu naik 3 derajat menjadi –4 derajat.<br>
+									Contoh 2: Suhu 6 derajat, turun 2 derajat menjadi 4 derajat."</em>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="card shadow-lg border-0 rounded-4 overflow-hidden mb-5">
+                <div class="card-header bg-dark text-white p-3 d-flex justify-content-between align-items-center">
+                    <div>
+                        <i class="fa-solid fa-gamepad fs-4 me-2"></i>
+                        <span class="fw-bold">Lab Virtual: Balon & Pemberat</span>
+                    </div>
+                </div>
+                
+                <div class="bg-white p-3 border-bottom">
+                    <div class="row text-center">
+                        <div class="col-6 border-end">
+                            <i class="fa-solid fa-balloon text-danger"></i> <strong>Tambah Balon</strong> = Naik (Positif)
+                        </div>
+                        <div class="col-6">
+                            <i class="fa-solid fa-weight-hanging text-secondary"></i> <strong>Tambah Beban</strong> = Turun (Negatif)
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-body p-0 bg-light">
+                    <div class="ratio ratio-16x9" style="max-height: 550px;">
+                        <iframe src="{% static 'main/geogebra_bilangan_bulat/geogebra.html' %}" 
+                                style="border:0;" 
+                                allowfullscreen 
+                                loading="lazy">
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card border-0 shadow-sm rounded-4 bg-white mb-5">
+                <div class="card-body p-4">
+                    <h5 class="fw-bold text-dark mb-4"><i class="fa-solid fa-pencil me-2 text-success"></i>Cek Pemahamanmu</h5>
+                    
+                    <div class="mb-4 pb-3 border-bottom">
+                        <label class="form-label fw-bold">1. Hasil dari -5 + (-3) adalah...</label>
+                        <div class="input-group w-50">
+                            <input type="number" id="input_1" class="form-control" placeholder="Jawaban...">
+                            <button class="btn btn-primary" onclick="cekIsian('input_1', -8, 'res_1')">Cek</button>
+                        </div>
+                        <div id="res_1" class="mt-2 fw-bold" style="display:none;"></div>
+                    </div>
+
+                    <div class="mb-0">
+                        <label class="form-label fw-bold">2. Hasil dari -10 + 15 adalah...</label>
+                        <div class="input-group w-50">
+                            <input type="number" id="input_2" class="form-control" placeholder="Jawaban...">
+                            <button class="btn btn-primary" onclick="cekIsian('input_2', 5, 'res_2')">Cek</button>
+                        </div>
+                        <div id="res_2" class="mt-2 fw-bold" style="display:none;"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="d-flex justify-content-between pb-5">
+                <a href="{% url 'bulat_membandingkan' %}" class="btn btn-outline-secondary rounded-pill px-4">
+                    <i class="fa-solid fa-arrow-left me-2"></i> Sebelumnya
+                </a>
+                <a href="{% url 'bulat_pengurangan' %}" class="btn btn-primary rounded-pill px-5 shadow fw-bold">
+                    Lanjut: Pengurangan <i class="fa-solid fa-arrow-right ms-2"></i>
+                </a>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script>
+    function cekIsian(inputId, kunci, resId) {
+        var inputEl = document.getElementById(inputId);
+        var resEl = document.getElementById(resId);
+        var userVal = parseInt(inputEl.value);
+
+        if (!inputEl.value) {
+            resEl.innerHTML = '<span class="text-muted">Isi jawaban dulu ya!</span>';
+            resEl.style.display = 'block';
+            return;
+        }
+
+        if (userVal === kunci) {
+            resEl.innerHTML = '<span class="text-success"><i class="fa-solid fa-check-circle me-1"></i>Benar! Kamu hebat.</span>';
+            inputEl.classList.add('is-valid');
+            inputEl.classList.remove('is-invalid');
+        } else {
+            resEl.innerHTML = '<span class="text-danger"><i class="fa-solid fa-xmark-circle me-1"></i>Masih salah. Coba hitung lagi.</span>';
+            inputEl.classList.add('is-invalid');
+            inputEl.classList.remove('is-valid');
+        }
+        resEl.style.display = 'block';
+    }
+</script>
+
+{% endblock %}

@@ -1,6 +1,41 @@
 <!DOCTYPE html>
 <html lang="id" dir="ltr">
     <head>
+        <style>
+    /* 1. Sembunyikan Judul Halaman Bawaan */
+    .wsf-worksheet-title {
+        display: none !important;
+    }
+
+    /* 2. Sembunyikan Pertanyaan (Q) dan Teks (T) Bawaan */
+    /* Ini akan menghilangkan "Putting It All Together" dan kotak isiannya */
+    div[data-type="T"], 
+    div[data-type="Q"],
+    .wsf-info-wrapper,
+    .save-wrapper {
+        display: none !important;
+    }
+
+    /* 3. PASTIKAN Simulasi (G = Graph) Tetap Muncul */
+    div[data-type="G"] {
+        display: block !important;
+        visibility: visible !important;
+        margin: 0 auto;
+    }
+    
+    /* 4. Rapikan Layout agar tidak ada sisa ruang putih */
+    body, .page, .wsf-wrapper {
+        margin: 0 !important;
+        padding: 0 !important;
+        overflow: hidden; 
+        background-color: #ffffff;
+    }
+    
+    .worksheet_tbl {
+        margin-top: 0 !important;
+    }
+</style>
+
         <title>Adding and Subtracting Integers with Balloons and Sandbags - GeoGebra</title>        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes">
 

@@ -374,3 +374,78 @@ def tentang(request):
         'profile': profile,
     }
     return render(request, 'main/tentang.html', context)
+
+
+# Bilangan bulat@login_required
+
+
+@login_required
+def bulat_pengertian(request):
+    profile, created = Profile.objects.get_or_create(user=request.user)
+    return render(request, 'main/materi_bulat/01_pengertian.html', {
+        'profile': profile, 
+        'active_tab': 'pengertian',
+        # 👇 TAMBAHAN PENTING AGAR PROFIL MUNCUL 👇
+        'username': request.user.username,
+        'kelas': profile.kelas
+    })
+
+@login_required
+def bulat_membandingkan(request):
+    profile, created = Profile.objects.get_or_create(user=request.user)
+    return render(request, 'main/materi_bulat/02_membandingkan.html', {
+        'profile': profile, 
+        'active_tab': 'membandingkan',
+        'username': request.user.username,
+        'kelas': profile.kelas
+    })
+
+@login_required
+def bulat_penjumlahan(request):
+    profile, created = Profile.objects.get_or_create(user=request.user)
+    return render(request, 'main/materi_bulat/03_penjumlahan.html', {
+        'profile': profile, 
+        'active_tab': 'penjumlahan',
+        'username': request.user.username,
+        'kelas': profile.kelas
+    })
+
+@login_required
+def bulat_pengurangan(request):
+    profile, created = Profile.objects.get_or_create(user=request.user)
+    return render(request, 'main/materi_bulat/04_pengurangan.html', {
+        'profile': profile, 
+        'active_tab': 'pengurangan',
+        'username': request.user.username,
+        'kelas': profile.kelas
+    })
+
+@login_required
+def bulat_perkalian(request):
+    profile, created = Profile.objects.get_or_create(user=request.user)
+    return render(request, 'main/materi_bulat/05_perkalian.html', {
+        'profile': profile, 
+        'active_tab': 'perkalian',
+        'username': request.user.username,
+        'kelas': profile.kelas
+    })
+
+@login_required
+def bulat_pembagian(request):
+    profile, created = Profile.objects.get_or_create(user=request.user)
+    return render(request, 'main/materi_bulat/06_pembagian.html', {
+        'profile': profile, 
+        'active_tab': 'pembagian',
+        'username': request.user.username,
+        'kelas': profile.kelas
+    })
+
+@login_required
+def bulat_latihan(request):
+    profile, created = Profile.objects.get_or_create(user=request.user)
+    return render(request, 'main/materi_bulat/07_latihan.html', {
+        'profile': profile, 
+        'active_tab': 'latihan',
+        'username': request.user.username,
+        'kelas': profile.kelas
+    })
