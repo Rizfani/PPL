@@ -10,6 +10,8 @@ from .models import Profile, Nilai, Feedback
 from .models import Kuis, ButirSoal, StatusMateri, Nilai
 from .models import RiwayatSimulasi
 from django.http import JsonResponse
+from django.shortcuts import render, redirect, get_object_or_404 # <-- Tambah get_object_or_404
+from .models import Kuis, ButirSoal, Nilai
 
 # --- HALAMAN DEPAN ---
 def home(request):
@@ -292,50 +294,55 @@ def tandai_selesai(request, kategori):
 
 @login_required
 def kerjakan_kuis(request, kuis_id):
-    # --- MODE DUMMY (DATA PALSU) ---
-    # Agar tidak error "DoesNotExist"
+    profile, created = Profile.objects.get_or_create(user=request.user)
     
-    kuis = {}
-    soal_list = []
+    kuis = get_object_or_404(Kuis, id=kuis_id)
+    soal_list = ButirSoal.objects.filter(kuis=kuis)
 
-    if kuis_id == 1:
-        # Data Latihan 1 (Bulat)
-        kuis = { 'nama': 'Latihan 1: Bilangan Bulat', 'minimal_nilai': 60 }
-        soal_list = [
-            {'id': 1, 'teks_soal': 'Suhu awal -5°C, naik 4°C. Berapa suhu sekarang?', 'opsi_a': '-1°C', 'opsi_b': '-9°C', 'opsi_c': '1°C', 'opsi_d': '9°C', 'kunci': 'a'},
-            {'id': 2, 'teks_soal': 'Utang 5.000, dibayar 2.000. Sisa utang?', 'opsi_a': '-3000', 'opsi_b': '-7000', 'opsi_c': '3000', 'opsi_d': '7000', 'kunci': 'a'},
-            {'id': 3, 'teks_soal': '8 + (-5) = ...', 'opsi_a': '3', 'opsi_b': '-3', 'opsi_c': '13', 'opsi_d': '-13', 'kunci': 'a'},
-        ]
-        
-    elif kuis_id == 2:
-        # Data Latihan 2 (Desimal)
-        kuis = { 'nama': 'Latihan 2: Bilangan Desimal', 'minimal_nilai': 60 }
-        soal_list = [
-            {'id': 1, 'teks_soal': '2,5 liter + 1,2 liter = ...', 'opsi_a': '3,7 liter', 'opsi_b': '3,07 liter', 'opsi_c': '4,7 liter', 'opsi_d': '2,7 liter', 'kunci': 'a'},
-            {'id': 2, 'teks_soal': 'Manakah yang lebih besar?', 'opsi_a': '0,7', 'opsi_b': '0,49', 'opsi_c': '0,099', 'opsi_d': '0,1', 'kunci': 'a'},
-            {'id': 3, 'teks_soal': 'Hasil dari 0,5 x 0,5 adalah...', 'opsi_a': '0,25', 'opsi_b': '2,5', 'opsi_c': '0,55', 'opsi_d': '0,10', 'kunci': 'a'},
-        ]
+    # Variabel untuk menampung hasil (defaultnya Kosong/None)
+    hasil_data = None 
 
-    # Logika sederhana untuk menangkap jawaban (Tanpa Database)
     if request.method == 'POST':
-        skor = 0
-        total_soal = len(soal_list)
+        skor_benar = 0
+        total_soal = soal_list.count()
+
+        # Cek Jawaban
         for soal in soal_list:
-            jawaban = request.POST.get(f"soal_{soal['id']}")
-            if jawaban == soal['kunci']:
-                skor += 1
+            jawaban_user = request.POST.get(f'soal_{soal.id}')
+            if jawaban_user == soal.kunci:
+                skor_benar += 1
         
-        nilai_akhir = (skor / total_soal) * 100
+        # Hitung Nilai
+        nilai_akhir = 0
+        if total_soal > 0:
+            nilai_akhir = int((skor_benar / total_soal) * 100)
         
-        if nilai_akhir >= 60:
-            messages.success(request, f"Selamat! Nilai kamu {int(nilai_akhir)}.")
-            return redirect('latihan')
-        else:
-            messages.error(request, f"Nilai kamu {int(nilai_akhir)}. Coba lagi ya!")
-            return redirect('kerjakan_kuis', kuis_id=kuis_id)
+        # Simpan ke Database
+        Nilai.objects.update_or_create(
+            user=request.user,
+            kategori=kuis.kategori_materi,
+            defaults={'skor': nilai_akhir}
+        )
 
-    return render(request, 'main/quiz_interface.html', {'kuis': kuis, 'soal_list': soal_list})
+        # --- BAGIAN PENTING: JANGAN REDIRECT ---
+        # Kita siapkan datanya untuk ditampilkan langsung di HTML
+        hasil_data = {
+            'skor': nilai_akhir,
+            'benar': skor_benar,
+            'total': total_soal,
+            'lulus': nilai_akhir >= kuis.minimal_nilai,
+            'kkm': kuis.minimal_nilai
+        }
 
+    return render(request, 'main/quiz_interface.html', {
+        'kuis': kuis, 
+        'soal_list': soal_list,
+        'hasil_data': hasil_data, # <-- Kita kirim data hasil ke sini
+        
+        'username': request.user.username,
+        'kelas': profile.kelas,
+        'profile': profile
+    })
 # --- FUNGSI LATIHAN BULAT (BARU) ---
 @login_required
 def latihan_bulat(request):
