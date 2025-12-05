@@ -14,9 +14,6 @@ urlpatterns = [
     # --- Menu Materi Utama ---
     path('materi/', views.materi, name='materi'),
 
-    # --- MATERI BILANGAN DESIMAL (Masih 1 File) ---
-    path('materi/bilangan-desimal/', views.materi_desimal, name='materi_desimal'),
-
     # --- MATERI BILANGAN BULAT (DIPISAH-PISAH) ---
     # Redirect link lama ke halaman pertama (pengertian)
     path('materi/bilangan-bulat/', views.bulat_pengertian, name='materi_bulat'), 
@@ -35,12 +32,11 @@ urlpatterns = [
     path('tandai-selesai/<str:kategori>/', views.tandai_selesai, name='tandai_selesai'),
     path('kuis/<int:kuis_id>/', views.kerjakan_kuis, name='kerjakan_kuis'),
     
-    
-    # Desimal
+# --- MATERI BILANGAN DESIMAL (BARU) ---
+    # Redirect menu utama desimal ke pengertian
     path('materi/bilangan-desimal/', views.desimal_pengertian, name='materi_desimal'), 
 
     path('materi/desimal/pengertian/', views.desimal_pengertian, name='desimal_pengertian'),
-    path('materi/desimal/membandingkan/', views.desimal_membandingkan, name='desimal_membandingkan'),
     path('materi/desimal/penjumlahan/', views.desimal_penjumlahan, name='desimal_penjumlahan'),
     path('materi/desimal/pengurangan/', views.desimal_pengurangan, name='desimal_pengurangan'),
     path('materi/desimal/perkalian/', views.desimal_perkalian, name='desimal_perkalian'),

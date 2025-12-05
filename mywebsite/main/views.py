@@ -196,71 +196,55 @@ def materi_bulat(request):
     })
 
 @login_required
-def materi_desimal(request):
+# --- VIEW MATERI DESIMAL ---
+
+@login_required
+def desimal_pengertian(request):
     profile, created = Profile.objects.get_or_create(user=request.user)
-    
-    if request.method == "POST":
-        try:
-            # Ambil input
-            s1 = request.POST.get('angka1')
-            s2 = request.POST.get('angka2')
-            a1 = float(s1)
-            a2 = float(s2)
-            jawaban = request.POST.get('pilihan')
+    return render(request, 'main/materi_desimal/01_pengertian.html', {
+        'profile': profile, 'active_tab': 'pengertian',
+        'username': request.user.username, 'kelas': profile.kelas
+    })
 
-            # Logika Perbandingan
-            if a1 > a2:
-                kunci = "A"
-                tanda = ">"
-                besar = s1
-            elif a2 > a1:
-                kunci = "B"
-                tanda = "<"
-                besar = s2
-            else:
-                kunci = "Sama"
-                tanda = "="
 
-            # Logika Penjelasan (Analisis Digit)
-            analisis = "Angka sama persis."
-            max_len = max(len(s1), len(s2))
-            s1_pad = s1.ljust(max_len, '0')
-            s2_pad = s2.ljust(max_len, '0')
+@login_required
+def desimal_penjumlahan(request):
+    profile, created = Profile.objects.get_or_create(user=request.user)
+    return render(request, 'main/materi_desimal/02_penjumlahan.html', {
+        'profile': profile, 'active_tab': 'penjumlahan',
+        'username': request.user.username, 'kelas': profile.kelas
+    })
 
-            for i in range(max_len):
-                if s1_pad[i] != s2_pad[i]:
-                    koma_index = s1.find('.')
-                    jarak = i - koma_index
-                    nama_posisi = "angka depan"
-                    if jarak == 1: nama_posisi = "persepuluhan"
-                    elif jarak == 2: nama_posisi = "perseratusan"
-                    elif jarak == 3: nama_posisi = "perseribuan"
-                    
-                    analisis = f"Lihat posisi <b>{nama_posisi}</b>: Angka <b>{s1_pad[i]}</b> vs <b>{s2_pad[i]}</b>. Karena itu, {besar} lebih besar."
-                    break
+@login_required
+def desimal_pengurangan(request):
+    profile, created = Profile.objects.get_or_create(user=request.user)
+    return render(request, 'main/materi_desimal/03_pengurangan.html', {
+        'profile': profile, 'active_tab': 'pengurangan',
+        'username': request.user.username, 'kelas': profile.kelas
+    })
 
-            is_correct = (jawaban == kunci)
-            
-            # Simpan Riwayat (Opsional, aktifkan jika perlu)
-            # RiwayatSimulasi.objects.create(...)
+@login_required
+def desimal_perkalian(request):
+    profile, created = Profile.objects.get_or_create(user=request.user)
+    return render(request, 'main/materi_desimal/04_perkalian.html', {
+        'profile': profile, 'active_tab': 'perkalian',
+        'username': request.user.username, 'kelas': profile.kelas
+    })
 
-            # 👇 PERUBAHAN UTAMA: Return JSON, bukan render HTML
-            return JsonResponse({
-                'status': 'success',
-                'benar': is_correct,
-                'text_hasil': f"Hasil: {a1} {tanda} {a2}",
-                'detail_penjelasan': analisis
-            })
+@login_required
+def desimal_pembagian(request):
+    profile, created = Profile.objects.get_or_create(user=request.user)
+    return render(request, 'main/materi_desimal/05_pembagian.html', {
+        'profile': profile, 'active_tab': 'pembagian',
+        'username': request.user.username, 'kelas': profile.kelas
+    })
 
-        except ValueError:
-            return JsonResponse({'status': 'error', 'msg': 'Input tidak valid'})
-
-    # GET Request (Buka Halaman Pertama Kali)
-    return render(request, "main/materi_desimal.html", {
-        'username': request.user.username,
-        'kelas': profile.kelas,
-        'active': 'materi',
-        'profile' : profile
+@login_required
+def desimal_latihan(request):
+    profile, created = Profile.objects.get_or_create(user=request.user)
+    return render(request, 'main/materi_desimal/06_latihan.html', {
+        'profile': profile, 'active_tab': 'latihan',
+        'username': request.user.username, 'kelas': profile.kelas
     })
     
 @login_required
@@ -502,18 +486,11 @@ def desimal_pengertian(request):
         'username': request.user.username, 'kelas': profile.kelas
     })
 
-@login_required
-def desimal_membandingkan(request):
-    profile, created = Profile.objects.get_or_create(user=request.user)
-    return render(request, 'main/materi_desimal/02_membandingkan.html', {
-        'profile': profile, 'active_tab': 'membandingkan',
-        'username': request.user.username, 'kelas': profile.kelas
-    })
 
 @login_required
 def desimal_penjumlahan(request):
     profile, created = Profile.objects.get_or_create(user=request.user)
-    return render(request, 'main/materi_desimal/03_penjumlahan.html', {
+    return render(request, 'main/materi_desimal/02_penjumlahan.html', {
         'profile': profile, 'active_tab': 'penjumlahan',
         'username': request.user.username, 'kelas': profile.kelas
     })
@@ -521,7 +498,7 @@ def desimal_penjumlahan(request):
 @login_required
 def desimal_pengurangan(request):
     profile, created = Profile.objects.get_or_create(user=request.user)
-    return render(request, 'main/materi_desimal/04_pengurangan.html', {
+    return render(request, 'main/materi_desimal/03_pengurangan.html', {
         'profile': profile, 'active_tab': 'pengurangan',
         'username': request.user.username, 'kelas': profile.kelas
     })
@@ -529,7 +506,7 @@ def desimal_pengurangan(request):
 @login_required
 def desimal_perkalian(request):
     profile, created = Profile.objects.get_or_create(user=request.user)
-    return render(request, 'main/materi_desimal/05_perkalian.html', {
+    return render(request, 'main/materi_desimal/04_perkalian.html', {
         'profile': profile, 'active_tab': 'perkalian',
         'username': request.user.username, 'kelas': profile.kelas
     })
@@ -537,7 +514,7 @@ def desimal_perkalian(request):
 @login_required
 def desimal_pembagian(request):
     profile, created = Profile.objects.get_or_create(user=request.user)
-    return render(request, 'main/materi_desimal/06_pembagian.html', {
+    return render(request, 'main/materi_desimal/05_pembagian.html', {
         'profile': profile, 'active_tab': 'pembagian',
         'username': request.user.username, 'kelas': profile.kelas
     })
@@ -545,7 +522,7 @@ def desimal_pembagian(request):
 @login_required
 def desimal_latihan(request):
     profile, created = Profile.objects.get_or_create(user=request.user)
-    return render(request, 'main/materi_desimal/07_latihan.html', {
+    return render(request, 'main/materi_desimal/06_latihan.html', {
         'profile': profile, 'active_tab': 'latihan',
         'username': request.user.username, 'kelas': profile.kelas
     })
