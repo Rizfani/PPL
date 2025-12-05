@@ -14,13 +14,20 @@
 <body>
     <div class="card-container">
         
-        <div class="profile-header">
+         <div class="profile-header">
             <h2 class="fw-bold text-primary mb-3">Edit Profil</h2>
             
-            <div class="profile-img-container">
+            <div class="profile-img-container position-relative">
                 <img class="profile-img" src="{{ profile.foto.url }}" alt="Foto Profil">
             </div>
-            
+
+            {% if "default" not in profile.foto.url %}
+            <div class="text-center mb-3">
+                <a href="{% url 'hapus_foto' %}" class="btn btn-outline-danger btn-sm rounded-pill px-3" onclick="return confirm('Yakin ingin menghapus foto profil?');">
+                    <i class="fa-solid fa-trash me-1"></i> Hapus Foto
+                </a>
+            </div>
+            {% endif %}
             <p class="h4 fw-bold mb-0">{{ user_display_name }}</p>
             <p class="text-secondary">{{ profile.kelas }}</p>
         </div>

@@ -133,18 +133,40 @@ def dashboard(request):
         'profile': profile,
         'show_onboarding': show_onboarding,
         
-        # Data Baru
+       
+    }
+    return render(request, 'main/dashboard.html', context)
+
+
+@login_required
+def pencapaian_view(request):
+    profile, created = Profile.objects.get_or_create(user=request.user)
+
+    # --- LOGIKA 1: STATISTIK SAYA (Dipindah ke sini) ---
+    nilai_bulat_obj = Nilai.objects.filter(user=request.user, kategori='bulat').last()
+    nilai_desimal_obj = Nilai.objects.filter(user=request.user, kategori='desimal').last()
+
+    skor_bulat = nilai_bulat_obj.skor if nilai_bulat_obj else 0
+    skor_desimal = nilai_desimal_obj.skor if nilai_desimal_obj else 0
+    
+    rata_rata = (skor_bulat + skor_desimal) / 2
+
+    # --- LOGIKA 2: LEADERBOARD (Dipindah ke sini) ---
+    leaderboard = User.objects.annotate(
+        total_skor=Sum('nilai__skor')
+    ).order_by('-total_skor')[:10]
+
+    context = {
+        'username': request.user.username,
+        'kelas': profile.kelas,
+        'profile': profile,
         'skor_bulat': skor_bulat,
         'skor_desimal': skor_desimal,
         'rata_rata': rata_rata,
         'leaderboard': leaderboard,
-
-
-        'profile' : profile,
-        'show_onboarding': show_onboarding 
-
     }
-    return render(request, 'main/dashboard.html', context)
+    # Pastikan Anda sudah membuat file 'main/pencapaian.html'
+    return render(request, 'main/pencapaian.html', context)
 
 # --- LOGOUT ---
 def logout_view(request):
@@ -376,6 +398,21 @@ def tentang(request):
     return render(request, 'main/tentang.html', context)
 
 
+# main/views.py
+
+@login_required
+def hapus_foto(request):
+    profile = get_object_or_404(Profile, user=request.user)
+    
+    # Cek jika foto bukan default, maka "hapus" (reset ke default)
+    # Pastikan 'profile_pics/default.jpg' sesuai dengan default di models.py Anda
+    if profile.foto.name != 'profile_pics/default.jpg':
+        profile.foto = 'profile_pics/default.jpg'
+        profile.save()
+        messages.success(request, "Foto profil berhasil dihapus (kembali ke default).")
+    
+    return redirect('edit_profile')
+
 # Bilangan bulat@login_required
 
 
@@ -512,3 +549,6 @@ def desimal_latihan(request):
         'profile': profile, 'active_tab': 'latihan',
         'username': request.user.username, 'kelas': profile.kelas
     })
+    
+    
+    

@@ -40,9 +40,6 @@
             <a href="{% url 'materi' %}" class="btn btn-primary btn-lg fw-bold px-4 shadow-sm rounded-pill">
                 <i class="fa-solid fa-rocket me-2"></i>Mulai Belajar
             </a>
-            <a href="#" class="btn btn-outline-dark btn-lg fw-bold px-4 rounded-pill">
-                <i class="fa-solid fa-gamepad me-2"></i>Lihat Latihan
-            </a>
         </div>
     </div>
 </section>
@@ -85,90 +82,6 @@
             <p class="text-muted mb-0">Latihan soal interaktif dengan pembahasan lengkap untuk mengasah kemampuanmu jadi juara.</p>
         </div>
 
-
-    </div>
-</section>
-<section class="container py-5" style="margin-top: -50px; position: relative; z-index: 2;">
-    <div class="row g-4">
-        
-        <div class="col-lg-7">
-            <div class="card border-0 shadow-sm rounded-4 h-100 overflow-hidden">
-                <div class="card-header bg-white border-0 p-4 pb-0">
-                    <h5 class="fw-bold text-dark"><i class="fa-solid fa-chart-pie me-2 text-primary"></i>Statistik Belajar Kamu</h5>
-                </div>
-                <div class="card-body p-4">
-                    
-                    <div class="mb-4">
-                        <div class="d-flex justify-content-between mb-1">
-                            <span class="fw-semibold text-secondary">Bilangan Bulat</span>
-                            <span class="fw-bold text-primary">{{ skor_bulat }}%</span>
-                        </div>
-                        <!-- <div class="progress" style="height: 12px; border-radius: 10px;">
-                            <div class="progress-bar bg-primary" role="progressbar" style="width: {{ skor_bulat }}%"></div>
-                        </div> -->
-                        <small class="text-muted">Pemahaman konsep positif & negatif.</small>
-                    </div>
-
-                    <div class="mb-4">
-                        <div class="d-flex justify-content-between mb-1">
-                            <span class="fw-semibold text-secondary">Bilangan Desimal</span>
-                            <span class="fw-bold text-success">{{ skor_desimal }}%</span>
-                        </div>
-                        <!-- <div class="progress" style="height: 12px; border-radius: 10px;">
-                            <div class="progress-bar bg-success" role="progressbar" style="width: {{ skor_desimal }}%"></div>
-                        </div> -->
-                        <small class="text-muted">Pemahaman koma, pecahan, dan persentase.</small>
-                    </div>
-
-                    <div class="d-flex align-items-center bg-light p-3 rounded-3">
-                        <div class="icon-box bg-warning text-white rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 50px; height: 50px;">
-                            <i class="fa-solid fa-star fs-4"></i>
-                        </div>
-                        <div>
-                            <h6 class="fw-bold mb-0">Level Pemahaman</h6>
-                            <p class="mb-0 text-muted small">
-                                {% if rata_rata > 80 %} Master Matematika 🎓
-                                {% elif rata_rata > 50 %} Murid Rajin 📚
-                                {% else %} Pemula Semangat 🌱
-                                {% endif %}
-                            </p>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-
-        <div class="col-lg-5">
-            <div class="card border-0 shadow-sm rounded-4 h-100 bg-primary text-white" style="background: linear-gradient(135deg, #0d6efd 0%, #0a58ca 100%);">
-                <div class="card-header border-0 p-4 pb-0 bg-transparent">
-                    <h5 class="fw-bold text-white"><i class="fa-solid fa-trophy me-2 text-warning"></i>Top Siswa</h5>
-                </div>
-                <div class="card-body p-4">
-                    
-                    {% if leaderboard %}
-                        <div class="list-group list-group-flush rounded-3 overflow-hidden">
-                            {% for student in leaderboard %}
-                            <div class="list-group-item d-flex align-items-center justify-content-between p-3 border-0" style="background: rgba(255,255,255,0.1); backdrop-filter: blur(5px); margin-bottom: 5px; color: white;">
-                                <div class="d-flex align-items-center">
-                                    <span class="fw-bold me-3" style="font-size: 1.2rem; opacity: 0.8;">#{{ forloop.counter }}</span>
-                                    
-                                    <div>
-                                        <h6 class="mb-0 fw-bold">{{ student.username }}</h6>
-                                        <small style="opacity: 0.7;">Kelas {{ student.profile.kelas|default:"-" }}</small>
-                                    </div>
-                                </div>
-                                <span class="badge bg-warning text-dark rounded-pill">{{ student.total_skor|default:"0" }} XP</span>
-                            </div>
-                            {% endfor %}
-                        </div>
-                    {% else %}
-                        <p class="text-white opacity-75 text-center mt-4">Belum ada data peringkat. Jadilah yang pertama!</p>
-                    {% endif %}
-
-                </div>
-            </div>
-        </div>
 
     </div>
 </section>

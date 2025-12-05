@@ -37,36 +37,49 @@
             </h2>
 
             <div class="d-flex align-items-center ms-auto">
-                <ul class="nav gap-4 fw-semibold me-3 d-none d-md-flex">
-                    <li>
-                        <a href="{% url 'dashboard' %}"
-                           class="text-decoration-none {% if request.path == '/dashboard/' %}text-primary{% else %}text-dark{% endif %}">
-                            <i class="fa-solid fa-house me-1"></i>HOME
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{% url 'materi' %}"
-                           class="text-decoration-none {% if request.path|slice:':8' == '/materi/' %}text-primary{% else %}text-dark{% endif %}">
-                            <i class="fa-solid fa-book-open me-1"></i>MATERI
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{% url 'latihan' %}" 
-                            class="text-decoration-none {% if request.path|slice:':9' == '/latihan/' %}text-primary{% else %}text-dark{% endif %}">
-                            <i class="fa-solid fa-pen-nib me-1"></i>LATIHAN
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{% url 'tentang' %}" 
-                            class="text-decoration-none {% if request.path|slice:':9' == '/tentang/' %}text-primary{% else %}text-dark{% endif %}">
-                            <i class="fa-solid fa-circle-info me-1"></i>TENTANG
-                        </a>
-                    </li>
-                    </ul>
-                <a href="{% url 'logout' %}" class="btn btn-danger fw-semibold px-3 py-1">
-                    <i class="fa-solid fa-right-from-bracket me-1"></i>Logout
-                </a>
-            </div>
+    <ul class="nav gap-4 fw-semibold me-3 d-none d-md-flex align-items-center">
+        
+        <li>
+            <a href="{% url 'dashboard' %}"
+               class="text-decoration-none {% if request.path == '/dashboard/' %}text-primary{% else %}text-dark{% endif %}">
+                <i class="fa-solid fa-house me-1"></i>HOME
+            </a>
+        </li>
+
+        <li>
+            <a href="{% url 'materi' %}"
+               class="text-decoration-none {% if '/materi/' in request.path %}text-primary{% else %}text-dark{% endif %}">
+                <i class="fa-solid fa-book-open me-1"></i>MATERI
+            </a>
+        </li>
+
+        <li>
+            <a href="{% url 'latihan' %}" 
+                class="text-decoration-none {% if '/latihan/' in request.path %}text-primary{% else %}text-dark{% endif %}">
+                <i class="fa-solid fa-pen-nib me-1"></i>LATIHAN
+            </a>
+        </li>
+
+        <li>
+            <a href="{% url 'pencapaian' %}" 
+                class="text-decoration-none {% if '/pencapaian/' in request.path %}text-primary{% else %}text-dark{% endif %}">
+                <i class="fa-solid fa-chart-simple me-1"></i>PENCAPAIAN
+            </a>
+        </li>
+
+        <li>
+            <a href="{% url 'tentang' %}" 
+                class="text-decoration-none {% if '/tentang/' in request.path %}text-primary{% else %}text-dark{% endif %}">
+                <i class="fa-solid fa-circle-info me-1"></i>TENTANG
+            </a>
+        </li>
+
+    </ul>
+    
+    <a href="{% url 'logout' %}" class="btn btn-danger fw-semibold px-3 py-1 shadow-sm">
+        <i class="fa-solid fa-right-from-bracket me-1"></i>Logout
+    </a>
+</div>
 
         </div>
     </nav>

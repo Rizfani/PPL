@@ -1,0 +1,96 @@
+{% extends 'main/base.html' %}
+{% block title %}Pencapaian Saya - GeoMath{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    
+    <div class="text-center mb-5">
+        <span class="badge bg-warning text-dark px-3 py-2 rounded-pill mb-3 shadow-sm fw-bold">HALL OF FAME</span>
+        <h1 class="fw-bold display-5">Pencapaian Belajar</h1>
+        <p class="text-muted fs-5">Lihat sejauh mana kamu berkembang dan bersaing dengan teman sekelas!</p>
+    </div>
+
+    <div class="row g-4">
+        
+        <div class="col-lg-5">
+            <div class="card border-0 shadow-sm rounded-4 h-100">
+                <div class="card-body p-4">
+                    <h4 class="fw-bold mb-4"><i class="fa-solid fa-chart-simple text-primary me-2"></i>Statistik Kamu</h4>
+                    
+                    <div class="mb-4">
+                        <div class="d-flex justify-content-between mb-1">
+                            <span class="fw-bold text-dark">Bilangan Bulat</span>
+                            <span class="fw-bold text-primary">{{ skor_bulat }}%</span>
+                        </div>
+                        <div class="progress" style="height: 10px; border-radius: 5px;">
+                            <div class="progress-bar bg-primary" style="width: {{ skor_bulat }}%"></div>
+                        </div>
+                    </div>
+
+                    <div class="mb-4">
+                        <div class="d-flex justify-content-between mb-1">
+                            <span class="fw-bold text-dark">Bilangan Desimal</span>
+                            <span class="fw-bold text-success">{{ skor_desimal }}%</span>
+                        </div>
+                        <div class="progress" style="height: 10px; border-radius: 5px;">
+                            <div class="progress-bar bg-success" style="width: {{ skor_desimal }}%"></div>
+                        </div>
+                    </div>
+
+                    <div class="bg-light p-3 rounded-3 d-flex align-items-center">
+                        <div class="icon-box bg-warning text-white p-3 rounded-circle me-3">
+                            <i class="fa-solid fa-medal fs-3"></i>
+                        </div>
+                        <div>
+                            <small class="text-muted d-block text-uppercase fw-bold">Level Kamu</small>
+                            <h5 class="fw-bold mb-0">
+                                {% if rata_rata > 80 %}Grand Master 🏆
+                                {% elif rata_rata > 50 %}Expert Student 📚
+                                {% else %}Newbie Explorer 🌱{% endif %}
+                            </h5>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-7">
+            <div class="card border-0 shadow-sm rounded-4 h-100 overflow-hidden">
+                <div class="card-header bg-primary text-white p-4 border-0">
+                    <h4 class="fw-bold mb-0"><i class="fa-solid fa-trophy me-2 text-warning"></i>Papan Peringkat</h4>
+                </div>
+                <div class="card-body p-0">
+                    <div class="list-group list-group-flush">
+                        {% for student in leaderboard %}
+                        <div class="list-group-item d-flex align-items-center justify-content-between p-3 border-bottom-0 {% if forloop.counter <= 3 %}bg-warning bg-opacity-10{% endif %}">
+                            <div class="d-flex align-items-center">
+                                <div class="me-3 fw-bold text-secondary fs-4" style="width: 30px;">#{{ forloop.counter }}</div>
+                                
+                                <div class="d-flex align-items-center">
+                                    <img src="{{ student.profile.foto.url }}" class="rounded-circle me-3" style="width: 40px; height: 40px; object-fit: cover;">
+                                    <div>
+                                        <h6 class="mb-0 fw-bold text-dark">{{ student.username }}</h6>
+                                        <small class="text-muted">Kelas {{ student.profile.kelas }}</small>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <span class="badge bg-primary rounded-pill px-3 py-2 fs-6">{{ student.total_skor }} XP</span>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    
+    <div class="text-center mt-5">
+        <a href="{% url 'dashboard' %}" class="btn btn-outline-secondary rounded-pill px-4">
+            <i class="fa-solid fa-arrow-left me-2"></i>Kembali ke Dashboard
+        </a>
+    </div>
+
+</div>
+{% endblock %}

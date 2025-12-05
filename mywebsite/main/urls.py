@@ -46,4 +46,8 @@ urlpatterns = [
     path('materi/desimal/perkalian/', views.desimal_perkalian, name='desimal_perkalian'),
     path('materi/desimal/pembagian/', views.desimal_pembagian, name='desimal_pembagian'),
     path('materi/desimal/latihan/', views.desimal_latihan, name='desimal_latihan'),
+    
+    
+    path('profile/hapus-foto/', views.hapus_foto, name='hapus_foto'),
+    path('pencapaian/', views.pencapaian_view, name='pencapaian'),
 ]

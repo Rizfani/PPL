@@ -64,6 +64,65 @@
                 </div>
             </div>
 
+            <div class="card border-0 shadow-sm rounded-4 mb-4 bg-white">
+				<div class="card-header bg-warning bg-opacity-10 p-3 border-bottom-0">
+					<h5 class="fw-bold text-dark mb-0">
+						<i class="fa-solid fa-circle-info me-2 text-warning"></i>Cara Menggunakan Simulasi
+					</h5>
+				</div>
+				<div class="card-body p-4">
+					<div class="row align-items-start">
+						
+						<div class="col-md-4 mb-3 mb-md-0">
+							<div class="d-flex align-items-start">
+								<div class="icon-box bg-warning text-white rounded-circle d-flex align-items-center justify-content-center flex-shrink-0 me-3" style="width: 40px; height: 40px; font-weight: bold;">1</div>
+								<div>
+									<h6 class="fw-bold mb-1">Lihat Pemecahan Angka</h6>
+									<p class="text-muted small mb-0">
+										Lihat angka di atas kotak. Angka besar dipecah menjadi Ratusan, Puluhan, dan Satuan. <br>
+										<em>(Contoh: 341 dipecah jadi 300, 40, dan 1)</em>
+									</p>
+								</div>
+							</div>
+						</div>
+						
+						<div class="col-md-4 mb-3 mb-md-0">
+							<div class="d-flex align-items-start">
+								<div class="icon-box bg-warning text-white rounded-circle d-flex align-items-center justify-content-center flex-shrink-0 me-3" style="width: 40px; height: 40px; font-weight: bold;">2</div>
+								<div>
+									<h6 class="fw-bold mb-1">Isi Kotak Kosong</h6>
+									<p class="text-muted small mb-0">
+										Kalikan angka di <strong>Samping Kiri</strong> dengan angka di <strong>Atas</strong>. Ketik hasilnya di dalam kotak putih. <br>
+										<em>(Contoh: 5 x 300 = 1500)</em>
+									</p>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-md-4">
+							<div class="d-flex align-items-start">
+								<div class="icon-box bg-warning text-white rounded-circle d-flex align-items-center justify-content-center flex-shrink-0 me-3" style="width: 40px; height: 40px; font-weight: bold;">3</div>
+								<div>
+									<h6 class="fw-bold mb-1">Cek Jawaban</h6>
+									<p class="text-muted small mb-0">
+										Klik tombol <strong>CHECK</strong>. <br>
+										Jika benar, angka-angka tersebut akan dijumlahkan di sebelah kiri untuk mendapatkan hasil akhir.
+									</p>
+								</div>
+							</div>
+						</div>
+
+					</div>
+
+					<div class="alert alert-warning d-flex align-items-center mt-3 mb-0 border-0" role="alert">
+						<i class="fa-solid fa-lightbulb fs-4 me-3 text-dark"></i>
+						<div>
+							<strong>Tips:</strong> Jika ingin soal baru, klik tombol ungu bertuliskan <strong>TRY ANOTHER</strong>.
+						</div>
+					</div>
+
+				</div>
+			</div>
             <div class="card shadow-lg border-0 rounded-4 overflow-hidden mb-5">
                 <div class="card-header bg-dark text-white p-3 d-flex justify-content-between align-items-center">
                     <div>
@@ -73,7 +132,7 @@
                 </div>
                 <div class="card-body p-0 bg-light">
                     <div class="ratio ratio-16x9" style="max-height: 550px;">
-                        <iframe src="{% static 'main/geogebra_perkalian_bulat/geogebra.html' %}" 
+                        <iframe src="{% static 'main/geogebra_perkalian_baru/geogebra.html' %}" 
                                 style="border:0;" 
                                 allowfullscreen 
                                 loading="lazy">
@@ -81,7 +140,9 @@
                     </div>
                 </div>
                 <div class="card-footer bg-white p-3 text-center">
-                    <small class="text-muted"><i class="fa-solid fa-lightbulb text-warning me-1"></i> <strong>Tips:</strong> Isi kotak-kotak kecil untuk melihat bagaimana perkalian bekerja.</small>
+                    <small class="text-muted">
+                        <i class="fa-solid fa-lightbulb text-warning me-1"></i> <strong>Tips:</strong> Isi kotak-kotak kecil untuk melihat bagaimana perkalian bekerja.
+                    </small>
                 </div>
             </div>
 
