@@ -1,67 +1,277 @@
 {% extends 'main/base.html' %}
 {% load static %}
-{% block title %}Pengertian Desimal - GeoMath{% endblock %}
+{% block title %}Pengertian - Bilangan Desimal{% endblock %}
 
 {% block content %}
 
-<style>
-    .page-container { display: flex; min-height: calc(100vh - 70px); background-color: #f8f9fa; }
-    .sidebar { width: 280px; background: white; border-right: 1px solid #dee2e6; padding: 20px; position: sticky; top: 70px; height: calc(100vh - 70px); overflow-y: auto; flex-shrink: 0; }
-    .content-area { flex-grow: 1; padding: 40px 50px; height: calc(100vh - 70px); overflow-y: auto; }
-    
-    /* Sidebar Link Style */
-    .menu-link { display: block; padding: 10px 15px; color: #495057; text-decoration: none; border-radius: 8px; margin-bottom: 5px; font-weight: 500; transition: all 0.2s; }
-    .menu-link:hover { background-color: #e9ecef; color: #198754; transform: translateX(5px); }
-    .menu-link.active { background-color: #198754; color: white; font-weight: 700; box-shadow: 0 4px 10px rgba(25, 135, 84, 0.3); }
-
-    @media (max-width: 992px) { .page-container { flex-direction: column; } .sidebar { width: 100%; height: auto; position: relative; top: 0; } .content-area { padding: 20px; } }
-</style>
-
-<div class="page-container">
-    
-    <aside class="sidebar">
-        {% include 'main/materi_desimal/sidebar.html' %}
-    </aside>
-
-    <main class="content-area">
+<div class="container py-5">
+	
+    <div class="row">
         
-        <h1 class="fw-bold text-dark mb-4">Pengertian Bilangan Desimal</h1>
+        <div class="col-lg-3">
+            {% include 'main/materi_desimal/sidebar.html' %}
+        </div>
+		
 
-        <div class="card border-0 shadow-sm rounded-4 p-5 mb-5 bg-white">
-            <div class="row align-items-center">
-                <div class="col-lg-7">
-                    <h3 class="text-success fw-bold mb-3">Apa itu Desimal?</h3>
-                    <p class="text-secondary fs-5 lh-lg">
-                        [cite_start]<strong>Bilangan desimal</strong> adalah bentuk lain dari pecahan yang ditandai dengan penggunaan tanda koma (<strong>,</strong>). [cite: 114]
-                        [cite_start]<br>Angka di belakang koma menunjukkan nilai yang lebih kecil dari satu. [cite: 115]
-                    </p>
-                    
-                    <div class="alert alert-success border-0 bg-success bg-opacity-10 mt-3">
-                        <h6 class="fw-bold text-success"><i class="fa-solid fa-lightbulb me-2"></i>Contoh:</h6>
-                        <ul class="mb-0">
-                            <li><strong>0,5</strong> = Setengah (1/2)</li>
-                            <li><strong>0,25</strong> = Seperempat (1/4)</li>
-                        </ul>
-                    </div>
-                </div>
-                
-                <div class="col-lg-5 text-center">
-                    <div class="bg-light rounded-4 p-4 border border-2 border-dashed border-success">
-                        <i class="fa-solid fa-chart-pie text-success fa-4x mb-3 opacity-75"></i>
-                        <h2 class="fw-bold text-dark mb-0">0,75</h2>
-                        <p class="small text-muted mb-0">Nol Koma Tujuh Lima</p>
+        <div class="col-lg-9 px-md-5">
+			
+            <div class="card border-0 shadow-sm rounded-4 mb-5 bg-white">
+				<div class="card-body p-4">
+					<div class="d-inline-block bg-success bg-opacity-10 text-success px-4 py-2 rounded-pill mb-3">
+						<h5 class="fw-bold mb-0"><i class="fa-solid fa-bullseye me-2"></i>Pengertian Bilangan Desimal</h5>
+					</div>
+					<div class="row">
+						<div class="col-md-12">
+							<ul class="list-unstyled">
+								<li class="d-flex align-items-start mb-3">
+									<i class="fa-solid fa-check-circle text-success mt-1 me-3"></i>
+                                    <span><strong>Bilangan desimal</strong> adalah bilangan yang punya tanda koma (,) di tengahnya.</span>
+								</li>
+								
+								<li class="d-flex align-items-start mb-3">
+									<i class="fa-solid fa-check-circle text-success mt-1 me-3"></i>
+									<span>Pernah lihat angka seperti 1,5 liter air atau Rp 2,75? Nah, itu namanya <strong>bilangan desimal.</strong></span>
+								</li>
+
+								<li class="d-flex align-items-start mb-3">
+									<i class="fa-solid fa-check-circle text-success mt-1 me-3"></i>
+									<span>Angka di depan koma menunjukkan bagian utuh, dan angka di belakang koma menunjukkan bagian pecahan dari sesuatu.</span>
+								</li>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+		</div>
+
+		<div class="card border-0 shadow-sm rounded-4 mb-5 bg-white overflow-hidden">
+			<div class="card-header bg-primary bg-opacity-10 p-4 border-bottom-0 text-center">
+				<h4 class="fw-bold text-primary mb-0"><i class="fa-solid fa-sitemap me-2"></i>Peta Konsep</h4>
+				<p class="text-muted small mb-0">Alur belajar kita di modul ini</p>
+			</div>
+			
+			<div class="card-body p-5 bg-light position-relative">
+				
+				<div class="tree-container">
+					
+					<div class="tree-level">
+						<div class="tree-node main-node">
+							Bilangan Desimal
+						</div>
+					</div>
+
+					<div class="tree-line-vertical"></div>
+					<div class="tree-line-horizontal"></div>
+
+					<div class="tree-level level-2">
+						
+						<div class="tree-branch">
+							<div class="tree-line-vertical-small"></div>
+							<div class="tree-node sub-node bg-primary text-white">
+								Memahami Bilangan Desimal
+							</div>
+							<div class="tree-children">
+								<span class="badge bg-white text-primary border border-primary mb-1">Pengertian Bilangan Desimal</span>
+							</div>
+						</div>
+
+						<div class="tree-branch">
+							<div class="tree-line-vertical-small"></div>
+							<div class="tree-node sub-node bg-warning text-dark">
+								Operasi hitung bilangan Desimal
+							</div>
+							<div class="tree-children">
+								<span class="badge bg-white text-warning border border-warning mb-1">penjumlahan</span>
+								<span class="badge bg-white text-warning border border-warning">pengurangan</span>
+								<span class="badge bg-white text-warning border border-warning">perkalian</span>
+								<span class="badge bg-white text-warning border border-warning">pembagian</span>
+							</div>
+						</div>
+
+						<!-- <div class="tree-branch">
+							<div class="tree-line-vertical-small"></div>
+							<div class="tree-node sub-node bg-success text-white">
+								Bilangan Desimal
+							</div>
+							<div class="tree-children">
+								<span class="badge bg-white text-success border border-success mb-1">Nilai Tempat</span>
+								<span class="badge bg-white text-success border border-success mb-1">Operasi Hitung</span>
+								<span class="badge bg-white text-success border border-success">Konversi</span>
+							</div>
+						</div> -->
+
+						
+
+					</div>
+				</div>
+
+			</div>
+		</div>
+
+		<div class="mb-5">
+			<h2 class="fw-bold text-dark display-6 mb-3">Memahami Bilangan Desimal</h2>
+		</div>
+
+		<div class="card border-0 shadow-sm rounded-4 mb-5 overflow-hidden">
+                <div class="card-body p-0">
+                    <div class="row g-0">
+                        
+                        <div class="col-lg-5 bg-info bg-opacity-10 p-5 d-flex flex-column align-items-center justify-content-center text-center">
+                            <h5 class="fw-bold text-dark mb-3">diagram garis bilangan</h5>
+                            
+                            <div class="bg-white p-2 rounded-pill shadow-sm border border-4 border-white mb-3">
+                                <img src="{% static 'img/exact_desimal.png' %}" alt="Exact" class="img-fluid" style="max-height: 250px;">
+                            </div>
+                        </div>   
+
+                        <div class="col-lg-7 p-5">
+                            <h3 class="fw-bold text-dark mb-3">Perhatikan gambar di samping</h3>
+                            <p class="text-muted mb-4" style="line-height: 1.8;">
+                                <span>Baris<strong> “Exact” </strong> artinya nilai yang <strong>tepat atau sebenarnya.</strong></span>
+                                <span>Baris<strong> “Approximate” </strong> artinya nilai yang <strong>diperkirakan atau dibulatkan</strong> supaya lebih mudah digunakan.</span>
+                            </p>
+                            <p class="text-muted mb-4" style="line-height: 1.8;">
+                                <span> garis Exact menunjukkan nilai sebenarnya, yaitu 0,7 Garis Approximate menunjukkan nilai perkiraannya, yaitu 0,75. Keduanya hampir sama,
+                                       hanya beda sedikit karena perkiraan (approximate) dibuat untuk mempermudah menghitung tanpa harus menulis angka desimal panjang. Arti dari Approximate the
+                                       difference of two numbers yaitu perkirakan selisih (hasil pengurangan) dari dua bilangan. Jadi kalau kamu punya dua angka desimal seperti 0,75 dan 0,25 Maka 
+                                       tepatnya (exact) adalah 0,75 − 0,25 = 0,500,75 - 0,25 = 0,500,75−0,25 = 0,50 </span>                                
+                            </p>
+                        </div>
+
                     </div>
                 </div>
             </div>
-        </div>
 
-        <div class="d-flex justify-content-end mt-5">
-            <a href="{% url 'desimal_membandingkan' %}" class="btn btn-success rounded-pill px-4 shadow fw-bold">
-                Lanjut: Membandingkan <i class="fa-solid fa-arrow-right ms-2"></i>
-            </a>
-        </div>
 
-    </main>
+		<div class="card border-0 shadow-sm rounded-4 p-4 mb-5 bg-white position-relative overflow-hidden">
+			<i class="fa-solid fa-shapes position-absolute text-light" style="font-size: 15rem; right: -50px; top: -20px; opacity: 0.5; transform: rotate(15deg);"></i>
+			
+			<div class="row align-items-center position-relative z-1">
+				<div class="col-lg-7">
+					<h3 class="fw-bold text-primary mb-3"><i class="fa-solid fa-book-open me-2"></i>Apa itu Bilangan Desimal?</h3>
+					<p class="text-secondary fs-5 lh-lg">
+						<strong>Bilangan desimal</strong> adalah bilangan yang punya tanda koma (,) di tengahnya:
+					</p>
+					<div class="alert alert-primary border-0 d-flex align-items-center shadow-sm">
+						<i class="fa-solid fa-lightbulb fs-2 me-3 text-warning"></i>
+						<div>
+							<strong>Contoh:</strong> ... 1,5, 2,5, 5,5,  ... <br>
+							<small class="text-muted">Contoh Salah: 1,5 (Desimal) atau 1/2 (Pecahan)</small>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+                
+<style>
+	.transition-hover {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .transition-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1) !important;
+            background-color: white !important; /* Efek jadi putih saat dihover */
+            border: 1px solid #eee !important;
+        }
+
+    .tree-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .tree-level {
+        display: flex;
+        justify-content: center;
+        gap: 40px; /* Jarak antar cabang */
+        position: relative;
+    }
+
+    .tree-node {
+        padding: 15px 25px;
+        border-radius: 15px;
+        font-weight: bold;
+        text-align: center;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        position: relative;
+        z-index: 2;
+        transition: transform 0.3s ease;
+    }
+
+    .tree-node:hover {
+        transform: scale(1.05);
+    }
+
+    .main-node {
+        background: #2b4cb4;
+        color: white;
+        font-size: 1.2rem;
+        border: 2px solid #2b4cb4;
+    }
+
+    .sub-node {
+        font-size: 1rem;
+        margin-bottom: 15px;
+        width: 180px;
+    }
+
+    /* Garis-garis Penghubung */
+    .tree-line-vertical {
+        width: 2px;
+        height: 30px;
+        background-color: #adb5bd;
+        margin-bottom: 0;
+    }
+
+    .tree-line-horizontal {
+        width: 60%; /* Lebar garis mendatar */
+        height: 2px;
+        background-color: #adb5bd;
+        margin-bottom: 0;
+    }
+
+    .tree-line-vertical-small {
+        width: 2px;
+        height: 20px;
+        background-color: #adb5bd;
+        margin: 0 auto 10px auto; /* Posisi di tengah atas node */
+    }
+
+    .tree-children {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 5px;
+    }
+
+    .tree-children .badge {
+        font-weight: normal;
+        font-size: 0.85rem;
+        padding: 8px 12px;
+        width: 100%;
+    }
+
+    /* Responsif untuk HP */
+    @media (max-width: 768px) {
+        .tree-level.level-2 {
+            flex-direction: column;
+            gap: 30px;
+        }
+        .tree-line-horizontal { display: none; }
+        .tree-line-vertical { height: 20px; }
+        .tree-line-vertical-small { display: none; }
+    }
+</style>
+
+            
+
+            <div class="d-flex justify-content-end mt-5">
+                <a href="{% url 'desimal_penjumlahan' %}" class="btn btn-primary rounded-pill px-4">
+                    Lanjut: Penjumlahan <i class="fa-solid fa-arrow-right ms-2"></i>
+                </a>
+            </div>
+
+        </div>
+    </div>
 </div>
-
 {% endblock %}
