@@ -7,7 +7,7 @@
 <section class="hero text-center py-5 text-white" style="background: linear-gradient(135deg, #0061ff 0%, #60efff 100%);">
     <div class="container">
         <h1 class="fw-bold display-5 mb-3">Misi: Bilangan Bulat</h1>
-        <p class="fs-5 opacity-90">Selesaikan masalah suhu dan keuangan di Geo-Cafe!</p>
+        <p class="fs-5 opacity-90">Selesaikan masalah suhu dan kedalaman laut di Geo-World!</p>
     </div>
 </section>
 
@@ -37,18 +37,18 @@
         <div class="col-lg-8">
             <div class="card shadow-sm p-4 rounded-4 border-0">
                 <div class="d-flex align-items-center mb-4">
-                    <div class="icon-box bg-danger bg-opacity-10 text-danger p-3 rounded-circle me-3">
-                        <i class="fa-solid fa-file-invoice-dollar fs-3"></i>
+                    <div class="icon-box bg-primary bg-opacity-10 text-primary p-3 rounded-circle me-3">
+                        <i class="fa-solid fa-water fs-3"></i>
                     </div>
-                    <h4 class="fw-bold mb-0 text-dark">Misi 2: Catatan Utang</h4>
+                    <h4 class="fw-bold mb-0 text-dark">Misi 2: Posisi Kapal Selam</h4>
                 </div>
                 <p class="text-muted fs-5">
-                    Geo-Cafe punya utang <strong>Rp7.000 (-7.000)</strong> ke kas kelas. Dari hasil jualan hari ini, kamu membayar utang itu sebesar <strong>Rp3.000</strong>.
+                    Sebuah kapal selam sedang memantau terumbu karang di kedalaman <strong>20 meter</strong> di bawah permukaan laut (-20 m). Kemudian, kapal itu bergerak naik sejauh <strong>12 meter</strong>.
                 </p>
                 <div class="card bg-light border-0 p-3 rounded-3 mb-3">
-                    <p class="fw-bold text-dark mb-0"><i class="fa-solid fa-circle-question me-2 text-danger"></i>Berapa sisa utang Geo-Cafe sekarang?</p>
+                    <p class="fw-bold text-dark mb-0"><i class="fa-solid fa-circle-question me-2 text-primary"></i>Di kedalaman berapa meter posisi kapal sekarang?</p>
                 </div>
-                <button class="btn btn-danger w-100 fw-bold" data-bs-toggle="modal" data-bs-target="#hintModal2">
+                <button class="btn btn-primary w-100 fw-bold" data-bs-toggle="modal" data-bs-target="#hintModal2">
                     <i class="fa-regular fa-lightbulb me-2"></i>Lihat Petunjuk
                 </button>
             </div>
@@ -69,14 +69,17 @@
     </div>
   </div>
 </div>
+
 <div class="modal fade" id="hintModal2" tabindex="-1" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
-      <div class="modal-header bg-danger bg-opacity-10"><h5 class="modal-title fw-bold">Petunjuk Misi 2</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div>
-      <div class="modal-body"><p>Utang awal adalah -7000. Membayar berarti menambah nilai positif (+3000). Hitung: <strong>-7000 + 3000</strong>.</p></div>
+      <div class="modal-header bg-primary bg-opacity-10"><h5 class="modal-title fw-bold">Petunjuk Misi 2</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div>
+      <div class="modal-body">
+        <p>Posisi awal di bawah laut ditulis negatif <strong>(-20)</strong>. Bergerak naik berarti ditambah positif <strong>(+12)</strong>.</p>
+        <p class="mb-0 text-center fw-bold border p-2 rounded bg-light">-20 + 12 = ...</p>
+      </div>
     </div>
   </div>
 </div>
-
 
 {% endblock %}

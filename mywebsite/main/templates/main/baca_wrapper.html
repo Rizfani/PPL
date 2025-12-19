@@ -1,0 +1,32 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container py-4">
+    <a href="{% url 'daftar_subbab' materi.kategori %}" class="text-decoration-none text-muted mb-3 d-block">
+        <i class="fa-solid fa-arrow-left"></i> Kembali ke Daftar Materi
+    </a>
+
+    <h2 class="fw-bold mb-4 border-bottom pb-2">{{ materi.judul }}</h2>
+
+    <div class="materi-content bg-white p-4 rounded shadow-sm">
+        {% include materi.file_template %}
+    </div>
+
+    <div class="mt-5 p-4 bg-light rounded text-center">
+        <h5 class="mb-3">Sudah paham materi ini?</h5>
+        <form action="{% url 'selesaikan_materi' materi.id %}" method="POST">
+            {% csrf_token %}
+            {% if next_materi %}
+                <button type="submit" class="btn btn-primary btn-lg px-5 rounded-pill shadow">
+                    Lanjut ke Materi Berikutnya <i class="fa-solid fa-chevron-right ms-2"></i>
+                </button>
+            {% else %}
+                <button type="submit" class="btn btn-success btn-lg px-5 rounded-pill shadow">
+                    Selesai Bab Ini! <i class="fa-solid fa-check ms-2"></i>
+                </button>
+            {% endif %}
+        </form>
+    </div>
+</div>
+{% endblock %}

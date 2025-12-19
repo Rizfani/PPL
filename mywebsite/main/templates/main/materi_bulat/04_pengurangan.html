@@ -36,7 +36,7 @@
                         <div class="col-md-8">
                             <div class="alert alert-light border-start border-danger border-4 text-start">
                                 <i class="fa-solid fa-circle-info text-danger me-2"></i>
-                                <strong>Catatan Penting:</strong> Saat kita mengurangkan bilangan negatif (Min ketemu Min), hasilnya menjadi <strong>TAMBAH</strong>.
+                                <strong>Catatan Penting:</strong> Saat kita mengurangkan bilangan negatif (Min ketemu Min), hasilnya menjadi <strong>TAMBAH</strong> (a - (-b) = a + b).
                             </div>
                         </div>
                     </div>
@@ -49,7 +49,6 @@
                         <div class="card-body p-4">
                             <h5 class="fw-bold text-dark mb-3"><i class="fa-solid fa-list-ol me-2 text-danger"></i>Contoh Penerapan</h5>
                             <ul class="list-group list-group-flush">
-                                
                                 <li class="list-group-item px-0 py-3">
                                     <div class="d-flex justify-content-between align-items-center">
                                         <span class="fs-5">8 - 3</span>
@@ -58,7 +57,6 @@
                                     </div>
                                     <small class="text-muted d-block mt-1">Sama seperti 8 + (-3)</small>
                                 </li>
-
                                 <li class="list-group-item px-0 py-3">
                                     <div class="d-flex justify-content-between align-items-center">
                                         <span class="fs-5">(-5) - (-2)</span>
@@ -67,7 +65,6 @@
                                     </div>
                                     <small class="text-muted d-block mt-1">Berubah jadi: -5 + 2</small>
                                 </li>
-
                                 <li class="list-group-item px-0 py-3 bg-warning bg-opacity-10 rounded-3 px-2 mt-2">
                                     <div class="d-flex justify-content-between align-items-center">
                                         <span class="fs-5 fw-bold">6 - (-4)</span>
@@ -76,7 +73,6 @@
                                     </div>
                                     <small class="text-dark d-block mt-1 fw-bold"><i class="fa-solid fa-star me-1"></i> Berubah jadi: 6 + 4</small>
                                 </li>
-
                             </ul>
                         </div>
                     </div>
@@ -94,6 +90,32 @@
                             Menambah hal yang Positif (Baik)."
                         </p>
                         <div class="badge bg-danger fs-6 mt-2 p-2">- (-) = +</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card border-0 shadow-sm rounded-4 mb-5 overflow-hidden">
+                <div class="card-header bg-dark text-white p-3 d-flex justify-content-between align-items-center">
+                    <h5 class="fw-bold mb-0"><i class="fa-solid fa-calculator me-2"></i>Simulasi Visual</h5>
+                    <span class="badge bg-warning text-dark">Interaktif</span>
+                </div>
+                <div class="card-body p-0">
+                    <div class="bg-light p-3 border-bottom">
+                        <h6 class="fw-bold text-danger mb-2">Cara Menggunakan Simulasi:</h6>
+                        <ol class="small text-muted mb-0 ps-3">
+                            <li>Klik dan geser <strong>Titik Biru</strong> untuk mengubah angka pertama.</li>
+                            <li>Klik dan geser <strong>Titik Merah</strong> untuk mengubah angka pengurang.</li>
+                            <li>Perhatikan <strong>Panah Merah</strong>! Jika dikurang positif panah ke kiri, jika dikurang negatif panah berbalik ke kanan.</li>
+                        </ol>
+                    </div>
+
+                    <div class="ratio ratio-16x9">
+                        <iframe 
+                            scrolling="no" 
+                            title="Pengurangan Bilangan Bulat" 
+                            src="{% static 'main/geogebra_pengurangan_bulat/geogebra.html' %}" 
+                            style="border:0px;"> 
+                        </iframe>
                     </div>
                 </div>
             </div>

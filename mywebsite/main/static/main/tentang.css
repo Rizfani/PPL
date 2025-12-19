@@ -45,59 +45,83 @@ body {
 }
 
 .hero-title {
-    font-size: 2.5rem; /* Setara display-5 */
+    font-size: 2.5rem; 
     color: var(--primary);
     margin-bottom: 1.5rem;
 }
 
 .hero-desc {
     color: var(--secondary);
-    font-size: 1.25rem; /* Setara fs-5 */
+    font-size: 1.25rem; 
     width: 75%;
     margin: 0 auto;
     line-height: 1.6;
 }
 
-/* Floating Icons Animation */
-.floating-icon {
+/* --- Floating Objects Animation (BARU: Angka & Ikon) --- */
+
+.floating-obj {
     position: absolute;
-    opacity: 0.5;
-    animation: move-icon 8s infinite alternate ease-in-out;
+    opacity: 0.15; 
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    user-select: none; 
+    z-index: 1;
+    animation: move-obj 8s infinite alternate ease-in-out;
 }
 
-/* Posisi spesifik ikon (menggantikan style inline) */
-.icon-1 { 
-	top: 10%; 
-	left: 10%; 
-	font-size: 3rem; 
-	color: var(--info); }
-.icon-2 { 
-	bottom: 15%; 
-	right: 15%; 
-	font-size: 3rem; 
-	color: var(--warning); 
-	animation-duration: 6s; 
-	animation-direction: alternate-reverse; }
-.icon-3 { 
-	top: 20%; 
-	right: 5%; 
-	font-size: 2rem; 
-	color: var(--primary); 
-	animation-duration: 7s; }
-.icon-4 { bottom: 10%; left: 20%; font-size: 2rem; color: var(--success); animation-duration: 5s; animation-direction: alternate-reverse; }
-
-@keyframes move-icon {
-    0% { transform: translate(0, 0) scale(1); }
-    50% { transform: translate(20px, 15px) scale(1.1); }
-    100% { transform: translate(0, 0) scale(1); }
+@keyframes move-obj {
+    0% { transform: translate(0, 0) rotate(0deg); }
+    50% { transform: translate(20px, 15px) rotate(5deg); }
+    100% { transform: translate(-10px, -10px) rotate(-5deg); }
 }
 
-/* --- Cards --- */
+/* Posisi Spesifik */
+.pos-1 { 
+    top: 10%; 
+    left: 5%; 
+    font-size: 6rem; 
+    animation-duration: 9s;
+}
+
+.pos-2 { 
+    bottom: 5%; 
+    right: 5%; 
+    font-size: 8rem; 
+    animation-duration: 11s; 
+    animation-direction: alternate-reverse; 
+}
+
+.pos-3 { 
+    top: 15%; 
+    right: 10%; 
+    font-size: 4rem; 
+    animation-duration: 7s; 
+}
+
+.pos-4 { 
+    bottom: 15%; 
+    left: 10%; 
+    font-size: 5rem; 
+    animation-duration: 8s; 
+    animation-direction: alternate-reverse; 
+}
+
+@media (max-width: 768px) {
+    .floating-obj {
+        font-size: 3rem !important; 
+        opacity: 0.1; 
+    }
+}
+
+/* --- Cards (BAGIAN YANG HILANG DI KODEMU) --- */
 .content-card {
     background-color: var(--white);
     padding: 2rem;
-    border-radius: 0.5rem; /* Setara rounded */
-    box-shadow: 0 .125rem .25rem rgba(0,0,0,.075); /* Setara shadow-sm */
+    border-radius: 0.5rem; 
+    box-shadow: 0 .125rem .25rem rgba(0,0,0,.075); 
     margin-bottom: 3rem;
     transition: transform 0.3s ease;
 }
@@ -120,7 +144,7 @@ body {
     line-height: 1.6;
 }
 
-/* --- Grid System untuk "Tujuan & Metode" --- */
+/* --- Grid System --- */
 .grid-2-col {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -128,7 +152,6 @@ body {
     margin-top: 1.5rem;
 }
 
-/* Responsif: Jadi 1 kolom di layar kecil */
 @media (max-width: 768px) {
     .grid-2-col {
         grid-template-columns: 1fr;

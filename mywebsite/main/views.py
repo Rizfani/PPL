@@ -12,6 +12,7 @@ from .models import RiwayatSimulasi
 from django.http import JsonResponse
 from django.shortcuts import render, redirect, get_object_or_404 # <-- Tambah get_object_or_404
 from .models import Kuis, ButirSoal, Nilai
+from .models import Profile, Materi, ProgresMateri, Kuis, Nilai, StatusMateri
 
 # --- HALAMAN DEPAN ---
 def home(request):
@@ -273,15 +274,23 @@ def edit_profile_view(request):
     }
     return render(request, 'main/edit_profile.html', context)
 
-@login_required  
+@login_required
 def latihan(request):
-    profile, created = Profile.objects.get_or_create(user=request.user)
-    status, created = StatusMateri.objects.get_or_create(user=request.user)
+    profile, _ = Profile.objects.get_or_create(user=request.user)
+    
+    # --- KEMBALI KE AWAL (LANGSUNG TERBUKA) ---
+    # Kita set False, artinya "TIDAK TERKUNCI"
+    kunci_bulat = False 
+    kunci_desimal = False
+
     context = {
         'username': request.user.username,
         'kelas': profile.kelas,
         'profile': profile,
-        'status': status,
+        
+        # Kirim status "False" agar tombol langsung hijau/biru
+        'kunci_bulat': kunci_bulat,
+        'kunci_desimal': kunci_desimal,
     }
     return render(request, 'main/latihan.html', context)
 

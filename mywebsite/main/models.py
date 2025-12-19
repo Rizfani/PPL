@@ -85,3 +85,33 @@ class RiwayatSimulasi(models.Model):
 
     def __str__(self):
         return f"{self.user.username} - {self.angka_1} vs {self.angka_2}"
+    
+    
+class Materi(models.Model):
+    KATEGORI_CHOICES = [
+        ('bulat', 'Bilangan Bulat'),
+        ('desimal', 'Bilangan Desimal'),
+    ]
+    
+    judul = models.CharField(max_length=200) # Contoh: "Pengertian Bilangan Bulat"
+    slug = models.SlugField(unique=True) 
+    urutan = models.IntegerField() # 1, 2, 3...
+    kategori = models.CharField(max_length=50, choices=KATEGORI_CHOICES)
+    
+    # INI KUNCI UTAMANYA: Menyimpan nama file HTML Anda
+    # Contoh isi: "main/materi_bulat/01_pengertian.html"
+    file_template = models.CharField(max_length=255, help_text="Path ke file HTML di folder templates")
+
+    class Meta:
+        ordering = ['urutan']
+
+    def __str__(self):
+        return f"{self.kategori} - {self.judul}"
+
+class ProgresMateri(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    materi = models.ForeignKey(Materi, on_delete=models.CASCADE)
+    selesai = models.BooleanField(default=False)
+    
+    class Meta:
+        unique_together = ['user', 'materi']

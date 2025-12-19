@@ -14,43 +14,71 @@
 
     <div class="row g-4 justify-content-center">
 
-        <div class="col-md-5">
-            <div class="card h-100 border-0 shadow-sm rounded-4 p-4 text-center position-relative overflow-hidden">
+        <div class="col-md-5 col-lg-4">
+            <div class="card h-100 border-0 shadow-sm rounded-4 p-4 text-center position-relative overflow-hidden justify-content-center">
                 
-                <i class="fa-solid fa-temperature-low position-absolute top-0 end-0 text-primary opacity-10 p-3" style="font-size: 6rem; transform: rotate(15deg);"></i>
+                <span class="position-absolute top-0 end-0 text-primary opacity-10 fw-bold" 
+                      style="font-size: 8rem; transform: rotate(15deg); right: -10px; font-family: sans-serif;">
+                    -10
+                </span>
 
-                <div class="icon-box bg-primary bg-opacity-10 text-primary p-3 rounded-circle d-inline-block mb-3 position-relative z-1">
-                    <i class="fa-solid fa-temperature-low fa-2x"></i>
+                <div class="icon-box bg-primary bg-opacity-10 text-primary p-4 rounded-circle d-inline-flex align-items-center justify-content-center mb-4 position-relative z-1" 
+                     style="width: 100px; height: 100px;">
+                    <span class="fw-bold" style="font-size: 2.5rem; font-family: sans-serif;">-5</span>
                 </div>
-                <h4 class="fw-bold position-relative z-1">Latihan 1: Bilangan Bulat</h4>
-                <p class="text-muted position-relative z-1">
-                    Soal cerita tentang Suhu & Utang.<br>
-                    <span class="badge bg-light text-dark border">KKM: 60</span>
-                </p>
                 
-                <a href="{% url 'kerjakan_kuis' 1 %}" class="btn btn-primary w-100 rounded-pill fw-bold position-relative z-1 mt-2">
-                    Mulai Misi <i class="fa-solid fa-play ms-2"></i>
-                </a>
+                <h4 class="fw-bold position-relative z-1 mb-3">Latihan 1: Bilangan Bulat</h4>
+                
+                <div class="mb-4 position-relative z-1">
+                    <span class="badge bg-light text-dark border px-3 py-2 rounded-pill fw-bold" style="font-size: 0.9rem;">KKM: 60</span>
+                </div>
+                
+                {% if kunci_bulat %}
+                    <button class="btn btn-secondary btn-lg w-100 rounded-pill fw-bold position-relative z-1 shadow-sm" disabled style="cursor: not-allowed; opacity: 0.7;">
+                        <i class="fa-solid fa-lock me-2"></i> Terkunci
+                    </button>
+                    <small class="text-danger d-block mt-2 position-relative z-1 fw-bold" style="font-size: 0.75rem;">
+                        *Selesaikan materi Bilangan Bulat dulu!
+                    </small>
+                {% else %}
+                    <a href="{% url 'kerjakan_kuis' 1 %}" class="btn btn-primary btn-lg w-100 rounded-pill fw-bold position-relative z-1 shadow-sm">
+                        Mulai Misi <i class="fa-solid fa-play ms-2"></i>
+                    </a>
+                {% endif %}
             </div>
         </div>
 
-        <div class="col-md-5">
-            <div class="card h-100 border-0 shadow-sm rounded-4 p-4 text-center position-relative overflow-hidden">
+        <div class="col-md-5 col-lg-4">
+            <div class="card h-100 border-0 shadow-sm rounded-4 p-4 text-center position-relative overflow-hidden justify-content-center">
                 
-                <i class="fa-solid fa-percent position-absolute top-0 end-0 text-success opacity-10 p-3" style="font-size: 6rem; transform: rotate(15deg);"></i>
+                <span class="position-absolute top-0 end-0 text-success opacity-10 fw-bold" 
+                      style="font-size: 8rem; transform: rotate(15deg); right: -20px; font-family: sans-serif;">
+                    0,25
+                </span>
 
-                <div class="icon-box bg-success bg-opacity-10 text-success p-3 rounded-circle d-inline-block mb-3 position-relative z-1">
-                    <i class="fa-solid fa-bottle-droplet fa-2x"></i>
+                <div class="icon-box bg-success bg-opacity-10 text-success p-4 rounded-circle d-inline-flex align-items-center justify-content-center mb-4 position-relative z-1" 
+                     style="width: 100px; height: 100px;">
+                    <span class="fw-bold" style="font-size: 2.5rem; font-family: sans-serif;">0,5</span>
                 </div>
-                <h4 class="fw-bold position-relative z-1">Latihan 2: Bilangan Desimal</h4>
-                <p class="text-muted position-relative z-1">
-                    Soal cerita tentang Stok Sirup & Roti.<br>
-                    <span class="badge bg-light text-dark border">KKM: 60</span>
-                </p>
                 
-                <a href="{% url 'kerjakan_kuis' 2 %}" class="btn btn-success w-100 rounded-pill fw-bold position-relative z-1 mt-2">
-                    Mulai Misi <i class="fa-solid fa-play ms-2"></i>
-                </a>
+                <h4 class="fw-bold position-relative z-1 mb-3">Latihan 2: Bilangan Desimal</h4>
+                
+                <div class="mb-4 position-relative z-1">
+                    <span class="badge bg-light text-dark border px-3 py-2 rounded-pill fw-bold" style="font-size: 0.9rem;">KKM: 60</span>
+                </div>
+                
+                {% if kunci_desimal %}
+                    <button class="btn btn-secondary btn-lg w-100 rounded-pill fw-bold position-relative z-1 shadow-sm" disabled style="cursor: not-allowed; opacity: 0.7;">
+                        <i class="fa-solid fa-lock me-2"></i> Terkunci
+                    </button>
+                    <small class="text-danger d-block mt-2 position-relative z-1 fw-bold" style="font-size: 0.75rem;">
+                        *Selesaikan materi Bilangan Desimal dulu!
+                    </small>
+                {% else %}
+                    <a href="{% url 'kerjakan_kuis' 2 %}" class="btn btn-success btn-lg w-100 rounded-pill fw-bold position-relative z-1 shadow-sm">
+                        Mulai Misi <i class="fa-solid fa-play ms-2"></i>
+                    </a>
+                {% endif %}
             </div>
         </div>
 
